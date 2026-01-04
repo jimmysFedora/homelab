@@ -1,0 +1,16 @@
+services:
+  portainer:
+    container_name: portainer
+    image: portainer/portainer-ce:lts
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /mnt/docker-nfs/portainer-data:/data
+    ports:
+      - 9443:9443
+    networks:
+      - npm_bridge
+
+networks:
+  npm_bridge:
+    external: true
