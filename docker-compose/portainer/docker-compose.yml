@@ -5,7 +5,7 @@ services:
     restart: always
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /mnt/docker-nfs/portainer-data:/data
+      - /mnt/docker-nfs/volumes/portainer-data:/data
     ports:
       - 9443:9443
     networks:

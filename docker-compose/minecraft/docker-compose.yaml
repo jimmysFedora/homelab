@@ -9,4 +9,4 @@ services:
     environment:
       EULA: "TRUE"
     volumes:
-      - /mnt/docker-nfs/minecraft-data:/data
+      - /mnt/docker-nfs/volumes/minecraft-data:/data
