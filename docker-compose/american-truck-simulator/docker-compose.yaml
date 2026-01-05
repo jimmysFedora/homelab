@@ -1,0 +1,29 @@
+services:
+  ats-convoy-server:
+    image: lshallo/ats-convoy-server
+    container_name: ats-server
+    restart: unless-stopped
+    tty: true
+    network_mode: host    
+    ports:
+      - "27015:27015/udp"  # Server port (UDP)
+      - "27015:27015/tcp"  # Server port (TCP)    
+    volumes:
+      - /mnt/docker-nfs/volumes/ats-server/game-data:/app
+      - /mnt/docker-nfs/volumes/ats-server/save-data:/home/steam/.local/share/American Truck Simulator
+    environment:
+      - ETS_SERVER_UPDATE_ON_START=true
+      - ETS_SERVER_NAME=sixseventrucking
+      - ETS_SERVER_DESCRIPTION=Powered by Docker
+      - ETS_SERVER_WELCOME_MESSAGE=Welcome to winter hell! Powered by Docker
+      - ETS_SERVER_MAX_PLAYERS=4
+      - ETS_SERVER_PORT=27015 # actual connection
+      - ETS_SERVER_QUERY_PORT=27016 # server browser
+      - ETS_SERVER_LOGON_TOKEN=9708020ADC5C4B2F9AC962525FBEB2BA
+      - ETS_SERVER_MODS_OPTIONING=true
+      - ETS_SERVER_PLAYER_DAMAGE=true
+      - ETS_SERVER_TRAFFIC=true
+      - ETS_SERVER_SERVICE_NO_COLLISION=false
+      - ETS_SERVER_HIDE_COLLIDING=false
+      - ETS_SERVER_WRITE_CONFIG=true
+      - ETS_SERVER_MODERATORS=76561198308530432
