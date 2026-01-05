@@ -1,0 +1,36 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    env_file:
+      - stack.env
+    ports:
+      - "5436:5432"
+    volumes:
+      - /mnt/docker-nfs/kaneo-data:/var/lib/postgresql/data
+    restart: unless-stopped
+    networks:
+      - npm_bridge
+
+  api:
+    image: ghcr.io/usekaneo/api:latest
+    ports:
+      - "1337:1337"
+    env_file:
+      - stack.env
+    restart: unless-stopped
+    networks:
+      - npm_bridge
+      
+  web:
+    image: ghcr.io/usekaneo/web:latest
+    ports:
+      - "5173:5173"
+    env_file:
+      - stack.env
+    restart: unless-stopped
+    networks:
+      - npm_bridge
+
+networks:
+  npm_bridge:
+    external: true
