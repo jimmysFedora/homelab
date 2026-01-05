@@ -56,7 +56,6 @@ services:
     networks:
       - npm_bridge   
 
-
 networks:
   npm_bridge:
     external: true
