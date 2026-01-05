@@ -54,7 +54,7 @@ services:
       - /mnt/docker-nfs/authentik/certs:/certs
       - /mnt/docker-nfs/authentik/custom-templates:/templates
     networks:
-      - npm_bridge   
+      - npm_bridge
 
 networks:
   npm_bridge:
