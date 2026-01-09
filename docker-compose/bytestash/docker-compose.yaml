@@ -1,0 +1,9 @@
+services:
+  bytestash:
+    container_name: bytestash
+    image: ghcr.io/jordan-dalby/bytestash:latest
+    ports:
+      - 5000:5000
+    volumes:
+      - /mnt/docker-nfs/bytestash:/data/snippets
+    restart: always
