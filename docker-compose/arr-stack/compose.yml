@@ -112,3 +112,16 @@ services:
       interval: 15s
       retries: 3
     restart: unless-stopped
+
+  wizarr:
+    container_name: wizarr
+    image: ghcr.io/wizarrrr/wizarr
+    ports:
+      - 5690:5690
+    volumes:
+      - /mnt/docker-nfs/volumes/arr-stack-data/wizarr-config:/data
+    environment:
+      - PUID=1000 #Set UID
+      - PGID=1000 #Set GID
+      - DISABLE_BUILTIN_AUTH=false #Set to true ONLY if you are using another auth provider (Authelia, Authentik, etc)
+      - TZ=America/Denver #Set your timezone here
