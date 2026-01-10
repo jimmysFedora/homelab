@@ -15,8 +15,8 @@ services:
     restart: unless-stopped
     network_mode: host
     volumes:
-      - /mnt/docker-nfs/bezel-data/beszel_agent_data:/var/lib/beszel-agent
-      - /mnt/docker-nfs/bezel-data/beszel_socket:/beszel_socket
+      - /mnt/docker-nfs/volumes/bezel-data/beszel_agent_data:/var/lib/beszel-agent
+      - /mnt/docker-nfs/volumes/bezel-data/beszel_socket:/beszel_socket
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
       LISTEN: /beszel_socket/beszel.sock
