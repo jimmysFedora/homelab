@@ -8,7 +8,7 @@ services:
     image: docker.io/library/postgres:16-alpine
     restart: unless-stopped
     volumes:
-      - /mnt/docker-nfs/authentik/authentik-db:/var/lib/postgresql/data
+      - /mnt/docker-nfs/volumes/authentik-data/authentik-db:/var/lib/postgresql/data
     networks:
       - npm_bridge  
 
