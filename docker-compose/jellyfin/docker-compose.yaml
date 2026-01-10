@@ -6,6 +6,8 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=America/Denver
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all      
     volumes:
       - /mnt/docker-nfs/volumes/jellyfin-data:/config
       - /mnt/octapool-nfs/blu-ray:/data/blu-ray
@@ -14,3 +16,9 @@ services:
     ports:
       - 8096:8096
     restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
