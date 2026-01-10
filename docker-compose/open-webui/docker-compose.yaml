@@ -1,7 +1,17 @@
 services:
   openwebui:
     image: ghcr.io/open-webui/open-webui:main
+    environment:
+      - NVIDIA_VISIBLE_DEVICES=all
+      - NVIDIA_DRIVER_CAPABILITIES=all 
     ports:
       - "3150:8080"
     volumes:
       - /mnt/docker-nfs/volumes/open-webui-data:/app/backend/data
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu, video, compute, utility]   
