@@ -29,8 +29,8 @@ services:
       - ${COMPOSE_PORT_HTTPS:-9443}:9443
     restart: unless-stopped
     volumes:
-      - /mnt/docker-nfs/authentik/media:/media
-      - /mnt/docker-nfs/authentik/custom-templates:/templates
+      - /mnt/docker-nfs/volumes/authentik-data/media:/media
+      - /mnt/docker-nfs/volumes/authentik-data/custom-templates:/templates
     networks:
       - npm_bridge   
       
@@ -50,9 +50,9 @@ services:
     user: root
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - /mnt/docker-nfs/authentik/media:/media
-      - /mnt/docker-nfs/authentik/certs:/certs
-      - /mnt/docker-nfs/authentik/custom-templates:/templates
+      - /mnt/docker-nfs/volumes/authentik-data/media:/media
+      - /mnt/docker-nfs/volumes/authentik-data/certs:/certs
+      - /mnt/docker-nfs/volumes/authentik-data/custom-templates:/templates
     networks:
       - npm_bridge
 
