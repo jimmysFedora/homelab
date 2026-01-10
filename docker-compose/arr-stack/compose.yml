@@ -44,7 +44,7 @@ services:
       - WEBUI_PORT=8080
     volumes:
       - /mnt/docker-nfs/volumes/qbittorrent-data:/config
-      - /mnt/docker-nfs/downloads:/downloads
+      - /mnt/octapool-nfs/downloads:/downloads
     depends_on:
       - gluetun
     restart: unless-stopped
@@ -73,7 +73,7 @@ services:
       - /mnt/docker-nfs/volumes/arr-stack-data/radarr-config:/config
       - /mnt/octapool-nfs/blu-ray:/data/blu-ray
       - /mnt/octapool-nfs/dvds:/data/dvds      
-      - /mnt/docker-nfs/downloads:/downloads
+      - /mnt/octapool-nfs/downloads:/downloads
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -88,7 +88,7 @@ services:
     volumes:
       - /mnt/docker-nfs/volumes/arr-stack-data/sonarr-config:/config
       - /mnt/octapool-nfs/tv:/data/tv
-      - /mnt/docker-nfs/downloads:/downloads
+      - /mnt/octapool-nfs/downloads:/downloads
     ports:
       - 8989:8989
     restart: unless-stopped
