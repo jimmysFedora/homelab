@@ -4,7 +4,7 @@ services:
     ports:
       - "5436:5432"
     volumes:
-      - /mnt/docker-nfs/kaneo-data:/var/lib/postgresql/data
+      - /mnt/docker-nfs/volumes/kaneo-data:/var/lib/postgresql/data
     restart: unless-stopped
     env_file:
       - stack.env    

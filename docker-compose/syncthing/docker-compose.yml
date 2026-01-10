@@ -8,8 +8,8 @@ services:
       - PGID=1000
       - TZ=America/Denver
     volumes:
-      - /mnt/docker-nfs/syncthing-data/config:/config
-      - /mnt/docker-nfs/syncthing-data/data:/data
+      - /mnt/docker-nfs/volumes/syncthing-data/config:/config
+      - /mnt/docker-nfs/volumes/syncthing-data/data:/data
     ports:
       - 8384:8384
       - 22000:22000/tcp

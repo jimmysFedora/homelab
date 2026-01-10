@@ -5,5 +5,5 @@ services:
     ports:
       - 5000:5000
     volumes:
-      - /mnt/docker-nfs/bytestash:/data/snippets
+      - /mnt/docker-nfs/volumes/bytestash:/data/snippets
     restart: always
