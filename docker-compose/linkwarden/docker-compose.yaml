@@ -1,0 +1,33 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - /mnt/docker-nfs/volumes/linkwarden-data/pgdata:/var/lib/postgresql/data
+      
+  linkwarden:
+    environment:
+      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@postgres:5432/postgres
+      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
+      - NEXTAUTH_URL=${NEXTAUTH_URL}
+      - MEILI_ADDR=http://meilisearch:7700
+      - MEILI_MASTER_KEY=${MEILI_MASTER_KEY}
+    restart: always
+    image: ghcr.io/linkwarden/linkwarden:latest
+    ports:
+      - 3900:3000
+    volumes:
+      - /mnt/docker-nfs/volumes/linkwarden-data:/data/data
+    depends_on:
+      - postgres
+      - meilisearch
+      
+  meilisearch:
+    image: getmeili/meilisearch:v1.12.8
+    restart: always
+    environment:
+      - MEILI_MASTER_KEY=${MEILI_MASTER_KEY}
+    volumes:
+      - /mnt/docker-nfs/volumes/linkwarden-data/meili_data:/meili_data
