@@ -10,6 +10,7 @@ services:
       - ${UPLOAD_LOCATION}:/data
       - /etc/localtime:/etc/localtime:ro
       - /mnt/octapool-nfs/photos:/mnt/octapool-images:ro
+      - /mnt/octapool-nfs/photography/:/mnt/octapool-photography:ro
     env_file:
       - stack.env
     ports:
@@ -26,7 +27,7 @@ services:
           devices:
             - driver: nvidia
               count: all
-              capabilities: [all]    
+              capabilities: [all]
 
   immich-machine-learning:
     container_name: immich_machine_learning
