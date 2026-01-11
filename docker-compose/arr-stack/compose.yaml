@@ -32,6 +32,7 @@ services:
       # Server list updater
       # See https://github.com/qdm12/gluetun-wiki/blob/main/setup/servers.md#update-the-vpn-servers-list
       - UPDATER_PERIOD=
+    restart: unless-stopped 
 
   qbittorrent:
     image: lscr.io/linuxserver/qbittorrent:latest
