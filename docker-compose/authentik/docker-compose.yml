@@ -9,8 +9,6 @@ services:
     restart: unless-stopped
     volumes:
       - /mnt/docker-nfs/volumes/authentik-data/authentik-db:/var/lib/postgresql/data
-    networks:
-      - npm_bridge  
 
   server:
     command: server
@@ -31,8 +29,6 @@ services:
     volumes:
       - /mnt/docker-nfs/volumes/authentik-data/media:/media
       - /mnt/docker-nfs/volumes/authentik-data/custom-templates:/templates
-    networks:
-      - npm_bridge   
       
   worker:
     command: worker
@@ -53,9 +49,3 @@ services:
       - /mnt/docker-nfs/volumes/authentik-data/media:/media
       - /mnt/docker-nfs/volumes/authentik-data/certs:/certs
       - /mnt/docker-nfs/volumes/authentik-data/custom-templates:/templates
-    networks:
-      - npm_bridge
-
-networks:
-  npm_bridge:
-    external: true
