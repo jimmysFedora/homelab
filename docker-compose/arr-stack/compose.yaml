@@ -12,7 +12,7 @@ services:
       - 8888:8888/tcp # HTTP proxy
       - 8388:8388/tcp # Shadowsocks
       - 8388:8388/udp # Shadowsocks
-      - 8080:8080     # ADD: qBittorrent WebUI
+      - 8045:8045    # ADD: qBittorrent WebUI
       - 6881:6881     # ADD: qBittorrent
       - 6881:6881/udp # ADD: qBittorrent      
     volumes:
@@ -42,7 +42,7 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=America/Denver
-      - WEBUI_PORT=8080
+      - WEBUI_PORT=8045
     volumes:
       - /mnt/docker-nfs/volumes/qbittorrent-data:/config
       - /mnt/octapool-nfs/downloads:/downloads
