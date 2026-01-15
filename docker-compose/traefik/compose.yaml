@@ -11,9 +11,9 @@ services:
       - "8080:8080"
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./config/traefik.yaml:/etc/traefik/traefik.yaml:ro
-      - ./config/dynamic.yaml:/etc/traefik/dynamic.yaml:ro
-      - ./data/certs/:/var/traefik/certs/:rw
+      - /mnt/docker-nfs/volumes/traefik-data/config/traefik.yaml:/etc/traefik/traefik.yaml:ro
+      - /mnt/docker-nfs/volumes/traefik-data/config/dynamic.yaml:/etc/traefik/dynamic.yaml:ro
+      - /mnt/docker-nfs/volumes/traefik-data/data/certs/:/var/traefik/certs/:rw
     environment:
       - CF_API_EMAIL=${CF_API_EMAIL}
       - CF_DNS_API_TOKEN=${CF_DNS_API_TOKEN}
