@@ -1,7 +1,7 @@
 services:
   traefik:
     image: traefik:v3.6
-    container_name: traefik
+    container_name: traefik-staging-1
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
@@ -22,11 +22,11 @@ services:
       - frontend
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.traefik-http.rule=Host(`traefik-demo-1.mistyfumes.dev`)"
+      - "traefik.http.routers.traefik-http.rule=Host(`traefik-prod-1.mistyfumes.dev`)"
       - "traefik.http.routers.traefik-http.entrypoints=http"
       - "traefik.http.routers.traefik-http.middlewares=traefik-https-redirect"
       - "traefik.http.middlewares.traefik-https-redirect.redirectscheme.scheme=https"
-      - "traefik.http.routers.traefik-https.rule=Host(`traefik-demo-1.mistyfumes.dev`)"
+      - "traefik.http.routers.traefik-https.rule=Host(`traefik-prod-1.mistyfumes.dev`)"
       - "traefik.http.routers.traefik-https.entrypoints=https"
       - "traefik.http.routers.traefik-https.middlewares=traefik-auth"
       - "traefik.http.routers.traefik-https.tls=true"
