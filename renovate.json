@@ -17,7 +17,7 @@
     "packageRules": [
         {
         "matchPackageNames": ["actualbudget/actual-server"],
-        "enabled": false
+        "automerge": false
         }
     ]
   }
