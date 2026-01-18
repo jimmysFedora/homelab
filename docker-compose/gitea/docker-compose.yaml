@@ -19,6 +19,23 @@ services:
     depends_on:
       - db
 
+  runner:
+    image: gitea/act_runner:latest
+    container_name: gitea_runner
+    restart: always
+    depends_on:
+      - server
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock    
+      - /mnt/docker-nfs/volumes/gitea-data/runner/config.yaml:/config.yaml
+      - /mnt/docker-nfs/volumes/gitea-data/runner/data:/data
+    environment:
+      - TZ=America/Denver
+      - CONFIG_FILE=/config.yaml
+      - GITEA_INSTANCE_URL=http://192.168.1.213:3000
+      - GITEA_RUNNER_REGISTRATION_TOKEN=${GITEA_RUNNER_TOKEN}
+      - GITEA_RUNNER_NAME=homelab-cicd
+
   db:
     image: docker.io/library/postgres:14
     restart: always
