@@ -1,6 +1,6 @@
 services:
   homepage:
-    image: ghcr.io/gethomepage/homepage:latest
+    image: ghcr.io/gethomepage/homepage:v1.8@sha256:657d4622605961d8a1cf294494a3bc0ede2df1e69ba10c58b57e4dd968a264fe
     container_name: homepage
     ports:
       - 3100:3000
@@ -12,3 +12,22 @@ services:
     env_file:
       - stack.env
     restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      # HTTP router
+      - "traefik.http.routers.homepage-insecure.rule=Host(`homepage.mistyfumes.dev`)"
+      - "traefik.http.routers.homepage-insecure.entrypoints=http"
+      - "traefik.http.routers.homepage-insecure.middlewares=https-redirect@file"
+      # HTTPS router
+      - "traefik.http.routers.homepage-secure.rule=Host(`homepage.mistyfumes.dev`)"
+      - "traefik.http.routers.homepage-secure.entrypoints=https"
+      - "traefik.http.routers.homepage-secure.tls=true"
+      - "traefik.http.routers.homepage-secure.tls.certresolver=cloudflare"
+      # Service port      
+      - "traefik.http.services.homepage.loadbalancer.server.port=5006"
+    networks: 
+      - frontend
+
+networks:
+  frontend:
+    external: true
