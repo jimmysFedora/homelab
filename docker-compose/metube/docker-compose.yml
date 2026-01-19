@@ -10,15 +10,15 @@ services:
     labels:
       - "traefik.enable=true"
       # HTTP router
-      - "traefik.http.routers.metube-insecure.rule=Host(`metube.test.mistyfumes.dev`)"
+      - "traefik.http.routers.metube-insecure.rule=Host(`metube.mistyfumes.dev`)"
       - "traefik.http.routers.metube-insecure.entrypoints=http"
       - "traefik.http.routers.metube-insecure.middlewares=https-redirect@file"
       # HTTPS router
-      - "traefik.http.routers.metube-secure.rule=Host(`metube.test.mistyfumes.dev`)"
+      - "traefik.http.routers.metube-secure.rule=Host(`metube.mistyfumes.dev`)"
       - "traefik.http.routers.metube-secure.entrypoints=https"
       - "traefik.http.routers.metube-secure.tls=true"
       - "traefik.http.routers.metube-secure.tls.certresolver=cloudflare"
-      # Service port      
+      # Service port
       - "traefik.http.services.metube.loadbalancer.server.port=8081"
     networks:
       - frontend
