@@ -1,9 +1,28 @@
 services:
   bytestash:
     container_name: bytestash
-    image: ghcr.io/jordan-dalby/bytestash:latest
-    ports:
-      - 5000:5000
+    image: ghcr.io/jordan-dalby/bytestash:1.5.9@sha256:a0f8b50cb489805cd597da5afc948fbed4cc330ca5492e380f4eeb11138ffadb
+    # ports:
+    #   - 5000:5000
     volumes:
       - /mnt/docker-nfs/volumes/bytestash-data:/data/snippets
-    restart: always
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      # HTTP router
+      - "traefik.http.routers.bytestash-insecure.rule=Host(`bytestash.mistyfumes.dev`)"
+      - "traefik.http.routers.bytestash-insecure.entrypoints=http"
+      - "traefik.http.routers.bytestash-insecure.middlewares=https-redirect@file"
+      # HTTPS router
+      - "traefik.http.routers.bytestash-secure.rule=Host(`bytestash.mistyfumes.dev`)"
+      - "traefik.http.routers.bytestash-secure.entrypoints=https"
+      - "traefik.http.routers.bytestash-secure.tls=true"
+      - "traefik.http.routers.bytestash-secure.tls.certresolver=cloudflare"
+      # Service port
+      - "traefik.http.services.bytestash.loadbalancer.server.port=5000"
+    networks:
+      - frontend
+
+networks:
+  frontend:
+    external: true
