@@ -1,10 +1,29 @@
 services:
   navidrome:
-    image: deluan/navidrome:latest
+    image: deluan/navidrome:0.59.0@sha256:4edc8a1de3e042f30b78a478325839f4395177eb8201c27543dccc0eba674f23
     user: 1000:1000
-    ports:
-      - "4533:4533"
+    # ports:
+    #   - "4533:4533"
     restart: unless-stopped
     volumes:
       - "/mnt/docker-nfs/volumes/navidrome-data:/data"
       - "/mnt/octapool-nfs/music:/music:ro"
+    labels:
+      - "traefik.enable=true"
+      # HTTP router
+      - "traefik.http.routers.navidrome-insecure.rule=Host(`navidrome.mistyfumes.dev`)"
+      - "traefik.http.routers.navidrome-insecure.entrypoints=http"
+      - "traefik.http.routers.navidrome-insecure.middlewares=https-redirect@file"
+      # HTTPS router
+      - "traefik.http.routers.navidrome-secure.rule=Host(`navidrome.mistyfumes.dev`)"
+      - "traefik.http.routers.navidrome-secure.entrypoints=https"
+      - "traefik.http.routers.navidrome-secure.tls=true"
+      - "traefik.http.routers.navidrome-secure.tls.certresolver=cloudflare"
+      # Service port
+      - "traefik.http.services.navidrome.loadbalancer.server.port=4533"
+    networks:
+      - frontend
+
+networks:
+  frontend:
+    external: true
