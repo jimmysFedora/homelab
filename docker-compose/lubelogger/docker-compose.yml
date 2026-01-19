@@ -1,9 +1,28 @@
 services:
   app:
-    image: ghcr.io/hargata/lubelogger:latest
+    image: ghcr.io/hargata/lubelogger:v1.5.7@sha256:8b6bc89dce20d8ce9c5ceb7b10b2f3d61398c6c9880c587118a03859a1025742
     restart: unless-stopped
     volumes:
       - /mnt/docker-nfs/volumes/lubelogger-data:/App/data
       - /mnt/docker-nfs/volumes/lubelogger-data/keys:/root/.aspnet/DataProtection-Keys
-    ports:
-      - 8080:8080
+    # ports:
+    #   - 8080:8080
+    labels:
+      - "traefik.enable=true"
+      # HTTP router
+      - "traefik.http.routers.lubelogger-insecure.rule=Host(`lubelogger.mistyfumes.dev`)"
+      - "traefik.http.routers.lubelogger-insecure.entrypoints=http"
+      - "traefik.http.routers.lubelogger-insecure.middlewares=https-redirect@file"
+      # HTTPS router
+      - "traefik.http.routers.lubelogger-secure.rule=Host(`lubelogger.mistyfumes.dev`)"
+      - "traefik.http.routers.lubelogger-secure.entrypoints=https"
+      - "traefik.http.routers.lubelogger-secure.tls=true"
+      - "traefik.http.routers.lubelogger-secure.tls.certresolver=cloudflare"
+      # Service port      
+      - "traefik.http.services.lubelogger.loadbalancer.server.port=8080"
+    networks: 
+      - frontend
+
+networks:
+  frontend:
+    external: true
