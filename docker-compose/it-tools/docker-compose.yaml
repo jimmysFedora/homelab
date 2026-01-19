@@ -1,7 +1,26 @@
 services:
-    it-tools:
-        image: corentinth/it-tools:latest
-        container_name: it-tools
-        ports:
-            - 85:80
-        restart: always
+  it-tools:
+    image: corentinth/it-tools:2024.10.22-7ca5933@sha256:8b8128748339583ca951af03dfe02a9a4d7363f61a216226fc28030731a5a61f
+    container_name: it-tools
+    # ports:
+    #     - 80:80
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      # HTTP router
+      - "traefik.http.routers.it-tools-insecure.rule=Host(`it-tools.mistyfumes.dev`)"
+      - "traefik.http.routers.it-tools-insecure.entrypoints=http"
+      - "traefik.http.routers.it-tools-insecure.middlewares=https-redirect@file"
+      # HTTPS router
+      - "traefik.http.routers.it-tools-secure.rule=Host(`it-tools.mistyfumes.dev`)"
+      - "traefik.http.routers.it-tools-secure.entrypoints=https"
+      - "traefik.http.routers.it-tools-secure.tls=true"
+      - "traefik.http.routers.it-tools-secure.tls.certresolver=cloudflare"
+      # Service port
+      - "traefik.http.services.it-tools.loadbalancer.server.port=80"
+    networks:
+      - frontend
+
+networks:
+  frontend:
+    external: true
