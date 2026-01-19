@@ -2,8 +2,8 @@ services:
   homepage:
     image: ghcr.io/gethomepage/homepage:v1.8@sha256:657d4622605961d8a1cf294494a3bc0ede2df1e69ba10c58b57e4dd968a264fe
     container_name: homepage
-    ports:
-      - 3100:3000
+    # ports:
+    #   - 3000:3000
     volumes:
       - /mnt/docker-nfs/volumes/homepage-data/config:/app/config
       - /mnt/docker-nfs/volumes/homepage-data/images:/app/public/images
@@ -24,7 +24,7 @@ services:
       - "traefik.http.routers.homepage-secure.tls=true"
       - "traefik.http.routers.homepage-secure.tls.certresolver=cloudflare"
       # Service port      
-      - "traefik.http.services.homepage.loadbalancer.server.port=5006"
+      - "traefik.http.services.homepage.loadbalancer.server.port=3000"
     networks: 
       - frontend
 
