@@ -11,8 +11,8 @@ services:
       - /mnt/octapool-nfs/blu-ray:/data/blu-ray
       - /mnt/octapool-nfs/dvds:/data/dvds
       - /mnt/octapool-nfs/tv:/data/tv
-    ports:
-      - 8096:8096
+    # ports:
+    #   - 8096:8096
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
