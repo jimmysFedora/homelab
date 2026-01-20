@@ -8,6 +8,18 @@ services:
     volumes:
       - /mnt/docker-nfs/volumes/bezel-data/beszel_data:/beszel_data
       - /mnt/docker-nfs/volumes/bezel-data/beszel_socket:/beszel_socket
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.beszel-insecure.rule=Host(`beszel.mistyfumes.dev`)
+      - traefik.http.routers.beszel-insecure.entrypoints=http
+      - traefik.http.routers.beszel-insecure.middlewares=https-redirect@file
+      - traefik.http.routers.beszel-secure.rule=Host(`beszel.mistyfumes.dev`)
+      - traefik.http.routers.beszel-secure.entrypoints=https
+      - traefik.http.routers.beszel-secure.tls=true
+      - traefik.http.routers.beszel-secure.tls.certresolver=cloudflare
+      - traefik.http.services.beszel.loadbalancer.server.port=8090
+    networks:
+      - frontend
 
   beszel-agent:
     image: henrygd/beszel-agent:0.17.0@sha256:730ac49d1a89d315b5a9424ad8cca2f586e981da7caf151c5ec2d599f474efad
@@ -23,3 +35,7 @@ services:
       HUB_URL: https://beszel.mistyfumes.dev
       TOKEN: ${TOKEN}
       KEY: ${KEY}
+      
+networks:
+  frontend:
+    external: true
