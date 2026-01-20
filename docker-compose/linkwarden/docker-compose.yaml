@@ -16,14 +16,29 @@ services:
       - MEILI_MASTER_KEY=${MEILI_MASTER_KEY}
     restart: always
     image: ghcr.io/linkwarden/linkwarden:v2.13.5@sha256:5b8e231169f6819d1a1e5a9f4771c9179108694c60da1e34fc4a0ea780f70079
-    ports:
-      - 3900:3000
+    # ports:
+    #   - 3000:3000
     volumes:
       - /mnt/docker-nfs/volumes/linkwarden-data:/data/data
     depends_on:
       - postgres
       - meilisearch
-      
+    labels:
+      - "traefik.enable=true"
+      # HTTP router
+      - "traefik.http.routers.linkwarden-insecure.rule=Host(`linkwarden.mistyfumes.dev`)"
+      - "traefik.http.routers.linkwarden-insecure.entrypoints=http"
+      - "traefik.http.routers.linkwarden-insecure.middlewares=https-redirect@file"
+      # HTTPS router
+      - "traefik.http.routers.linkwarden-secure.rule=Host(`linkwarden.mistyfumes.dev`)"
+      - "traefik.http.routers.linkwarden-secure.entrypoints=https"
+      - "traefik.http.routers.linkwarden-secure.tls=true"
+      - "traefik.http.routers.linkwarden-secure.tls.certresolver=cloudflare"
+      # Service port
+      - "traefik.http.services.linkwarden.loadbalancer.server.port=3000"
+    networks:
+      - frontend
+
   meilisearch:
     image: getmeili/meilisearch:v1.12.8
     restart: always
