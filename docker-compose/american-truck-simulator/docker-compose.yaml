@@ -1,10 +1,10 @@
 services:
   ats-convoy-server:
-    image: lshallo/ats-convoy-server
+    image: lshallo/ats-convoy-server:v0.3.4@sha256:d7a4af7eb672432630e0e8ce8f59e8bff47766bac87cb95224e9a6656d76d251
     container_name: ats-server
     restart: unless-stopped
     tty: true
-    network_mode: host    
+    network_mode: host
     ports:
       - "27015:27015/udp"  # Server port (UDP)
       - "27015:27015/tcp"  # Server port (TCP)    
