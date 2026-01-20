@@ -19,6 +19,14 @@
         "matchPackageNames": ["actualbudget/actual-server"],
         "automerge": false
         }
+        {
+        "matchPackageNames": ["henrygd/beszel"],
+        "automerge": false
+        }
+        {
+        "matchPackageNames": ["henrygd/beszel-agent"],
+        "automerge": false
+        }        
     ]
   }
 }
