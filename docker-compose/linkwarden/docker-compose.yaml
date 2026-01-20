@@ -6,7 +6,9 @@ services:
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:
       - /mnt/docker-nfs/volumes/linkwarden-data/pgdata:/var/lib/postgresql/data
-      
+    networks:
+      - frontend
+
   linkwarden:
     environment:
       - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@postgres:5432/postgres
@@ -46,6 +48,8 @@ services:
       - MEILI_MASTER_KEY=${MEILI_MASTER_KEY}
     volumes:
       - /mnt/docker-nfs/volumes/linkwarden-data/meili_data:/meili_data
+    networks:
+      - frontend
 
 networks:
   frontend:
