@@ -1,11 +1,30 @@
 services:
   termix:
-    image: ghcr.io/lukegus/termix:latest
+    image: ghcr.io/lukegus/termix:release-1.10.0@sha256:d7d5354103a363f7e99531465c78e277491e5a10e1fd01d3942d32ced737c604
     container_name: termix
     restart: unless-stopped
-    ports:
-      - "10000:8080"
+    # ports:
+    #   - "8080:8080"
     volumes:
       - /mnt/docker-nfs/volumes/termix-data:/app/data
     environment:
       PORT: "8080"
+    labels:
+      - "traefik.enable=true"
+      # HTTP router
+      - "traefik.http.routers.termix-insecure.rule=Host(`termix.mistyfumes.dev`)"
+      - "traefik.http.routers.termix-insecure.entrypoints=http"
+      - "traefik.http.routers.termix-insecure.middlewares=https-redirect@file"
+      # HTTPS router
+      - "traefik.http.routers.termix-secure.rule=Host(`termix.mistyfumes.dev`)"
+      - "traefik.http.routers.termix-secure.entrypoints=https"
+      - "traefik.http.routers.termix-secure.tls=true"
+      - "traefik.http.routers.termix-secure.tls.certresolver=cloudflare"
+      # Service port
+      - "traefik.http.services.termix.loadbalancer.server.port=8080"
+    networks:
+      - frontend
+
+networks:
+  frontend:
+    external: true
