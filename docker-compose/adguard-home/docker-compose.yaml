@@ -1,7 +1,7 @@
 services:
   adguard-server:
     container_name: adguard_server
-    image: adguard/adguardhome:latest
+    image: adguard/adguardhome:v0.107.71@sha256:4754fa215f18df44b58f281d286b37414ff540bab5cee09b91094f3e61e4403e
     ports:
       - '53:53/tcp'
       - '53:53/udp'
