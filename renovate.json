@@ -16,8 +16,7 @@
     ],
     "packageRules": [
       {
-        "matchPackageNames": ["getmeili/meilisearch"],
-        "matchCurrentVersion": "v1.12.8",
+        "matchPackagePatterns": ["meilisearch"],
         "enabled": false
       }
     ]
