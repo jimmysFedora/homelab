@@ -1,6 +1,6 @@
 services:
   gluetun:
-    image: qmcgaw/gluetun:3.41.0@sha256:6b54856716d0de56e5bb00a77029b0adea57284cf5a466f23aad5979257d3045
+    image: qmcgaw/gluetun:3.41.0
     container_name: gluetun
     # line above must be uncommented to allow external containers to connect.
     # See https://github.com/qdm12/gluetun-wiki/blob/main/setup/connect-a-container-to-gluetun.md#external-container-to-gluetun
@@ -116,7 +116,7 @@ services:
 
   wizarr:
     container_name: wizarr
-    image: ghcr.io/wizarrrr/wizarr:2025.12.0@sha256:83fc0b50985d196226b7c28a27062a1c4e63124a5d6d2448710aee222637b79e
+    image: ghcr.io/wizarrrr/wizarr:2025.12.0
     ports:
       - 5690:5690
     volumes:
