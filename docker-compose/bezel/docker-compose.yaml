@@ -3,8 +3,8 @@ services:
     image: henrygd/beszel:0.17.0@sha256:185142e6c91bd44c77fef6cd31784aee0f782eb1d7193c3ee34a9902a936621c
     container_name: beszel
     restart: unless-stopped
-    ports:
-      - 8090:8090
+    # ports:
+    #   - 8090:8090
     volumes:
       - /mnt/docker-nfs/volumes/bezel-data/beszel_data:/beszel_data
       - /mnt/docker-nfs/volumes/bezel-data/beszel_socket:/beszel_socket
