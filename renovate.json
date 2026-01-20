@@ -16,7 +16,7 @@
     ],
     "packageRules": [
       {
-        "matchPackagePatterns": ["meilisearch"],
+        "matchPackageNames": ["getmeili/meilisearch"],
         "enabled": false
       }
     ]
