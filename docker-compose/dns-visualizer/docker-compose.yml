@@ -1,12 +1,28 @@
 services:
   adguard-dns-visualizer:
-      image: 'azwanngali/adguard-dns-visualizer:latest'
-      environment:
-        ADGUARD_URL: ${ADGUARD_URL}
-        ADGUARD_USERNAME: ${ADGUARD_USERNAME}
-        ADGUARD_PASSWORD: ${ADGUARD_PASSWORD}
-        SOURCE_LAT: ${SOURCE_LAT}
-        SOURCE_LNG: ${SOURCE_LNG}
-      ports:
-        - '8100:8080'
-      container_name: dns-visualizer
+    image: azwanngali/adguard-dns-visualizer:0.1@sha256:9b748150a1c56a1fa523460b96fa5e10633146ce7605106e4a0ef094738c3424
+    environment:
+      ADGUARD_URL: ${ADGUARD_URL}
+      ADGUARD_USERNAME: ${ADGUARD_USERNAME}
+      ADGUARD_PASSWORD: ${ADGUARD_PASSWORD}
+      SOURCE_LAT: ${SOURCE_LAT}
+      SOURCE_LNG: ${SOURCE_LNG}
+    # ports:
+    #   - 8080:8080
+    container_name: dns-visualizer
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.dns-visualizer-insecure.rule=Host(`dns-visualizer.mistyfumes.dev`)
+      - traefik.http.routers.dns-visualizer-insecure.entrypoints=http
+      - traefik.http.routers.dns-visualizer-insecure.middlewares=https-redirect@file
+      - traefik.http.routers.dns-visualizer-secure.rule=Host(`dns-visualizer.mistyfumes.dev`)
+      - traefik.http.routers.dns-visualizer-secure.entrypoints=https
+      - traefik.http.routers.dns-visualizer-secure.tls=true
+      - traefik.http.routers.dns-visualizer-secure.tls.certresolver=cloudflare
+      - traefik.http.services.dns-visualizer.loadbalancer.server.port=8080
+    networks:
+      - frontend
+networks:
+  frontend:
+    external: true
