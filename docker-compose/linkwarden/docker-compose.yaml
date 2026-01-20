@@ -46,3 +46,7 @@ services:
       - MEILI_MASTER_KEY=${MEILI_MASTER_KEY}
     volumes:
       - /mnt/docker-nfs/volumes/linkwarden-data/meili_data:/meili_data
+
+networks:
+  frontend:
+    external: true
