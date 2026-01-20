@@ -16,9 +16,9 @@
     ],
     "packageRules": [
         {
-        "matchPackageNames": ["actualbudget/actual-server"],
-        "automerge": false
-        }
+        "matchPackageNames": ["getmeili/meilisearch"],
+        "enabled": false
+        },
     ]
   }
 }
