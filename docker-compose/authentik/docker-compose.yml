@@ -41,7 +41,7 @@ services:
       AUTHENTIK_POSTGRESQL__PASSWORD: ${PG_PASS}
       AUTHENTIK_POSTGRESQL__USER: ${PG_USER:-authentik}
       AUTHENTIK_SECRET_KEY: ${AUTHENTIK_SECRET_KEY:?secret key required}
-    image: ${AUTHENTIK_IMAGE:-ghcr.io/goauthentik/server}:${AUTHENTIK_TAG:-2025.10.3}
+    image: ghcr.io/goauthentik/server:2025.10.3@sha256:c2f132826e5b33629800cdd045a33ed9d80599538aaa49ad290397399539be9d
     restart: unless-stopped
     user: root
     volumes:
