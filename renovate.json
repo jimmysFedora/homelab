@@ -26,6 +26,10 @@
       {
         "matchPackageNames": ["ghcr.io/immich-app/postgres"],
         "enabled": false
+      },
+      {
+        "matchPackageNames": ["docker.io/library/postgres"],
+        "enabled": false
       }
     ]
   }
