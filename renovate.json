@@ -18,6 +18,14 @@
       {
         "matchPackageNames": ["getmeili/meilisearch"],
         "enabled": false
+      },
+      {
+        "matchPackageNames": ["postgres"],
+        "enabled": false
+      },
+      {
+        "matchPackageNames": ["ghcr.io/immich-app/postgres"],
+        "enabled": false
       }
     ]
   }
