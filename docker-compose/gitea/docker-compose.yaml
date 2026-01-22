@@ -1,6 +1,6 @@
 services:
   server:
-    image: docker.gitea.com/gitea:1.25.3-rootless
+    image: docker.gitea.com/gitea:1.25.4-rootless
     environment:
       - GITEA__database__DB_TYPE=${GITEA__database__DB_TYPE}
       - GITEA__database__HOST=${GITEA__database__HOST}
