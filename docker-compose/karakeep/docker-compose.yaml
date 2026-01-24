@@ -54,7 +54,7 @@ services:
     environment:
       MEILI_NO_ANALYTICS: "true"
     volumes:
-      - /mnt/docker-nfs/karakeep-data/meilisearch:/meili_data
+      - /mnt/docker-nfs/volumes/karakeep-data/meilisearch:/meili_data
 
 networks:
   frontend:
