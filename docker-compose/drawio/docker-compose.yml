@@ -5,20 +5,20 @@ services:
     # ports:
     #   - 8080:8080
     restart: unless-stopped
-    labels:
-      - "traefik.enable=true"
-      # HTTP router
-      - "traefik.http.routers.drawio-insecure.rule=Host(`drawio.mistyfumes.dev`)"
-      - "traefik.http.routers.drawio-insecure.entrypoints=http"
-      - "traefik.http.routers.drawio-insecure.middlewares=https-redirect@file"
-      # HTTPS router
-      - "traefik.http.routers.drawio-secure.rule=Host(`drawio.mistyfumes.dev`)"
-      - "traefik.http.routers.drawio-secure.entrypoints=https"
-      - "traefik.http.routers.drawio-secure.tls=true"
-      - "traefik.http.routers.drawio-secure.tls.certresolver=cloudflare"
-      # Service port      
-      - "traefik.http.services.drawio.loadbalancer.server.port=8080"
-    networks: 
+    # labels:
+    #   - "traefik.enable=true"
+    #   # HTTP router
+    #   - "traefik.http.routers.drawio-insecure.rule=Host(`drawio.mistyfumes.dev`)"
+    #   - "traefik.http.routers.drawio-insecure.entrypoints=http"
+    #   - "traefik.http.routers.drawio-insecure.middlewares=https-redirect@file"
+    #   # HTTPS router
+    #   - "traefik.http.routers.drawio-secure.rule=Host(`drawio.mistyfumes.dev`)"
+    #   - "traefik.http.routers.drawio-secure.entrypoints=https"
+    #   - "traefik.http.routers.drawio-secure.tls=true"
+    #   - "traefik.http.routers.drawio-secure.tls.certresolver=cloudflare"
+    #   # Service port      
+    #   - "traefik.http.services.drawio.loadbalancer.server.port=8080"
+    # networks: 
       - frontend
 
 networks:
