@@ -1,0 +1,23 @@
+name: http-check # makes sure all detected services return 200
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  http-check:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Dynamic Health Check
+        run: |
+          # 1. Find every domain inside your kubernetes folder
+          DOMAINS=$(grep -r "Host(" kubernetes/ | cut -d '`' -f2)
+
+          # 2. Check each one
+          for site in $DOMAINS; do
+            echo "Checking $site..."
+            curl -s -L -o /dev/null --fail --max-time 10 "https://$site" && echo "✅ UP" || (echo "❌ DOWN" && exit 1)
+          done
