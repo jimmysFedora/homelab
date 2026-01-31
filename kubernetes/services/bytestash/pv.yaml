@@ -13,7 +13,7 @@ spec:
     - addr=192.168.1.130
   nfs:
     server: 192.168.1.130
-    path: /mnt/octaPool/k3s-storage/bytestash
+    path: /mnt/octaPool/k3s-storage/bytestash-data
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
