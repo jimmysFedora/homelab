@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: drawio
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: drawio
+  template:
+    metadata:
+      labels:
+        app: drawio
+    spec:
+      containers:
+        - name: drawio
+          image: jgraph/drawio:29.3.2@sha256:9ff2a16ef243c59510a395ea927fe156ce5f8eb5e8dbfbcfbd9b6d62e045541f
+          ports:
+            - containerPort: 8080

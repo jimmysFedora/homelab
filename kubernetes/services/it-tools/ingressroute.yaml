@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: it-tools-ingressroute
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`it-tools.kube-demo.mistyfumes.dev`)
+      kind: Rule
+      services:
+        - name: it-tools
+          port: 80
+  tls:
+    certResolver: cloudflare

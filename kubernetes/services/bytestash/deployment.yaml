@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bytestash
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bytestash
+  template:
+    metadata:
+      labels:
+        app: bytestash
+    spec:
+      containers:
+      - name: bytestash
+        image: ghcr.io/jordan-dalby/bytestash:1.5.9@sha256:a0f8b50cb489805cd597da5afc948fbed4cc330ca5492e380f4eeb11138ffadb
+        ports:
+        - containerPort: 5000
+        volumeMounts:
+        - name: bytestash-data
+          mountPath: /data/snippets
+      volumes:
+      - name: bytestash-data
+        persistentVolumeClaim:
+          claimName: bytestash-nfs-pvc
