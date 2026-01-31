@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`bytestash.kube-demo.mistyfumes.dev`)
+    - match: Host(`bytestash.kube-demo-1.mistyfumes.dev`)
       kind: Rule
       services:
         - name: bytestash
