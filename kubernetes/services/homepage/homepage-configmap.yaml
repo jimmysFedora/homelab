@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: homepage
 data:
-  HOMEPAGE_ALLOWED_HOSTS: homepage.kube-demo.mistyfumes.dev
+  HOMEPAGE_ALLOWED_HOSTS: homepage.mistyfumes.dev
   bookmarks.yaml: >
     - Bookmarks:    
         - Claude:
