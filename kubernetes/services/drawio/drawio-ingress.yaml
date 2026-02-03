@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`drawio.kube-demo.mistyfumes.dev`)
+    - match: Host(`drawio.mistyfumes.dev`)
       kind: Rule
       services:
         - name: drawio
