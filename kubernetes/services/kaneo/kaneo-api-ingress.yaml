@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`kaneo-api.kube-demo.mistyfumes.dev`)
+    - match: Host(`kaneo-api.mistyfumes.dev`)
       kind: Rule
       services:
         - name: kaneo-api
