@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: kaneo-api-ingressroute
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`kaneo-api.kube-demo.mistyfumes.dev`)
+      kind: Rule
+      services:
+        - name: kaneo-api
+          port: 1337
+  tls:
+    certResolver: cloudflare
