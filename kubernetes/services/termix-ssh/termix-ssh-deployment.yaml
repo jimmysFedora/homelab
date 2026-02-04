@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: termix-ssh
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: termix-ssh
+  template:
+    metadata:
+      labels:
+        app: termix-ssh
+    spec:
+      containers:
+        - image: ghcr.io/lukegus/termix:release-1.10.0@sha256:d7d5354103a363f7e99531465c78e277491e5a10e1fd01d3942d32ced737c604
+          name: termix-ssh
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - mountPath: /app/data
+              name: termix-ssh-data
+      volumes:
+        - name: termix-ssh-data
+          persistentVolumeClaim:
+            claimName: termix-ssh-nfs-pvc
