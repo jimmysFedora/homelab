@@ -169,10 +169,10 @@ data:
             icon: authentik
             href: https://authentik.mistyfumes.dev
             description: authentik-prod-1
-            siteMonitor: https://192.168.1.213:10443
+            siteMonitor: https://authentik.mistyfumes.dev
             widget:
               type: authentik
-              url: https://192.168.1.213:10443
+              url: https://authentik.mistyfumes.dev
               key: {{HOMEPAGE_VAR_AUTHENTIK_API_KEY}}
 
         - OPNsense:
