@@ -7,7 +7,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`it-tools.kube-demo.mistyfumes.dev`)
+    - match: Host(`it-tools.mistyfumes.dev`)
       kind: Rule
       services:
         - name: it-tools
