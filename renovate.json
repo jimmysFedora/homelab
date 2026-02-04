@@ -30,12 +30,10 @@
       {
         "matchPackageNames": ["docker.io/library/postgres"],
         "enabled": false
-      },
-      {
-        "flux": {
-          "managerFilePatterns": ["/\\.yaml$/"]
-        }
       }
     ]
+  },
+  "flux": {
+    "managerFilePatterns": ["/\\.yaml$/"]
   }
 }
