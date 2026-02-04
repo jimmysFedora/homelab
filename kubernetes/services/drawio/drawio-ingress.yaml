@@ -13,4 +13,4 @@ spec:
         - name: drawio
           port: 8080
   tls:
-    certResolver: cloudflare
+    secretName: prod-mistyfumes-tls

@@ -13,4 +13,4 @@ spec:
         - name: termix-ssh
           port: 8080
   tls:
-    certResolver: cloudflare
+    secretName: prod-mistyfumes-tls

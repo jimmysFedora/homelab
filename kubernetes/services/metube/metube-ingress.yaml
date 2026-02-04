@@ -13,4 +13,4 @@ spec:
         - name: metube
           port: 8081
   tls:
-    certResolver: cloudflare
+    secretName: prod-mistyfumes-tls

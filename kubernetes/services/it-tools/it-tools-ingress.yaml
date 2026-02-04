@@ -13,4 +13,4 @@ spec:
         - name: it-tools
           port: 80
   tls:
-    certResolver: cloudflare
+    secretName: prod-mistyfumes-tls

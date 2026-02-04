@@ -13,4 +13,4 @@ spec:
         - name: kaneo-api
           port: 1337
   tls:
-    certResolver: cloudflare
+    secretName: prod-mistyfumes-tls

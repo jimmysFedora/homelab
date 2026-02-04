@@ -13,4 +13,4 @@ spec:
         - name: kaneo-web
           port: 5173
   tls:
-    certResolver: cloudflare
+    secretName: prod-mistyfumes-tls

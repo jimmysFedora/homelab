@@ -13,4 +13,4 @@ spec:
         - name: bytestash
           port: 5000
   tls:
-    certResolver: cloudflare
+    secretName: prod-mistyfumes-tls
