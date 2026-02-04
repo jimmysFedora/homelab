@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: termix-ssh-ingressroute
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`termix.mistyfumes.dev`)
+      kind: Rule
+      services:
+        - name: termix-ssh
+          port: 8080
+  tls:
+    certResolver: cloudflare

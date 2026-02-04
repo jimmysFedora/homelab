@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kaneo-api
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kaneo-api
+  template:
+    metadata:
+      labels:
+        app: kaneo-api
+    spec:
+      containers:
+        - name: kaneo-api
+          image: ghcr.io/usekaneo/api:2.0.9@sha256:24f93081726327f59aeda6d7fe4975baec94fd7d35ab45b0efd17c13d6bbd8a1
+          ports:
+            - containerPort: 1337
+          env:
+            - name: KANEO_API_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: kaneo-configmap
+                  key: KANEO_API_URL
+            - name: KANEO_CLIENT_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: kaneo-configmap
+                  key: KANEO_CLIENT_URL
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: kaneo-secrets
+                  key: DATABASE_URL

@@ -32,5 +32,11 @@
         "enabled": false
       }
     ]
+  },
+  "flux": {
+    "managerFilePatterns": ["/\\.yaml$/"]
+  },
+  "kubernetes": {
+    "managerFilePatterns": ["/kubernetes/.+\\.yaml$/"]
   }
 }

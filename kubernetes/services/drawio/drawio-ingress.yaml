@@ -1,0 +1,16 @@
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: drawio-ingressroute
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`drawio.mistyfumes.dev`)
+      kind: Rule
+      services:
+        - name: drawio
+          port: 8080
+  tls:
+    certResolver: cloudflare
