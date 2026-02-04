@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kaneo-configmap
+data:
+  KANEO_CLIENT_URL: https://kaneo.mistyfumes.dev
+  KANEO_API_URL: https://kaneo-api.mistyfumes.dev

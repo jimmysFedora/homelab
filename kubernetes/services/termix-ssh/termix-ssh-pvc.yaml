@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: termix-ssh-nfs-pv
+spec:
+  capacity:
+    storage: 1Gi
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Retain
+  mountOptions:
+    - nfsvers=4
+    - addr=192.168.1.130
+  nfs:
+    server: 192.168.1.130
+    path: /mnt/octaPool/k3s-storage/termix-data
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: termix-ssh-nfs-pvc
+  namespace: default
+spec:
+  storageClassName: ""
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+  volumeName: termix-ssh-nfs-pv

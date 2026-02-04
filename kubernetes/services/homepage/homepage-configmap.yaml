@@ -1,0 +1,557 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: homepage
+data:
+  HOMEPAGE_ALLOWED_HOSTS: homepage.mistyfumes.dev
+  bookmarks.yaml: >
+    - Bookmarks:    
+        - Claude:
+            - href: https://claude.ai
+              icon: https://www.google.com/s2/favicons?domain=claude.ai&sz=128
+
+        - Github:
+            - abbr: GH
+              href: https://github.com/
+              icon: github-light
+
+        - Reddit:
+            - abbr: RE
+              href: https://reddit.com/
+              icon: reddit
+
+        - Student Hub:
+            - abbr: MSU
+              href: https://www.msudenver.edu/studenthub/
+              icon: https://www.msudenver.edu/wp-content/uploads/2021/04/logo-square.svg
+
+        - YouTube:
+            - abbr: YT
+              href: https://youtube.com/
+              icon: youtube
+  custom.css: ""
+  custom.js: ""
+  docker.yaml: ""
+  kubernetes.yaml: ""
+  proxmox.yaml: ""
+  services.yaml: |
+    - Infrastructure:
+        - prx-prod-1: 
+            icon: proxmox
+            href: https://prx-prod-1.mistyfumes.dev
+            description: on proxmox-prod-1
+            siteMonitor: https://192.168.1.30:8006
+            widget:
+                type: proxmox
+                url: https://192.168.1.30:8006
+                username: {{HOMEPAGE_VAR_PROXMOX_USERNAME}}
+                password: {{HOMEPAGE_VAR_PROXMOX_PASSWORD}}
+                node: nas
+
+        - prx-demo-1: 
+            icon: proxmox
+            href: https://prx-demo-1.mistyfumes.dev
+            description: on prx-demo-1
+            siteMonitor: https://192.168.1.128:8006
+            widget:
+                type: proxmox
+                url: https://192.168.1.128:8006
+                username: {{HOMEPAGE_VAR_PROXMOX_DEMO_USERNAME}}
+                password: {{HOMEPAGE_VAR_PROXMOX_DEMO_PASSWORD}}
+                node: demo
+
+        - prx-router-1:
+            icon: proxmox
+            href: https://prx-router-1.mistyfumes.dev
+            description: on prx-router-1
+            siteMonitor: https://192.168.1.53:8006
+            widget:
+                type: proxmox
+                url: https://192.168.1.53:8006
+                username: {{HOMEPAGE_VAR_PROXMOX_ROUTER_USERNAME}}
+                password: {{HOMEPAGE_VAR_PROXMOX_ROUTER_PASSWORD}}
+                node: mistyfff
+
+        - prx-backup-1:
+            icon: proxmox
+            href: https://prx-backup-1.mistyfumes.dev
+            description: on prx-prod-1
+            siteMonitor: https://192.168.1.150:8007
+            widget:
+                type: proxmoxbackupserver
+                url: https://192.168.1.150:8007
+                username: {{HOMEPAGE_VAR_PBS_USERNAME}}
+                password: {{HOMEPAGE_VAR_PBS_PASSWORD}}
+
+        - truenas-prod-1:
+            icon: truenas
+            href: https://truenas.mistyfumes.dev
+            description: on prx-prod-1
+            siteMonitor: https://192.168.1.130
+            widget:
+                type: truenas
+                url: https://192.168.1.130
+                key: {{HOMEPAGE_VAR_TRUENAS_API_KEY}}
+    - Monitoring:
+        - Bezel:
+            icon: beszel
+            href: https://beszel.mistyfumes.dev
+            description: bezel-prod-1
+            siteMonitor: https://beszel.mistyfumes.dev
+            widget:
+                type: beszel
+                url: https://beszel.mistyfumes.dev
+                username: {{HOMEPAGE_VAR_BESZEL_USERNAME}}
+                password: {{HOMEPAGE_VAR_BESZEL_PASSWORD}}
+                systemId: docker_host
+                version: 2
+
+        - Portainer:
+            icon: portainer
+            href: https://portainer.mistyfumes.dev
+            description: portainer-prod-1
+            siteMonitor: https://portainer.mistyfumes.dev
+            widget:
+              type: portainer
+              url: https://portainer.mistyfumes.dev
+              env: {{HOMEPAGE_VAR_PORTAINER_ENV}}
+              key: {{HOMEPAGE_VAR_PORTAINER_API_KEY}}
+
+        - Wazuh:
+            icon: wazuh
+            href: https://wazuh-prod-1.mistyfumes.dev
+            description: Security Platform
+            siteMonitor: https://192.168.1.225:443
+
+    - GitOps:
+        - Gitea:
+            icon: gitea 
+            href: http://gitea-demo-1.mistyfumes.dev
+            description: gitea-demo-1
+            siteMonitor: http://192.168.1.213:3000
+            widget:
+                type: gitea
+                url: http://192.168.1.213:3000
+                key: {{HOMEPAGE_VAR_GITEA_KEY}}
+        
+        # - Gitlab:
+        #     icon: gitlab
+        #     href: http://gitea-demo-1.mistyfumes.dev
+        #     description: gitlab-demo-1
+        #     siteMonitor:
+
+        - Komodo:
+            icon: komodo
+            href: http://komodo.mistyfumes.dev
+            description: komodo-demo-1
+            siteMonitor: http://192.168.1.213:3000
+            widget:
+                type: komodo
+                url: http://192.168.1.213:9120
+                key: {{HOMEPAGE_VAR_KOMODO_KEY}}
+                secret: {{HOMEPAGE_VAR_KOMODO_SECRET}}
+                showSummary: true
+                showStacks: true
+
+    - Gateways:
+        - AdGuard Home:
+            icon: adguard-home
+            href: https://adguard.mistyfumes.dev
+            description: adguard-prod-1
+            siteMonitor: http://192.168.1.218:80
+            widget:
+              type: adguard
+              url: http://192.168.1.218:80
+              username: {{HOMEPAGE_VAR_ADGUARD_USERNAME}}
+              password: {{HOMEPAGE_VAR_ADGUARD_PASSWORD}}
+
+        - Authentik:
+            icon: authentik
+            href: https://authentik.mistyfumes.dev
+            description: authentik-prod-1
+            siteMonitor: https://authentik.mistyfumes.dev
+            widget:
+              type: authentik
+              url: https://authentik.mistyfumes.dev
+              key: {{HOMEPAGE_VAR_AUTHENTIK_API_KEY}}
+
+        - OPNsense:
+            icon: opnsense
+            href: https://opnsense.mistyfumes.dev
+            description: opnsense-prod-1
+            siteMonitor: https://192.168.1.1
+            widget:
+                type: opnsense
+                url: https://192.168.1.1
+                username: {{HOMEPAGE_VAR_OPNSENSE_USERNAME}}
+                password: {{HOMEPAGE_VAR_OPNSENSE_PASSWORD}}
+
+        - Pangolin:
+            icon: pangolin
+            href: https://pangolin.mistyfumes.dev
+            description: pangolin-prod-1
+            siteMonitor: https://pangolin.mistyfumes.dev
+            widget:
+                type: pangolin
+                url: https://api.mistyfumes.dev/
+                key: {{HOMEPAGE_VAR_PANGOLIN_KEY}}
+                org: pangotut
+                    
+        - Tailscale:
+            icon: tailscale
+            href: https://login.tailscale.com/admin
+            description: tailscale-prod-1
+            widget:
+                type: tailscale
+                deviceid: {{HOMEPAGE_VAR_TAILSCALE_DEVICE_ID}}
+                key: {{HOMEPAGE_VAR_TAILSCALE_KEY}}
+
+        - Traefik:
+            icon: traefik
+            href: https://traefik-prod-1.mistyfumes.dev
+            description: traefik-prod-1
+            siteMonitor: http://192.168.1.213:8080
+            widget:
+                type: traefik
+                url: http://192.168.1.213:8080
+
+    - Media:
+        - Jellyseerr:
+            icon: jellyseerr
+            href: http://jellyseerr.mistyfumes.dev
+            description: jellyserr-demo-1
+            siteMonitor: http://192.168.1.213:5055
+            statusStyle: 'dot'
+            widget:
+                type: jellyseerr
+                url: http://192.168.1.213:5055
+                key: {{HOMEPAGE_VAR_JELLYSEERR_KEY}}
+        
+        - Prowlarr:
+            icon: prowlarr
+            href: http://prowlarr.mistyfumes.dev        
+            description: prowlarr-demo-1
+            siteMonitor: http://192.168.1.213:9696
+            statusStyle: 'dot'
+            widget:
+                type: prowlarr
+                url: http://192.168.1.213:9696
+                key: {{HOMEPAGE_VAR_PROWLARR_KEY}}
+
+        - Sonarr:
+            icon: sonarr
+            href: http://sonarr.mistyfumes.dev
+            description: sonarr-demo-1
+            siteMonitor: http://192.168.1.213:8989
+            statusStyle: 'dot'   
+            widget:
+                type: sonarr
+                url: http://192.168.1.213:8989
+                key: {{HOMEPAGE_VAR_SONARR_KEY}}
+
+        - Radarr:
+            icon: radarr
+            href: http://radarr.mistyfumes.dev
+            description: radarr-demo-1
+            siteMonitor: http://192.168.1.213:7878
+            statusStyle: 'dot'        
+            widget:
+                type: radarr
+                url: http://192.168.1.213:7878
+                key: {{HOMEPAGE_VAR_RADARR_KEY}}
+                enableQueue: true
+
+        - Wizarr:
+            icon: wizarr
+            href: https://wizarr.mistyfumes.dev
+            description: Invite Manager
+            siteMonitor: http://192.168.1.213:5690
+            statusStyle: dot
+            widget:
+                type: customapi
+                url: http://192.168.1.213:5690/api/status
+                refreshInterval: 20000 # update every 20s
+                headers:
+                    X-API-Key: {{HOMEPAGE_VAR_WIZARR_API_KEY}}
+                display: block
+                mappings:
+                    - field: users
+                      label: Users
+                      format: number
+                    - field: invites
+                      label: Invites
+                      format: number
+                    - field: pending
+                      label: Pending
+                      format: number
+                    - field: expired
+                      label: Expired
+                      format: number
+
+        - qBittorrent:
+            icon: qbittorrent
+            href: http://qbittorrent.mistyfumes.dev
+            description: qbittorrent-demo-1
+            siteMonitor: http://192.168.1.213:8080
+            statusStyle: 'dot'
+            # widget:
+            #     type: qbittorrent
+            #     url: http://192.168.1.213:8080
+            #     username: {{HOMEPAGE_VAR_QBITTORRENT_USERNAME}}
+            #     password: {{HOMEPAGE_VAR_QBITTORRENT_PASSWORD}}
+            #     enableLeechProgress: true
+            #     enableLeechSize: true
+
+        - Jellyfin:
+            icon: jellyfin
+            href: https://jellyfin.mistyfumes.dev
+            description: Media Streaming
+            siteMonitor: https://jellyfin.mistyfumes.dev
+            statusStyle: 'dot'
+            widget:
+                type: jellyfin
+                url: https://jellyfin.mistyfumes.dev
+                key: {{HOMEPAGE_VAR_JELLYFIN_KEY}}
+                enableBlocks: true
+                enableNowPlaying: true
+                enableUser: true
+                enableMediaControl: false
+                showEpisodeNumber: true
+                expandOneStreamToTwoRows: false
+
+        - Immich:
+            icon: immich
+            href: https://immich.mistyfumes.dev
+            description: Photo Management
+            siteMonitor: http://192.168.1.213:2283
+            statusStyle: dot
+            widget:
+                type: immich
+                url: http://192.168.1.213:2283
+                key: {{HOMEPAGE_VAR_IMMICH_API_KEY}}
+                version: 2
+
+        - MeTube:
+            icon: metube
+            href: https://metube.mistyfumes.dev
+            description: YouTube Downloader
+            siteMonitor: https://metube.mistyfumes.dev
+            statusStyle: 'dot'
+
+        - Navidrome:
+            icon: navidrome
+            href: https://navidrome.mistyfumes.dev
+            description: Music Server
+            siteMonitor: https://navidrome.mistyfumes.dev
+            statusStyle: 'dot'           
+            # widget:
+            #     type: navidrome
+            #     url: https://navidrome.mistyfumes.dev
+            #     user: username
+            #     token: token
+            #     salt: randomsalt
+
+    - Tools:
+        - Actual Budget:
+            icon: actual-budget
+            href: https://actual-budget.mistyfumes.dev
+            description: Finance and Budgeting
+            siteMonitor: https://actual-budget.mistyfumes.dev
+            statusStyle: 'dot'
+        
+        - Bytestash:
+            icon: bytestash
+            href: https://bytestash.mistyfumes.dev
+            description: Code Snippets
+            siteMonitor: https://bytestash.mistyfumes.dev
+            statusStyle: 'dot'
+
+        - Compose Toolbox:
+            icon: docker
+            href: https://compose-toolbox.mistyfumes.dev
+            description: Docker Compose Tools
+            siteMonitor: https://compose-toolbox.mistyfumes.dev
+            statusStyle: 'dot'
+
+        - DNS Visualizer:
+            icon: adguard-home
+            href: https://dns-visualizer.mistyfumes.dev
+            description: DNS Visualization
+            siteMonitor: https://dns-visualizer.mistyfumes.dev
+            statusStyle: 'dot'
+        
+        - Draw.io:
+            icon: draw-io
+            href: https://drawio.mistyfumes.dev
+            description: Diagram Software
+            siteMonitor: https://drawio.mistyfumes.dev
+            statusStyle: 'dot'
+        
+        - IT-Tools:
+            icon: it-tools
+            href: https://it-tools.mistyfumes.dev
+            description: IT Utilities
+            siteMonitor: https://it-tools.mistyfumes.dev
+            statusStyle: 'dot'
+        
+        - Kaneo:
+            icon: /icons/kaneo.png
+            href: https://kaneo.mistyfumes.dev
+            description: Project Management
+            siteMonitor: http://192.168.1.213:5173
+            statusStyle: 'dot'
+        
+        - Karakeep:
+            icon: karakeep
+            href: https://karakeep.mistyfumes.dev
+            description: Note Taking
+            siteMonitor: https://karakeep.mistyfumes.dev
+            statusStyle: 'dot'
+        
+        - Linkwarden:
+            icon: linkwarden
+            href: https://linkwarden.mistyfumes.dev
+            description: Bookmark Manager
+            siteMonitor: https://linkwarden.mistyfumes.dev
+            statusStyle: 'dot'
+        
+        - Lubelogger:
+            icon: lubelogger
+            href: https://lubelogger.mistyfumes.dev
+            description: Vehicle Maintenance Tracker
+            siteMonitor: https://lubelogger.mistyfumes.dev
+            statusStyle: 'dot'
+        
+        - Minecraft Server:
+            icon: minecraft
+            href: mc.mistyfumes.dev
+            description: mc-prod-1
+            siteMonitor: udp://mc.mistyfumes.dev:25565
+            statusStyle: 'dot'
+            widget:
+              type: minecraft
+              url: udp://mc.mistyfumes.dev:25565
+
+        - paperlessNGX:
+            icon: paperless
+            href: https://paperlessngx.mistyfumes.dev
+            description: Document Management
+            siteMonitor: http://192.168.1.213:8000
+            statusStyle: 'dot'
+        
+        - Syncthing:
+            icon: syncthing
+            href: https://syncthing.mistyfumes.dev
+            description: File Syncing
+            siteMonitor: http://192.168.1.213:8384
+            statusStyle: 'dot'
+        
+        - Termix:
+            icon: termix
+            href: https://termix.mistyfumes.dev
+            description: Web Terminal
+            siteMonitor: https://termix.mistyfumes.dev
+            statusStyle: 'dot'
+
+  settings.yaml: >
+    headerStyle: boxed
+
+    theme: dark
+
+    hideErrors: false
+
+
+    background: 
+      image: https://homepage.mistyfumes.dev/images/IMG_5650.jpg
+      blur: none
+      saturate: 100 # 0, 50, 100... see https://tailwindcss.com/docs/backdrop-saturate
+      brightness: 50 # 0, 50, 75... see https://tailwindcss.com/docs/backdrop-brightness
+      opacity: 100 # 0-100
+
+    providers:
+      openweathermap: openweathermapapikey
+      weatherapi: weatherapiapikey
+
+    layout:
+      GitOps:
+        tab: Infrastructure
+        style: row
+        columns: 2
+        useEqualHeights: false
+        icon: mdi-shield-lock-#FFFFFF
+      
+      Monitoring:
+        tab: Infrastructure
+        style: row
+        columns: 3
+        useEqualHeights: false
+        icon: mdi-shield-lock-#FFFFFF    
+      
+      Gateways:
+        tab: Infrastructure
+        style: row
+        columns: 3
+        useEqualHeights: false
+        icon: mdi-shield-lock-#FFFFFF    
+      
+      Infrastructure:
+        tab: Infrastructure
+        style: row
+        columns: 5
+        useEqualHeights: false
+        icon: mdi-server-#FFFFFF
+      
+      L2 Networking:
+        tab: Infrastructure
+        style: row
+        columns: 6
+        icon: mdi-network-#FFFFFF
+
+    # second tab    
+      Media:
+        tab: Apps
+        style: row
+        columns: 5
+        useEqualHeights: false
+        icon: mdi-shield-lock-#FFFFFF    
+      
+      Tools:
+        tab: Apps
+        style: row
+        columns: 5
+        useEqualHeights: false
+        icon: mdi-auto-fix-#FFFFFF
+
+      Bookmarks:
+        tab: Apps
+        style: row
+        columns: 4
+        useEqualHeights: false
+        icon: mdi-book-#FFFFFF
+  widgets.yaml: |
+    - resources:
+        cpu: true
+        memory: true
+        disk: /
+        uptime: true
+        network: true
+
+    - search:
+        provider: google
+        target: _blank
+        showSearchSuggestions: true
+
+    - openmeteo:
+        label: Denver
+        latitude: 39.7392
+        longitude: -104.9903
+        timezone: America/Denver
+        units: imperial
+        cache: 5
+
+    - datetime:
+        text_size: md
+        format:
+            dateStyle: long
+            timeStyle: short
+            hourCycle: h23
