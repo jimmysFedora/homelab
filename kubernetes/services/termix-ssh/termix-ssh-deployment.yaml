@@ -14,7 +14,7 @@ spec:
         app: termix-ssh
     spec:
       containers:
-        - image: ghcr.io/lukegus/termix:release-1.10.0@sha256:d7d5354103a363f7e99531465c78e277491e5a10e1fd01d3942d32ced737c604
+        - image: ghcr.io/lukegus/termix:release-1.11.0
           name: termix-ssh
           ports:
             - containerPort: 8080
