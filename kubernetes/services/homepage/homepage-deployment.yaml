@@ -18,7 +18,7 @@ spec:
         runAsGroup: 1000
         fsGroup: 1000
       containers:
-        - image: ghcr.io/gethomepage/homepage:v1.9@sha256:a2961d343e7c12cff9ee071af445213806b57c91f1b2abeeb81c057f0370d3f9
+        - image: ghcr.io/gethomepage/homepage:v1.10@sha256:f04905d7698bb9153866645b669cdb198ee35f1bfb1e04e2b19a55520fea6261
           name: homepage
           ports:
             - containerPort: 3000
