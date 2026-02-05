@@ -221,12 +221,12 @@ data:
 
         - Traefik:
             icon: traefik
-            href: https://traefik-prod-1.mistyfumes.dev
+            href: https://traefik.mistyfumes.dev/dashboard/
             description: traefik-prod-1
-            siteMonitor: http://192.168.1.213:8080
+            siteMonitor: https://traefik.mistyfumes.dev/dashboard/
             widget:
                 type: traefik
-                url: http://192.168.1.213:8080
+                url: https://traefik.mistyfumes.dev/dashboard/
 
     - Media:
         - Jellyseerr:
