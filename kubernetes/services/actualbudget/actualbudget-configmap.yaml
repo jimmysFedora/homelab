@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: actualbudget-configmap
+data:
+  values.yaml: |
+    strategy:
+      type: Recreate
+
+    files:
+      server: /data/server-files
+      user: /data/user-files
+
+    ingress:
+      enabled: true
+      className: traefik
+      hosts:
+        - host: actualbudget.mistyfumes.dev
+          paths:
+            - path: /
+              pathType: ImplementationSpecific
+      tls:
+        - secretName: prod-mistyfumes-tls
+          hosts:
+            - actualbudget.mistyfumes.dev
+
+    persistence:
+      enabled: true
+      existingClaim: actualbudget-nfs-pvc

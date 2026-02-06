@@ -1,0 +1,41 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: actual-budget
+  namespace: flux-system
+spec:
+  interval: 15m
+  url: https://community-charts.github.io/helm-charts
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: actual-budget
+  namespace: default
+spec:
+  interval: 15m
+  timeout: 5m
+  chart:
+    spec:
+      chart: my-actualbudget
+      version: '1.8.7'
+      sourceRef:
+        kind: HelmRepository
+        name: actual-budget
+        namespace: flux-system
+      interval: 5m
+  valuesFrom:
+    - kind: ConfigMap
+      name: actualbudget-configmap
+      valuesKey: values.yaml
+  releaseName: my-actualbudget
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  test:
+    enable: true
+  values:
+    replicaCount: 1
