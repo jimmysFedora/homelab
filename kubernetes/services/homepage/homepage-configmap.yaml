@@ -25,6 +25,11 @@ data:
               href: https://www.msudenver.edu/studenthub/
               icon: https://www.msudenver.edu/wp-content/uploads/2021/04/logo-square.svg
 
+        - WiFiman:
+            - abbr: WFI
+              href: https://wifiman.com/
+              icon: wifiman
+
         - YouTube:
             - abbr: YT
               href: https://youtube.com/
@@ -367,9 +372,9 @@ data:
     - Tools:
         - Actual Budget:
             icon: actual-budget
-            href: https://actual-budget.mistyfumes.dev
+            href: https://actualbudget.mistyfumes.dev
             description: Finance and Budgeting
-            siteMonitor: https://actual-budget.mistyfumes.dev
+            siteMonitor: https://actualbudget.mistyfumes.dev
             statusStyle: 'dot'
         
         - Bytestash:
@@ -496,7 +501,7 @@ data:
       Monitoring:
         tab: Infrastructure
         style: row
-        columns: 3
+        columns: 4
         useEqualHeights: false
         icon: mdi-shield-lock-#FFFFFF    
       
