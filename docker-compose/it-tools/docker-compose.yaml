@@ -7,16 +7,13 @@ services:
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
-      # HTTP router
       - "traefik.http.routers.it-tools-insecure.rule=Host(`it-tools.mistyfumes.dev`)"
       - "traefik.http.routers.it-tools-insecure.entrypoints=http"
       - "traefik.http.routers.it-tools-insecure.middlewares=https-redirect@file"
-      # HTTPS router
       - "traefik.http.routers.it-tools-secure.rule=Host(`it-tools.mistyfumes.dev`)"
       - "traefik.http.routers.it-tools-secure.entrypoints=https"
       - "traefik.http.routers.it-tools-secure.tls=true"
       - "traefik.http.routers.it-tools-secure.tls.certresolver=cloudflare"
-      # Service port
       - "traefik.http.services.it-tools.loadbalancer.server.port=80"
     networks:
       - frontend
