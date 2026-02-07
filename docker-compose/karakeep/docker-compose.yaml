@@ -3,36 +3,26 @@ services:
     image: ghcr.io/karakeep-app/karakeep:0.30.0@sha256:a2e188284cc3350db3246664954d1bff223c67be98c3a4de782b159f864e7c07
     restart: unless-stopped
     volumes:
-      # By default, the data is stored in a docker volume called "data".
-      # If you want to mount a custom directory, change the volume mapping to:
-      # - /path/to/your/directory:/data
       - /mnt/docker-nfs/volumes/karakeep-data:/data
     # ports:
     #   - 3000:3000
-    env_file:
-      - stack.env
+    env_file: .env
     environment:
       MEILI_ADDR: http://meilisearch:7700
       BROWSER_WEB_URL: http://chrome:9222
-      # OPENAI_API_KEY: ...
-
-      # You almost never want to change the value of the DATA_DIR variable.
-      # If you want to mount a custom directory, change the volume mapping above instead.
-      DATA_DIR: /data # DON'T CHANGE THIS
+      DATA_DIR: /data # DON'T CHANGE THIS. If you want to mount a custom directory, change the volume mapping above instead.
     labels:
       - "traefik.enable=true"
-      # HTTP router
       - "traefik.http.routers.karakeep-insecure.rule=Host(`karakeep.mistyfumes.dev`)"
       - "traefik.http.routers.karakeep-insecure.entrypoints=http"
       - "traefik.http.routers.karakeep-insecure.middlewares=https-redirect@file"
-      # HTTPS router
       - "traefik.http.routers.karakeep-secure.rule=Host(`karakeep.mistyfumes.dev`)"
       - "traefik.http.routers.karakeep-secure.entrypoints=https"
       - "traefik.http.routers.karakeep-secure.tls=true"
       - "traefik.http.routers.karakeep-secure.tls.certresolver=cloudflare"
-      # Service port
       - "traefik.http.services.karakeep.loadbalancer.server.port=3000"
     networks:
+      - default
       - frontend
 
   chrome:
@@ -45,16 +35,19 @@ services:
       - --remote-debugging-address=0.0.0.0
       - --remote-debugging-port=9222
       - --hide-scrollbars
+    networks:
+      - default
 
   meilisearch:
     image: getmeili/meilisearch:v1.13.3
     restart: unless-stopped
-    env_file:
-      - stack.env
+    env_file: .env
     environment:
       MEILI_NO_ANALYTICS: "true"
     volumes:
       - /mnt/docker-nfs/volumes/karakeep-data/meilisearch:/meili_data
+    networks:
+      - default
 
 networks:
   frontend:
