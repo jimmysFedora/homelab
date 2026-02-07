@@ -1,26 +1,57 @@
 services:
   postgres:
     image: postgres:16-alpine
+    env_file:
+      - .env
     ports:
-      - "5436:5432"
+      - 5432:5432
     volumes:
       - /mnt/docker-nfs/volumes/kaneo-data:/var/lib/postgresql/data
     restart: unless-stopped
-    env_file:
-      - stack.env
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U kaneo -d kaneo"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - default
 
   api:
     image: ghcr.io/usekaneo/api:2.0.9@sha256:24f93081726327f59aeda6d7fe4975baec94fd7d35ab45b0efd17c13d6bbd8a1
     ports:
-      - "1337:1337"
-    restart: unless-stopped
+      - 1337:1337
     env_file:
-      - stack.env
+      - .env
+    depends_on:
+      postgres:
+        condition: service_healthy
+    restart: unless-stopped
+    networks:
+      - default
 
   web:
     image: ghcr.io/usekaneo/web:2.0.9@sha256:55d640e7c56759e0ce15665a6d0012deef48ff470b0d7699e6c2d0dd29e47531
     ports:
-      - "5173:5173"
-    restart: unless-stopped
+      - 5173:5173
     env_file:
-      - stack.env
+      - .env
+    depends_on:
+      - api
+    restart: unless-stopped
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.kaneo-insecure.rule=Host(`kaneo.mistyfumes.dev`)
+      - traefik.http.routers.kaneo-insecure.entrypoints=http
+      - traefik.http.routers.kaneo-insecure.middlewares=https-redirect@file
+      - traefik.http.routers.kaneo-secure.rule=Host(`kaneo.mistyfumes.dev`)
+      - traefik.http.routers.kaneo-secure.entrypoints=https
+      - traefik.http.routers.kaneo-secure.tls=true
+      - traefik.http.routers.kaneo-secure.tls.certresolver=cloudflare
+      - traefik.http.services.kaneo.loadbalancer.server.port=5173
+    networks:
+      - default
+      - frontend
+
+networks:
+  frontend:
+    external: true
