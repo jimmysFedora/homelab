@@ -10,16 +10,13 @@ services:
       - /mnt/docker-nfs/volumes/compose-toolbox/data:/app/data
     labels:
       - "traefik.enable=true"
-      # HTTP router
       - "traefik.http.routers.composetoolbox-insecure.rule=Host(`compose-toolbox.mistyfumes.dev`)"
       - "traefik.http.routers.composetoolbox-insecure.entrypoints=http"
       - "traefik.http.routers.composetoolbox-insecure.middlewares=https-redirect@file"
-      # HTTPS router
       - "traefik.http.routers.composetoolbox-secure.rule=Host(`compose-toolbox.mistyfumes.dev`)"
       - "traefik.http.routers.composetoolbox-secure.entrypoints=https"
       - "traefik.http.routers.composetoolbox-secure.tls=true"
       - "traefik.http.routers.composetoolbox-secure.tls.certresolver=cloudflare"
-      # Service port
       - "traefik.http.services.composetoolbox.loadbalancer.server.port=3000"
     networks:
       - frontend
