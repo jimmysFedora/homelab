@@ -9,16 +9,13 @@ services:
     #   - 8080:8080
     labels:
       - "traefik.enable=true"
-      # HTTP router
       - "traefik.http.routers.lubelogger-insecure.rule=Host(`lubelogger.mistyfumes.dev`)"
       - "traefik.http.routers.lubelogger-insecure.entrypoints=http"
       - "traefik.http.routers.lubelogger-insecure.middlewares=https-redirect@file"
-      # HTTPS router
       - "traefik.http.routers.lubelogger-secure.rule=Host(`lubelogger.mistyfumes.dev`)"
       - "traefik.http.routers.lubelogger-secure.entrypoints=https"
       - "traefik.http.routers.lubelogger-secure.tls=true"
       - "traefik.http.routers.lubelogger-secure.tls.certresolver=cloudflare"
-      # Service port      
       - "traefik.http.services.lubelogger.loadbalancer.server.port=8080"
     networks: 
       - frontend
