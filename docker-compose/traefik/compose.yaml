@@ -1,7 +1,7 @@
 services:
   traefik:
     image: traefik:v3.6
-    container_name: traefik-prod-1
+    container_name: traefik
     restart: unless-stopped
     security_opt:
       - no-new-privileges:true
@@ -14,12 +14,8 @@ services:
       - /mnt/docker-nfs/volumes/traefik-data/config/traefik.yaml:/etc/traefik/traefik.yaml:ro
       - /mnt/docker-nfs/volumes/traefik-data/config/dynamic.yaml:/etc/traefik/dynamic.yaml:ro
       - /mnt/docker-nfs/volumes/traefik-data/data/certs/:/var/traefik/certs/:rw
-    environment:
-      - CF_API_EMAIL=${CF_API_EMAIL}
-      - CF_DNS_API_TOKEN=${CF_DNS_API_TOKEN}
-      - TRAEFIK_DASHBOARD_CREDENTIALS=${TRAEFIK_DASHBOARD_CREDENTIALS}"
-    networks:
-      - frontend
+    env_file:
+      - .env
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.traefik-http.rule=Host(`traefik-prod-1.mistyfumes.dev`)"
@@ -35,6 +31,8 @@ services:
       - "traefik.http.routers.traefik-https.tls.domains[0].sans=*.mistyfumes.dev"
       - "traefik.http.routers.traefik-https.service=api@internal"
       - "traefik.http.middlewares.traefik-auth.basicauth.users=${TRAEFIK_DASHBOARD_CREDENTIALS}"
+    networks:
+      - frontend
 
 networks:
   frontend:
