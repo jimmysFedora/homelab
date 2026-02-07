@@ -2,20 +2,14 @@ services:
   postgres:
     image: postgres:16-alpine
     restart: always
-    environment:
-      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    env_file: .env
     volumes:
       - /mnt/docker-nfs/volumes/linkwarden-data/pgdata:/var/lib/postgresql/data
     networks:
-      - frontend
+      - default
 
   linkwarden:
-    environment:
-      - DATABASE_URL=postgresql://postgres:${POSTGRES_PASSWORD}@postgres:5432/postgres
-      - NEXTAUTH_SECRET=${NEXTAUTH_SECRET}
-      - NEXTAUTH_URL=${NEXTAUTH_URL}
-      - MEILI_ADDR=http://meilisearch:7700
-      - MEILI_MASTER_KEY=${MEILI_MASTER_KEY}
+    env_file: .env
     restart: always
     image: ghcr.io/linkwarden/linkwarden:v2.13.5@sha256:5b8e231169f6819d1a1e5a9f4771c9179108694c60da1e34fc4a0ea780f70079
     # ports:
@@ -27,29 +21,27 @@ services:
       - meilisearch
     labels:
       - "traefik.enable=true"
-      # HTTP router
       - "traefik.http.routers.linkwarden-insecure.rule=Host(`linkwarden.mistyfumes.dev`)"
       - "traefik.http.routers.linkwarden-insecure.entrypoints=http"
       - "traefik.http.routers.linkwarden-insecure.middlewares=https-redirect@file"
-      # HTTPS router
       - "traefik.http.routers.linkwarden-secure.rule=Host(`linkwarden.mistyfumes.dev`)"
       - "traefik.http.routers.linkwarden-secure.entrypoints=https"
       - "traefik.http.routers.linkwarden-secure.tls=true"
       - "traefik.http.routers.linkwarden-secure.tls.certresolver=cloudflare"
-      # Service port
       - "traefik.http.services.linkwarden.loadbalancer.server.port=3000"
     networks:
+      - default
       - frontend
 
   meilisearch:
     image: getmeili/meilisearch:v1.12.8
     restart: always
-    environment:
-      - MEILI_MASTER_KEY=${MEILI_MASTER_KEY}
+    env_file:
+      - .env
     volumes:
       - /mnt/docker-nfs/volumes/linkwarden-data/meili_data:/meili_data
     networks:
-      - frontend
+      - default
 
 networks:
   frontend:
