@@ -5,6 +5,8 @@ services:
     restart: unless-stopped
     # ports:
     #   - 8090:8090
+    environment:
+      APP_URL: https://beszel.mistyfumes.dev
     volumes:
       - /mnt/docker-nfs/volumes/bezel-data/beszel_data:/beszel_data
       - /mnt/docker-nfs/volumes/bezel-data/beszel_socket:/beszel_socket
@@ -35,7 +37,7 @@ services:
       HUB_URL: https://beszel.mistyfumes.dev
       TOKEN: ${TOKEN}
       KEY: ${KEY}
-      
+
 networks:
   frontend:
     external: true
