@@ -2,36 +2,28 @@ services:
   actual_server:
     image: actualbudget/actual-server:26.1.0-alpine@sha256:34aae5813fdfee12af2a50c4d0667df68029f1d61b90f45f282473273eb70d0d
     # ports:
-    #   # This line makes Actual available at port 5006 of the device you run the server on,
-    #   # i.e. http://localhost:5006. You can change the first number to change the port, if you want.
-    #   - '5006:5006'
+    #   - 5006:5006
     volumes:
-      # Change './actual-data' below to the path to the folder you want Actual to store its data in on your server.
-      # '/data' is the path Actual will look for its files in by default, so leave that as-is.
       - /mnt/docker-nfs/volumes/actual-data:/data
     healthcheck:
-      # Enable health check for the instance
       test: ["CMD-SHELL", "node src/scripts/health-check.js"]
       interval: 60s
       timeout: 10s
       retries: 3
       start_period: 20s
     restart: unless-stopped
-    networks: 
-      - frontend
     labels:
       - "traefik.enable=true"
-      # HTTP router
       - "traefik.http.routers.actual-insecure.rule=Host(`actual-budget.mistyfumes.dev`)"
       - "traefik.http.routers.actual-insecure.entrypoints=http"
       - "traefik.http.routers.actual-insecure.middlewares=https-redirect@file"
-      # HTTPS router
       - "traefik.http.routers.actual-secure.rule=Host(`actual-budget.mistyfumes.dev`)"
       - "traefik.http.routers.actual-secure.entrypoints=https"
       - "traefik.http.routers.actual-secure.tls=true"
       - "traefik.http.routers.actual-secure.tls.certresolver=cloudflare"
-      # Service port      
       - "traefik.http.services.actual.loadbalancer.server.port=5006"
+    networks: 
+      - frontend
 
 networks:
   frontend:
