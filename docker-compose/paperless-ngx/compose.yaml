@@ -4,6 +4,8 @@ services:
     restart: unless-stopped
     volumes:
       - /mnt/docker-nfs/volumes/paperless-data/redisdata:/data
+    networks:
+      - default
 
   paperless-db:
     image: docker.io/library/postgres:18
@@ -14,17 +16,19 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    networks:
+      - default
 
   webserver:
-    image: ghcr.io/paperless-ngx/paperless-ngx:latest
+    image: ghcr.io/paperless-ngx/paperless-ngx:2.20.6@sha256:a28330462994b937938e02aaa5632a1effcc7f9acfba96c1bef9c50e1167a027
     restart: unless-stopped
     depends_on:
       - paperless-db
       - broker
       - gotenberg
       - tika
-    ports:
-      - "8000:8000"
+    # ports:
+    #   - "8000:8000"
     volumes:
       - /mnt/docker-nfs/volumes/paperless-data/data:/usr/src/paperless/data
       - /mnt/docker-nfs/volumes/paperless-data/media:/usr/src/paperless/media
@@ -46,6 +50,19 @@ services:
       PAPERLESS_CORS_ALLOWED_HOSTS: ${PAPERLESS_CORS_ALLOWED_HOSTS}
       PAPERLESS_TIME_ZONE: ${PAPERLESS_TIME_ZONE}
       PAPERLESS_OCR_LANGUAGE: ${PAPERLESS_OCR_LANGUAGE}
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.paperless-ngx-insecure.rule=Host(`paperless-ngx.mistyfumes.dev`)"
+      - "traefik.http.routers.paperless-ngx-insecure.entrypoints=http"
+      - "traefik.http.routers.paperless-ngx-insecure.middlewares=https-redirect@file"
+      - "traefik.http.routers.paperless-ngx-secure.rule=Host(`paperless-ngx.mistyfumes.dev`)"
+      - "traefik.http.routers.paperless-ngx-secure.entrypoints=https"
+      - "traefik.http.routers.paperless-ngx-secure.tls=true"
+      - "traefik.http.routers.paperless-ngx-secure.tls.certresolver=cloudflare"
+      - "traefik.http.services.paperless-ngx.loadbalancer.server.port=8000"
+    networks:
+      - frontend
+      - default
 
   gotenberg:
     image: docker.io/gotenberg/gotenberg:8.25
@@ -56,7 +73,15 @@ services:
       - "gotenberg"
       - "--chromium-disable-javascript=true"
       - "--chromium-allow-list=file:///tmp/.*"
+    networks:
+      - default
 
   tika:
     image: docker.io/apache/tika:latest
     restart: unless-stopped
+    networks:
+      - default
+
+networks:
+  frontend:
+    external: true
