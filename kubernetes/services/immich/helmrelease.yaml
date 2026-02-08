@@ -22,7 +22,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: immich
-        namespace: default
+        namespace: flux-system
       interval: 5m
   values:
     ## This chart relies on the common library chart from bjw-s
@@ -125,15 +125,15 @@ spec:
           enabled: true
           className: traefik
           hosts:
-            - host: immich.dev.mistyfumes.dev
+            - host: immich.mistyfumes.dev
               paths:
                 - path: "/"
                   service:
                     identifier: main
           tls:
-            - secretName: dev-mistyfumes-tls
+            - secretName: prod-mistyfumes-tls
               hosts:
-                - immich.dev.mistyfumes.dev
+                - immich.mistyfumes.dev
 
     machine-learning:
       enabled: true
