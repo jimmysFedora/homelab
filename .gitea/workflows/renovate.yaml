@@ -6,9 +6,9 @@ on:
       - main
   schedule: # runs this workflow at the scheduled time (uses UTC, adjust for your timezone)
     - cron: "0 12 * * *"
-  push: # runs this workflow when pushes to the main branch are made
-    branches:
-      - main
+  # push: # runs this workflow when pushes to the main branch are made
+  #   branches:
+  #     - main
 
 jobs:
   renovate:
