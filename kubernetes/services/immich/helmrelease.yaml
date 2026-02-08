@@ -22,7 +22,7 @@ spec:
       sourceRef:
         kind: HelmRepository
         name: immich
-        namespace: flux-system
+        namespace: default
       interval: 5m
   values:
     ## This chart relies on the common library chart from bjw-s
@@ -31,7 +31,7 @@ spec:
 
     # These entries are shared between all the Immich components
     replicaCount: 1
-    
+
     persistence:
       # This matches the hardcoded one, but we add more next to it
       photography:
