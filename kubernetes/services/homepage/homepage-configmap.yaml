@@ -341,11 +341,11 @@ data:
             icon: immich
             href: https://immich.mistyfumes.dev
             description: Photo Management
-            siteMonitor: https://immich.mistyfumes.dev
+            siteMonitor: http://192.168.1.213:2283
             statusStyle: dot
             widget:
                 type: immich
-                url: https://immich.mistyfumes.dev
+                url: http://192.168.1.213:2283
                 key: {{HOMEPAGE_VAR_IMMICH_API_KEY}}
                 version: 2
 
