@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: octapool-photography-library-pv
+spec:
+  capacity:
+    storage: 100Gi
+  accessModes:
+    - ReadOnlyMany
+  persistentVolumeReclaimPolicy: Retain
+  mountOptions:
+    - nfsvers=4
+    - addr=192.168.1.130
+  nfs:
+    server: 192.168.1.130
+    path: /mnt/octaPool/images/photography
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: octapool-photography-library-pvc
+spec:
+  accessModes:
+    - ReadOnlyMany
+  storageClassName: ""
+  resources:
+    requests:
+      storage: 100Gi
+  volumeName: octapool-photography-library-pv
