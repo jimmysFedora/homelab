@@ -14,28 +14,25 @@ services:
     # ports:
     #   - 8096:8096
     restart: unless-stopped
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [all]
     labels:
       - "traefik.enable=true"
-      # HTTP router
       - "traefik.http.routers.jellyfin-insecure.rule=Host(`jellyfin.mistyfumes.dev`)"
       - "traefik.http.routers.jellyfin-insecure.entrypoints=http"
       - "traefik.http.routers.jellyfin-insecure.middlewares=https-redirect@file"
-      # HTTPS router
       - "traefik.http.routers.jellyfin-secure.rule=Host(`jellyfin.mistyfumes.dev`)"
       - "traefik.http.routers.jellyfin-secure.entrypoints=https"
       - "traefik.http.routers.jellyfin-secure.tls=true"
       - "traefik.http.routers.jellyfin-secure.tls.certresolver=cloudflare"
-      # Service port
       - "traefik.http.services.jellyfin.loadbalancer.server.port=8096"
     networks:
       - frontend
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [all]
 
 networks:
   frontend:

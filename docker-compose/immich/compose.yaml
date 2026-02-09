@@ -2,55 +2,47 @@ name: immich
 services:
   immich-server:
     container_name: immich_server
-    image: ghcr.io/immich-app/immich-server:2.0.0
-    # extends:
-    #   file: hwaccel.transcoding.yml
-    #   service: nvenc # set to one of [nvenc, quicksync, rkmpp, vaapi, vaapi-wsl] for accelerated transcoding
+    image: ghcr.io/immich-app/immich-server:v2.5.3
     volumes:
       - ${UPLOAD_LOCATION}:/data
       - /etc/localtime:/etc/localtime:ro
       - /mnt/octapool-nfs/photos:/mnt/octapool-images:ro
       - /mnt/octapool-nfs/photography/:/mnt/octapool-photography:ro
     env_file:
-      - stack.env
+      - .env
     ports:
-      - '2283:2283'
+      - 2283:2283
     depends_on:
       - redis
       - database
     restart: always
     healthcheck:
       disable: false
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [all]
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [all]
 
   immich-machine-learning:
     container_name: immich_machine_learning
-    # For hardware acceleration, add one of -[armnn, cuda, rocm, openvino, rknn] to the image tag.
-    # Example tag: ${IMMICH_VERSION:-release}-cuda
-    image: ghcr.io/immich-app/immich-machine-learning:2.0.0
-    # extends: # uncomment this section for hardware acceleration - see https://docs.immich.app/features/ml-hardware-acceleration
-    #   file: hwaccel.ml.yml
-    #   service:  # set to one of [armnn, cuda, rocm, openvino, openvino-wsl, rknn] for accelerated inference - use the `-wsl` version for WSL2 where applicable
+    image: ghcr.io/immich-app/immich-machine-learning:v2.5.3
     volumes:
       - /mnt/docker-nfs/volumes/immich-data/model-cache:/cache
     env_file:
-      - stack.env
+      - .env
     restart: always
     healthcheck:
       disable: false
-    deploy:
-      resources:
-        reservations:
-          devices:
-            - driver: nvidia
-              count: all
-              capabilities: [all]
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           count: all
+    #           capabilities: [all]
 
   redis:
     container_name: immich_redis
@@ -71,3 +63,5 @@ services:
       - ${DB_DATA_LOCATION}:/var/lib/postgresql/data
     shm_size: 128mb
     restart: always
+    healthcheck:
+      disable: false
