@@ -9,9 +9,9 @@ spec:
   chart:
     spec:
       chart: ./kubernetes/services/drawio/my-drawio
+      valuesFiles:
+        - ./kubernetes/services/drawio/my-drawio/values.yaml
       sourceRef:
         kind: GitRepository
         name: flux-system
         namespace: flux-system
-  valuesFiles:
-    - ./kubernetes/services/drawio/my-drawio/values.yaml
