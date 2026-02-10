@@ -20,7 +20,7 @@ spec:
     spec:
       chart: authentik
       valuesFiles:
-        - ./kubernetes/services/authentik/my-authentik/values.yaml
+        - values.yaml  
       sourceRef:
         kind: HelmRepository
         name: authentik
