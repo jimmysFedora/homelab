@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: komodo
+  namespace: default
+spec:
+  ports:
+  - port: 9120
+    protocol: TCP
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: komodo
+  namespace: default
+subsets:
+- addresses:
+  - ip: 192.168.1.213
+  ports:
+  - port: 9120
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: komodo-ingressroute
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`komodo.mistyfumes.dev`)
+    kind: Rule
+    services:
+    - name: komodo
+      port: 9120
+  tls:
+    secretName: prod-mistyfumes-tls
+---
+apiVersion: traefik.io/v1alpha1
+kind: ServersTransport
+metadata:
+  name: insecure-transport
+  namespace: default
+spec:
+  insecureSkipVerify: true

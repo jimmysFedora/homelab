@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: radarr
+  namespace: default
+spec:
+  ports:
+  - port: 7878
+    protocol: TCP
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: radarr
+  namespace: default
+subsets:
+- addresses:
+  - ip: 192.168.1.213
+  ports:
+  - port: 7878
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: radarr-ingressroute
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`radarr.mistyfumes.dev`)
+    kind: Rule
+    services:
+    - name: radarr
+      port: 7878
+      serversTransport: insecure-transport
+  tls:
+    secretName: prod-mistyfumes-tls
+---
+apiVersion: traefik.io/v1alpha1
+kind: ServersTransport
+metadata:
+  name: insecure-transport
+  namespace: default
+spec:
+  insecureSkipVerify: true

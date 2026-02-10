@@ -1,0 +1,10 @@
+grafana:
+  ingress:
+    enabled: true
+    ingressClassName: traefik
+    hosts:
+      - grafana.dev.mistyfumes.dev
+    tls:
+      - secretName: dev-mistyfumes-tls
+        hosts:
+          - grafana.dev.mistyfumes.dev

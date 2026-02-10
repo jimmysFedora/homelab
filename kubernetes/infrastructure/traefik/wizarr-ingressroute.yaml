@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: wizarr
+  namespace: default
+spec:
+  ports:
+  - port: 5690
+    protocol: TCP
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: wizarr
+  namespace: default
+subsets:
+- addresses:
+  - ip: 192.168.1.213
+  ports:
+  - port: 5690
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: wizarr-ingressroute
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`wizarr.mistyfumes.dev`)
+    kind: Rule
+    services:
+    - name: wizarr
+      port: 5690
+  tls:
+    secretName: prod-mistyfumes-tls
+---
+apiVersion: traefik.io/v1alpha1
+kind: ServersTransport
+metadata:
+  name: insecure-transport
+  namespace: default
+spec:
+  insecureSkipVerify: true

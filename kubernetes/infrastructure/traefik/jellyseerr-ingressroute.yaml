@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: jellyseerr
+  namespace: default
+spec:
+  ports:
+  - port: 5055
+    protocol: TCP
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: jellyseerr
+  namespace: default
+subsets:
+- addresses:
+  - ip: 192.168.1.213
+  ports:
+  - port: 5055
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: jellyseerr-ingressroute
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`jellyseerr.mistyfumes.dev`)
+    kind: Rule
+    services:
+    - name: jellyseerr
+      port: 5055
+  tls:
+    secretName: prod-mistyfumes-tls
+---
+apiVersion: traefik.io/v1alpha1
+kind: ServersTransport
+metadata:
+  name: insecure-transport
+  namespace: default
+spec:
+  insecureSkipVerify: true

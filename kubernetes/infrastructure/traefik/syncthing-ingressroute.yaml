@@ -1,0 +1,46 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: syncthing
+  namespace: default
+spec:
+  ports:
+  - port: 8384
+    protocol: TCP
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: syncthing
+  namespace: default
+subsets:
+- addresses:
+  - ip: 192.168.1.213
+  ports:
+  - port: 8384
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: syncthing-ingressroute
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`syncthing.mistyfumes.dev`)
+    kind: Rule
+    services:
+    - name: syncthing
+      port: 8384
+      serversTransport: insecure-transport
+  tls:
+    secretName: prod-mistyfumes-tls
+---
+apiVersion: traefik.io/v1alpha1
+kind: ServersTransport
+metadata:
+  name: insecure-transport
+  namespace: default
+spec:
+  insecureSkipVerify: true

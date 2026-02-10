@@ -1,0 +1,54 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: immich
+  namespace: default
+spec:
+  ports:
+  - port: 2283
+    protocol: TCP
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: immich
+  namespace: default
+subsets:
+- addresses:
+  - ip: 192.168.1.213
+  ports:
+  - port: 2283
+---
+apiVersion: traefik.io/v1alpha1
+kind: ServersTransport
+metadata:
+  name: insecure-transport
+  namespace: default
+spec:
+  insecureSkipVerify: true
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: immich-ingressroute
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`immich.mistyfumes.dev`)
+    kind: Rule
+    services:
+    - name: immich
+      port: 2283
+      serversTransport: insecure-transport
+  tls:
+    secretName: staging-mistyfumes-tls     
+---
+apiVersion: traefik.io/v1alpha1
+kind: ServersTransport
+metadata:
+  name: insecure-transport
+  namespace: default
+spec:
+  insecureSkipVerify: true

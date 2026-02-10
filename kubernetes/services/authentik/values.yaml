@@ -26,6 +26,7 @@ global:
           key: "DB_PASS"
 
 authentik:
+  secretKey: "secret_key"
   existingSecret:
     secretName: "authentik-secrets"
 
