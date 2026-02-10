@@ -25,6 +25,10 @@ global:
           name: "authentik-secrets"
           key: "DB_PASS"
 
+authentik:
+  existingSecret:
+    secretName: "authentik-secrets"
+
 server:
   ingress:
     enabled: true
