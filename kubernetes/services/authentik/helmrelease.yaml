@@ -1,0 +1,23 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: authentik
+  namespace: flux-system
+spec:
+  interval: 15m
+  targetNamespace: default
+  chart:
+    spec:
+      chart: ./kubernetes/services/authentik/my-authentik
+      valuesFiles:
+        - ./kubernetes/services/authentik/my-authentik/values.yaml
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+  install:
+      remediation:
+        retries: 5
+  upgrade:
+    remediation:
+      retries: 5
