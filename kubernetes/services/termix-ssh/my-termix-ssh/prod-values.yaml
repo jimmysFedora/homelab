@@ -141,26 +141,24 @@ autoscaling:
   targetCPUUtilizationPercentage: 80
   # targetMemoryUtilizationPercentage: 80
 
-persistence:
-  photography:
-    enabled: true
-    type: persistentVolumeClaim
-    existingClaim: termix-ssh-nfs-pvc
-    globalMounts:
-      - path: /app/data
+# persistence:
+#   photography:
+#     enabled: true
+#     type: persistentVolumeClaim
+#     existingClaim: termix-ssh-nfs-pvc
+#     globalMounts:
+#       - path: /app/data
 
 # Additional volumes on the output Deployment definition.
-volumes: []
-  # - name: foo
-  #   secret:
-  #     secretName: mysecret
-  #     optional: false
+volumes:
+  - name: termix-ssh-data
+    persistentVolumeClaim:
+      claimName: termix-ssh-nfs-pvc
 
 # Additional volumeMounts on the output Deployment definition.
-volumeMounts: []
-  # - name: foo
-  #   mountPath: "/etc/foo"
-  #   readOnly: true
+volumeMounts:
+  - name: termix-ssh-data
+    mountPath: /app/data
 
 nodeSelector: {}
 
