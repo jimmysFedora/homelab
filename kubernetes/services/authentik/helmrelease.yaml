@@ -17,12 +17,12 @@ spec:
   targetNamespace: default
   chart:
     spec:
-      chart: ./kubernetes/services/authentik/my-authentik
+      chart: authentik
       valuesFiles:
         - ./kubernetes/services/authentik/my-authentik/values.yaml
       sourceRef:
-        kind: GitRepository
-        name: flux-system
+        kind: HelmRepository
+        name: authentik
         namespace: flux-system
   install:
       remediation:
