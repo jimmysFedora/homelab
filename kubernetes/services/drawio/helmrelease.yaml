@@ -10,7 +10,9 @@ spec:
     spec:
       chart: ./kubernetes/services/drawio/my-drawio
       valuesFiles:
-        - ./kubernetes/services/drawio/my-drawio/values.yaml
+        - ./kubernetes/services/drawio/my-drawio/dev-values.yaml
+        - ./kubernetes/services/drawio/my-drawio/staging-values.yaml
+        - ./kubernetes/services/drawio/my-drawio/prod-values.yaml
       sourceRef:
         kind: GitRepository
         name: flux-system
