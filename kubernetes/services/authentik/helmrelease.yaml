@@ -67,8 +67,9 @@ spec:
     postgresql:
       enabled: false
 
-  remediation:
-    retries: 5
+  install:
+    remediation:
+      retries: 5
   upgrade:
     remediation:
       retries: 5
