@@ -1,5 +1,3 @@
-fullnameOverride: "authentik-prod"
-
 global:
   image:
     repository: ghcr.io/goauthentik/server
