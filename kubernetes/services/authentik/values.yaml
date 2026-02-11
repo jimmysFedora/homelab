@@ -12,11 +12,11 @@ global:
       value: "authentik"
     - name: AUTHENTIK_POSTGRESQL__NAME
       value: "authentik"
-    - name: AUTHENTIK_SECRET_KEY
-      valueFrom:
-        secretKeyRef:
-          name: "authentik-secrets"
-          key: "secret_key"
+    # - name: AUTHENTIK_SECRET_KEY
+    #   valueFrom:
+    #     secretKeyRef:
+    #       name: "authentik-secrets"
+    #       key: "secret_key"
     - name: AUTHENTIK_POSTGRESQL__PASSWORD
       valueFrom:
         secretKeyRef:
