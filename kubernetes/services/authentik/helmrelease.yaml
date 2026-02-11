@@ -24,13 +24,11 @@ spec:
         name: authentik
         namespace: flux-system
   valuesFrom:
-      - kind: GitRepository
-        name: flux-system
-        valuesKey: values.yaml
-        targetPath: kubernetes/services/authentik
+    - kind: ConfigMap
+      name: authentik-values
   install:
-      remediation:
-        retries: 5
+    remediation:
+      retries: 5
   upgrade:
     remediation:
       retries: 5
