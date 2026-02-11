@@ -19,12 +19,16 @@ spec:
   chart:
     spec:
       chart: authentik
-      valuesFiles:
-        - values.yaml  
       sourceRef:
         kind: HelmRepository
         name: authentik
         namespace: flux-system
+  valuesFrom:
+      - kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+        valuesKey: values.yaml
+        targetPath: kubernetes/services/authentik
   install:
       remediation:
         retries: 5
