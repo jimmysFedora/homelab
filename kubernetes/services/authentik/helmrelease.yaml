@@ -26,7 +26,6 @@ spec:
   valuesFrom:
       - kind: GitRepository
         name: flux-system
-        namespace: flux-system
         valuesKey: values.yaml
         targetPath: kubernetes/services/authentik
   install:
