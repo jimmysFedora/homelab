@@ -4,8 +4,3 @@ namespace: default
 resources:
   - helmrelease.yaml
   - templates/
-
-configMapGenerator:
-  - name: authentik-values
-    files:
-      - values.yaml
