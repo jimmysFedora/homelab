@@ -26,6 +26,7 @@ spec:
   valuesFrom:
     - kind: ConfigMap
       name: authentik-values
+      namespace: default
   install:
     remediation:
       retries: 5
