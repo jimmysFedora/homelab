@@ -25,49 +25,50 @@ spec:
         namespace: flux-system
   values:
     global:
-    image:
-      repository: ghcr.io/goauthentik/server
-      tag: "2025.12.3"
-      digest: "sha256:0e7e82b29a4c0899d0e2efa4a7a83452b48b6971faa3a87346f595ebf54fd74c"
-      pullPolicy: IfNotPresent
+      image:
+        repository: ghcr.io/goauthentik/server
+        tag: "2025.12.3"
+        digest: "sha256:0e7e82b29a4c0899d0e2efa4a7a83452b48b6971faa3a87346f595ebf54fd74c"
+        pullPolicy: IfNotPresent
 
-    env:
-      - name: AUTHENTIK_POSTGRESQL__HOST
-        value: "authentik-postgresql"
-      - name: AUTHENTIK_POSTGRESQL__USER
-        value: "authentik"
-      - name: AUTHENTIK_POSTGRESQL__NAME
-        value: "authentik"
-      - name: AUTHENTIK_SECRET_KEY
-        valueFrom:
-          secretKeyRef:
-            name: "authentik-secrets"
-            key: "secret_key"
-      - name: AUTHENTIK_POSTGRESQL__PASSWORD
-        valueFrom:
-          secretKeyRef:
-            name: "authentik-secrets"
-            key: "DB_PASS"
+      env:
+        - name: AUTHENTIK_POSTGRESQL__HOST
+          value: "authentik-postgresql"
+        - name: AUTHENTIK_POSTGRESQL__USER
+          value: "authentik"
+        - name: AUTHENTIK_POSTGRESQL__NAME
+          value: "authentik"
+        - name: AUTHENTIK_SECRET_KEY
+          valueFrom:
+            secretKeyRef:
+              name: "authentik-secrets"
+              key: "secret_key"
+        - name: AUTHENTIK_POSTGRESQL__PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: "authentik-secrets"
+              key: "DB_PASS"
 
-  authentik:
-    existingSecret:
-      secretName: "authentik-secrets"
+    authentik:
+      existingSecret:
+        secretName: "authentik-secrets"
 
-  server:
-    ingress:
-      enabled: true
-      ingressClassName: traefik
-      hosts:
-        - authentik.mistyfumes.dev
-      tls:
-        - secretName: prod-mistyfumes-tls
-          hosts:
-            - authentik.mistyfumes.dev
+    server:
+      ingress:
+        enabled: true
+        ingressClassName: traefik
+        hosts:
+          - authentik.mistyfumes.dev
+        tls:
+          - secretName: prod-mistyfumes-tls
+            hosts:
+              - authentik.mistyfumes.dev
 
-  postgresql:
-    enabled: false
-    remediation:
-      retries: 5
+    postgresql:
+      enabled: false
+
+  remediation:
+    retries: 5
   upgrade:
     remediation:
       retries: 5
