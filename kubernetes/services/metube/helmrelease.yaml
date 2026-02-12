@@ -1,0 +1,25 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: metube
+  namespace: flux-system
+spec:
+  interval: 15m
+  targetNamespace: default
+  chart:
+    spec:
+      chart: ./kubernetes/services/metube
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+  valuesFrom:
+    - kind: ConfigMap
+      name: metube-values
+      valuesKey: values.yaml
+  install:
+      remediation:
+        retries: 5
+  upgrade:
+    remediation:
+      retries: 5
