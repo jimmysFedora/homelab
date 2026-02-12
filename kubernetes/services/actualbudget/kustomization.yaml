@@ -8,3 +8,5 @@ configMapGenerator:
     namespace: default
     files:
       - values.yaml
+    options:
+      disableNameSuffixHash: true
