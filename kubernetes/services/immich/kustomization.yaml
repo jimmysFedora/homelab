@@ -3,3 +3,10 @@ kind: Kustomization
 resources:
   - helmrelease.yaml
   - templates/
+configMapGenerator:
+  - name: immich-values
+    namespace: default
+    files:
+      - values.yaml
+    options:
+      disableNameSuffixHash: true
