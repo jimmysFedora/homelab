@@ -5,6 +5,12 @@ metadata:
   namespace: default
 data:
   values.yaml: |
+    image:
+      repository: actualbudget/actual-server
+      tag: "26.2.0"
+      digest: "sha256:c34346f87725b9cce5dca5af1a2a9b989127d592cc4c6af5cf4652d4a86def90"
+      pullPolicy: IfNotPresent
+
     strategy:
       type: Recreate
 
