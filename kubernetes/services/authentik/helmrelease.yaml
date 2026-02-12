@@ -14,8 +14,6 @@ metadata:
   namespace: flux-system
 spec:
   interval: 15m
-  releaseName: authentik
-  targetNamespace: default
   chart:
     spec:
       chart: authentik
@@ -28,6 +26,7 @@ spec:
     - kind: ConfigMap
       name: authentik-values
       valuesKey: values.yaml
+  releaseName: authentik
   install:
     remediation:
       retries: 5
