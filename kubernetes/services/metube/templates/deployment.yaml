@@ -42,7 +42,7 @@ spec:
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           envFrom:
             - configMapRef:
-                name: {{ include "metube.fullname" . }}-configMap
+                name: {{ include "metube.fullname" . }}-configmap
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
