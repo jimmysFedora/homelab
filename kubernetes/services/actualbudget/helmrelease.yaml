@@ -26,7 +26,7 @@ spec:
       interval: 5m
   valuesFrom:
     - kind: ConfigMap
-      name: actualbudget-configmap
+      name: actual-budget-values
       valuesKey: values.yaml
   releaseName: my-actualbudget
   install:
