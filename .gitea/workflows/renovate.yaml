@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     container: ghcr.io/renovatebot/renovate:latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
       - run: renovate
         env:
           RENOVATE_CONFIG_FILE: ${{ gitea.workspace }}/config.js
