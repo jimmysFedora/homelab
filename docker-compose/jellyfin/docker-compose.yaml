@@ -1,6 +1,6 @@
 services:
   jellyfin:
-    image: linuxserver/jellyfin:10.11.6@sha256:df1ccfdd214c39c9ae0595b5800591b52a6f87bbbab1bd4a53dc7be6852cf6b1
+    image: linuxserver/jellyfin:10.11.6@sha256:45814a5515fdb81cd41f5db946cfd53a3c5e91f0665b40b55bae30cab4b3cd2e
     container_name: jellyfin
     environment:
       - PUID=1000
