@@ -34,7 +34,7 @@ services:
       AUTHENTIK_POSTGRESQL__PASSWORD: ${PG_PASS}
       AUTHENTIK_POSTGRESQL__USER: ${PG_USER:-authentik}
       AUTHENTIK_SECRET_KEY: ${AUTHENTIK_SECRET_KEY:?secret key required}
-    image: ghcr.io/goauthentik/server:2025.12.3@sha256:bef3e7c6683abf478dbce324129dab72b9719e1217d0d58c0a0a7c897b2b276c
+    image: ghcr.io/goauthentik/server:2025.12.4@sha256:7cf98e1072610d3db55a5e7b69c8051e246342c0682f5cfc2e4f2a0b6d8af846
     ports:
       - ${COMPOSE_PORT_HTTP:-9000}:9000
       - ${COMPOSE_PORT_HTTPS:-9443}:9443
@@ -59,7 +59,7 @@ services:
       AUTHENTIK_POSTGRESQL__PASSWORD: ${PG_PASS}
       AUTHENTIK_POSTGRESQL__USER: ${PG_USER:-authentik}
       AUTHENTIK_SECRET_KEY: ${AUTHENTIK_SECRET_KEY:?secret key required}
-    image: ghcr.io/goauthentik/server:2025.12.3@sha256:bef3e7c6683abf478dbce324129dab72b9719e1217d0d58c0a0a7c897b2b276c
+    image: ghcr.io/goauthentik/server:2025.12.4@sha256:7cf98e1072610d3db55a5e7b69c8051e246342c0682f5cfc2e4f2a0b6d8af846
     restart: unless-stopped
     user: root
     volumes:
