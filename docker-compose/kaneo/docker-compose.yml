@@ -30,7 +30,7 @@ services:
       - default
 
   web:
-    image: ghcr.io/usekaneo/web:2.0.9@sha256:55d640e7c56759e0ce15665a6d0012deef48ff470b0d7699e6c2d0dd29e47531
+    image: ghcr.io/usekaneo/web:2.2.1@sha256:130aa1b98eea13164fe48c2982a53a2170f6c08d363fc57c682d0edfe9d388a1
     ports:
       - 5173:5173
     env_file:
