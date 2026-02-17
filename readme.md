@@ -7,6 +7,7 @@ This production-esque homelab runs 50+ containerized services across Kubernetes 
 - **Automation**: FluxCD, Renovate Bot, Terraform
 - **Networking**: Traefik, Tailscale, Pangolin
 - **Auth**: Authentik SSO
+- **Secrets Management**: Sealed Secrets
 
 ## Stack
 - Multiple self hosted services ranging from simple stateless apps to complex stateful services with external databases and caching layers running on Kubernetes.
