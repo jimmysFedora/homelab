@@ -1,10 +1,16 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:recommended"],
+  "extends": [
+    "config:recommended"
+  ],
   "dependencyDashboard": true,
   "dependencyDashboardTitle": "Renovate Dashboard",
-  "assignees": ["sly"],
-  "labels": ["renovate"],
+  "assignees": [
+    "sly"
+  ],
+  "labels": [
+    "renovate"
+  ],
   "configMigration": true,
   "prHourlyLimit": 0,
   "docker-compose": {
@@ -16,32 +22,46 @@
     ],
     "packageRules": [
       {
-        "matchPackageNames": ["getmeili/meilisearch"],
+        "matchPackageNames": [
+          "getmeili/meilisearch"
+        ],
         "enabled": false
       },
       {
-        "matchPackageNames": ["postgres"],
+        "matchPackageNames": [
+          "postgres"
+        ],
         "enabled": false
       },
       {
-        "matchPackageNames": ["ghcr.io/immich-app/postgres"],
+        "matchPackageNames": [
+          "ghcr.io/immich-app/postgres"
+        ],
         "enabled": false
       },
       {
-        "matchPackagePrefixes": ["quay.io/jetstack/cert-manager-"],
         "groupName": "cert-manager",
-        "groupSlug": "cert-manager"
+        "groupSlug": "cert-manager",
+        "matchPackageNames": [
+          "quay.io/jetstack/cert-manager-{/,}**"
+        ]
       },
       {
-        "matchPackageNames": ["docker.io/library/postgres"],
+        "matchPackageNames": [
+          "docker.io/library/postgres"
+        ],
         "enabled": false
       }
     ]
   },
   "flux": {
-    "managerFilePatterns": ["/\\.yaml$/"]
+    "managerFilePatterns": [
+      "/\\.yaml$/"
+    ]
   },
   "kubernetes": {
-    "managerFilePatterns": ["/kubernetes/.+\\.yaml$/"]
+    "managerFilePatterns": [
+      "/kubernetes/.+\\.yaml$/"
+    ]
   }
 }
