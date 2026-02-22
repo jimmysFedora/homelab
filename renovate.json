@@ -28,6 +28,11 @@
         "enabled": false
       },
       {
+        "matchPackagePrefixes": ["quay.io/jetstack/cert-manager-"],
+        "groupName": "cert-manager",
+        "groupSlug": "cert-manager"
+      },
+      {
         "matchPackageNames": ["docker.io/library/postgres"],
         "enabled": false
       }
