@@ -10,3 +10,11 @@ configMapGenerator:
       - values.yaml
     options:
       disableNameSuffixHash: true
+patches:
+  - patch: |-
+      - op: replace
+        path: /spec/valuesFrom/0/name
+        value: prod-actual-budget-values
+    target:
+      kind: HelmRelease
+      name: actual-budget
