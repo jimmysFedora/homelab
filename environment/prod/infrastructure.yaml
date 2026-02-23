@@ -1,0 +1,12 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: infra-sources
+  namespace: flux-system
+spec:
+  interval: 1h
+  path: ./kubernetes/infrastructure/sources # Flux will now find your repo here
+  sourceRef:
+    kind: GitRepository
+    name: flux-system
+  prune: true
