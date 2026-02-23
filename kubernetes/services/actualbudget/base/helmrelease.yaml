@@ -28,7 +28,6 @@ spec:
     - kind: ConfigMap
       name: actual-budget-values
       valuesKey: values.yaml
-  releaseName: my-actualbudget
   install:
     remediation:
       retries: 3
