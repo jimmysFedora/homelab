@@ -25,4 +25,4 @@ ingress:
 
 persistence:
   enabled: true
-  existingClaim: actualbudget-nfs-pvc
+  existingClaim: prod-actualbudget-nfs-pvc
