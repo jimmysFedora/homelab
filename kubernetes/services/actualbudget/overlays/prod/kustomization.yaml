@@ -4,6 +4,7 @@ namePrefix: prod-
 namespace: default
 resources:
   - ../../base
+  - pvc.yaml
 configMapGenerator:
   - name: actual-budget-values
     files:
