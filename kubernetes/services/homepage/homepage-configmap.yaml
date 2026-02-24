@@ -480,7 +480,7 @@ data:
 
 
     background: 
-      image: https://homepage.mistyfumes.dev/images/IMG_5650.jpg
+      image: /images/IMG_5650.jpg
       blur: none
       saturate: 100 # 0, 50, 100... see https://tailwindcss.com/docs/backdrop-saturate
       brightness: 50 # 0, 50, 75... see https://tailwindcss.com/docs/backdrop-brightness

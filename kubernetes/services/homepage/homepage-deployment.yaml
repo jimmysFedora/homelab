@@ -57,15 +57,19 @@ spec:
             - mountPath: /app/config/custom.js
               name: homepage-config-volume
               subPath: custom.js
-            - mountPath: /app/config/logs
-              name: homepage-logs
             - mountPath: /app/config/proxmox.yaml
               name: homepage-config-volume
               subPath: proxmox.yaml
+            - mountPath: /app/config/logs
+              name: homepage-nfs-data
+              subPath: logs
+            - mountPath: /app/public/images
+              name: homepage-nfs-data
+              subPath: images
       volumes:
         - name: homepage-config-volume
           configMap:
             name: homepage
-        - name: homepage-logs
+        - name: homepage-nfs-data
           persistentVolumeClaim:
             claimName: homepage-nfs-pvc
