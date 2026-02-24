@@ -41,10 +41,10 @@ data:
   proxmox.yaml: ""
   services.yaml: |
     - Infrastructure:
-        - prx-prod-1: 
+        - prx-nv-1: 
             icon: proxmox
-            href: https://prx-prod-1.mistyfumes.dev
-            description: on proxmox-prod-1
+            href: https://prx-nv-1.mistyfumes.dev
+            description: on proxmox-nv-1
             siteMonitor: https://192.168.1.30:8006
             widget:
                 type: proxmox
@@ -103,43 +103,43 @@ data:
             href: https://beszel.mistyfumes.dev
             description: bezel-prod-1
             siteMonitor: https://beszel.mistyfumes.dev
-            widget:
-                type: beszel
-                url: https://beszel.mistyfumes.dev
-                username: {{HOMEPAGE_VAR_BESZEL_USERNAME}}
-                password: {{HOMEPAGE_VAR_BESZEL_PASSWORD}}
-                systemId: docker_host
-                version: 2
+            # widget:
+            #     type: beszel
+            #     url: https://beszel.mistyfumes.dev
+            #     username: {{HOMEPAGE_VAR_BESZEL_USERNAME}}
+            #     password: {{HOMEPAGE_VAR_BESZEL_PASSWORD}}
+            #     systemId: docker_host
+            #     version: 2
 
         - Grafana:
             icon: grafana
             href: https://grafana.dev.mistyfumes.dev
             description: grafana-dev-1
             siteMonitor: https://grafana.dev.mistyfumes.dev
-            widget:
-                type: grafana
-                version: 2 # optional, default is 1
-                alerts: alertmanager # optional, default is grafana
-                url: https://grafana.dev.mistyfumes.dev
-                username: {{HOMEPAGE_VAR_GRAFANA_USERNAME}}
-                password: {{HOMEPAGE_VAR_GRAFANA_PASSWORD}}
+            # widget:
+            #     type: grafana
+            #     version: 2 # optional, default is 1
+            #     alerts: alertmanager # optional, default is grafana
+            #     url: https://grafana.dev.mistyfumes.dev
+            #     username: {{HOMEPAGE_VAR_GRAFANA_USERNAME}}
+            #     password: {{HOMEPAGE_VAR_GRAFANA_PASSWORD}}
 
         - Portainer:
             icon: portainer
             href: https://portainer.mistyfumes.dev
             description: portainer-prod-1
             siteMonitor: https://portainer.mistyfumes.dev
-            widget:
-              type: portainer
-              url: https://portainer.mistyfumes.dev
-              env: {{HOMEPAGE_VAR_PORTAINER_ENV}}
-              key: {{HOMEPAGE_VAR_PORTAINER_API_KEY}}
+            # widget:
+            #   type: portainer
+            #   url: https://portainer.mistyfumes.dev
+            #   env: {{HOMEPAGE_VAR_PORTAINER_ENV}}
+            #   key: {{HOMEPAGE_VAR_PORTAINER_API_KEY}}
 
-        - Wazuh:
-            icon: wazuh
-            href: https://wazuh-prod-1.mistyfumes.dev
-            description: Security Platform
-            siteMonitor: https://192.168.1.225:443
+        # - Wazuh:
+        #     icon: wazuh
+        #     href: https://wazuh-prod-1.mistyfumes.dev
+        #     description: Security Platform
+        #     siteMonitor: https://192.168.1.225:443
 
     - GitOps:
         - Gitea:
@@ -162,14 +162,14 @@ data:
             icon: komodo
             href: http://komodo.mistyfumes.dev
             description: komodo-demo-1
-            siteMonitor: http://192.168.1.213:3000
-            widget:
-                type: komodo
-                url: http://192.168.1.213:9120
-                key: {{HOMEPAGE_VAR_KOMODO_KEY}}
-                secret: {{HOMEPAGE_VAR_KOMODO_SECRET}}
-                showSummary: true
-                showStacks: true
+            siteMonitor: http://komodo.mistyfumes.dev
+            # widget:
+            #     type: komodo
+            #     url: http://192.168.1.213:9120
+            #     key: {{HOMEPAGE_VAR_KOMODO_KEY}}
+            #     secret: {{HOMEPAGE_VAR_KOMODO_SECRET}}
+            #     showSummary: true
+            #     showStacks: true
 
     - Gateways:
         - AdGuard Home:
@@ -229,9 +229,9 @@ data:
             href: https://traefik.mistyfumes.dev/dashboard/
             description: traefik-prod-1
             siteMonitor: https://traefik.mistyfumes.dev/dashboard/
-            widget:
-                type: traefik
-                url: https://traefik.mistyfumes.dev/dashboard/
+            # widget:
+            #     type: traefik
+            #     url: https://traefik.mistyfumes.dev/dashboard/
 
     - Media:
         - Jellyseerr:
@@ -240,10 +240,10 @@ data:
             description: jellyserr-demo-1
             siteMonitor: http://192.168.1.213:5055
             statusStyle: 'dot'
-            widget:
-                type: jellyseerr
-                url: http://192.168.1.213:5055
-                key: {{HOMEPAGE_VAR_JELLYSEERR_KEY}}
+            # widget:
+            #     type: jellyseerr
+            #     url: http://192.168.1.213:5055
+            #     key: {{HOMEPAGE_VAR_JELLYSEERR_KEY}}
         
         - Prowlarr:
             icon: prowlarr
@@ -251,10 +251,10 @@ data:
             description: prowlarr-demo-1
             siteMonitor: http://192.168.1.213:9696
             statusStyle: 'dot'
-            widget:
-                type: prowlarr
-                url: http://192.168.1.213:9696
-                key: {{HOMEPAGE_VAR_PROWLARR_KEY}}
+            # widget:
+            #     type: prowlarr
+            #     url: http://192.168.1.213:9696
+            #     key: {{HOMEPAGE_VAR_PROWLARR_KEY}}
 
         - Sonarr:
             icon: sonarr
@@ -262,10 +262,10 @@ data:
             description: sonarr-demo-1
             siteMonitor: http://192.168.1.213:8989
             statusStyle: 'dot'   
-            widget:
-                type: sonarr
-                url: http://192.168.1.213:8989
-                key: {{HOMEPAGE_VAR_SONARR_KEY}}
+            # widget:
+            #     type: sonarr
+            #     url: http://192.168.1.213:8989
+            #     key: {{HOMEPAGE_VAR_SONARR_KEY}}
 
         - Radarr:
             icon: radarr
@@ -273,11 +273,11 @@ data:
             description: radarr-demo-1
             siteMonitor: http://192.168.1.213:7878
             statusStyle: 'dot'        
-            widget:
-                type: radarr
-                url: http://192.168.1.213:7878
-                key: {{HOMEPAGE_VAR_RADARR_KEY}}
-                enableQueue: true
+            # widget:
+            #     type: radarr
+            #     url: http://192.168.1.213:7878
+            #     key: {{HOMEPAGE_VAR_RADARR_KEY}}
+            #     enableQueue: true
 
         - Wizarr:
             icon: wizarr
@@ -285,26 +285,26 @@ data:
             description: Invite Manager
             siteMonitor: http://192.168.1.213:5690
             statusStyle: dot
-            widget:
-                type: customapi
-                url: http://192.168.1.213:5690/api/status
-                refreshInterval: 20000 # update every 20s
-                headers:
-                    X-API-Key: {{HOMEPAGE_VAR_WIZARR_API_KEY}}
-                display: block
-                mappings:
-                    - field: users
-                      label: Users
-                      format: number
-                    - field: invites
-                      label: Invites
-                      format: number
-                    - field: pending
-                      label: Pending
-                      format: number
-                    - field: expired
-                      label: Expired
-                      format: number
+            # widget:
+            #     type: customapi
+            #     url: http://192.168.1.213:5690/api/status
+            #     refreshInterval: 20000 # update every 20s
+            #     headers:
+            #         X-API-Key: {{HOMEPAGE_VAR_WIZARR_API_KEY}}
+            #     display: block
+            #     mappings:
+            #         - field: users
+            #           label: Users
+            #           format: number
+            #         - field: invites
+            #           label: Invites
+            #           format: number
+            #         - field: pending
+            #           label: Pending
+            #           format: number
+            #         - field: expired
+            #           label: Expired
+            #           format: number
 
         - qBittorrent:
             icon: qbittorrent
@@ -326,16 +326,16 @@ data:
             description: Media Streaming
             siteMonitor: https://jellyfin.mistyfumes.dev
             statusStyle: 'dot'
-            widget:
-                type: jellyfin
-                url: https://jellyfin.mistyfumes.dev
-                key: {{HOMEPAGE_VAR_JELLYFIN_KEY}}
-                enableBlocks: true
-                enableNowPlaying: true
-                enableUser: true
-                enableMediaControl: false
-                showEpisodeNumber: true
-                expandOneStreamToTwoRows: false
+            # widget:
+            #     type: jellyfin
+            #     url: https://jellyfin.mistyfumes.dev
+            #     key: {{HOMEPAGE_VAR_JELLYFIN_KEY}}
+            #     enableBlocks: true
+            #     enableNowPlaying: true
+            #     enableUser: true
+            #     enableMediaControl: false
+            #     showEpisodeNumber: true
+            #     expandOneStreamToTwoRows: false
 
         - Immich:
             icon: immich
@@ -384,13 +384,6 @@ data:
             siteMonitor: https://bytestash.mistyfumes.dev
             statusStyle: 'dot'
 
-        - Compose Toolbox:
-            icon: docker
-            href: https://compose-toolbox.mistyfumes.dev
-            description: Docker Compose Tools
-            siteMonitor: https://compose-toolbox.mistyfumes.dev
-            statusStyle: 'dot'
-
         - DNS Visualizer:
             icon: adguard-home
             href: https://dns-visualizer.mistyfumes.dev
@@ -413,10 +406,10 @@ data:
             statusStyle: 'dot'
         
         - Kaneo:
-            icon: /icons/kaneo.png
+            icon: https://avatars.githubusercontent.com/u/192649426?s=200&v=4
             href: https://kaneo.mistyfumes.dev
             description: Project Management
-            siteMonitor: http://192.168.1.213:5173
+            siteMonitor: https://kaneo.mistyfumes.dev
             statusStyle: 'dot'
         
         - Karakeep:
@@ -446,9 +439,9 @@ data:
             description: mc-prod-1
             siteMonitor: udp://mc.mistyfumes.dev:25565
             statusStyle: 'dot'
-            widget:
-              type: minecraft
-              url: udp://mc.mistyfumes.dev:25565
+            # widget:
+            #   type: minecraft
+            #   url: udp://mc.mistyfumes.dev:25565
 
         - paperlessNGX:
             icon: paperless
@@ -501,7 +494,7 @@ data:
       Monitoring:
         tab: Infrastructure
         style: row
-        columns: 4
+        columns: 3
         useEqualHeights: false
         icon: mdi-shield-lock-#FFFFFF    
       
