@@ -34,70 +34,28 @@ This is a dump from my self hosted instance of my Git repository meant for emplo
 | Custom Server | AI Workloads & Hyper-V | AMD Ryzen 7 3700X | 64GB DDR4 |  RTX 2060 Super | |960GB SM863a SSD
 
 ---
+## Apps
 
-## 📂 Repository Structure
+| Icon | Name | Description |
+|------|------|-------------|
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/flux-cd.png" width="30" alt="FluxCD logo"> | [FluxCD](https://fluxcd.io/) | A GitOps tool for automating Kubernetes deployments from Git repositories. |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/grafana.png" width="30" alt="Grafana logo"> | [Grafana](https://grafana.com/) | A multi-platform analytics and visualization web application for monitoring data. |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/prometheus.png" width="30" alt="Prometheus logo"> | [Prometheus](https://prometheus.io/) | An open-source monitoring and alerting toolkit for containers and microservices. |
+| <img src="https://avatars.githubusercontent.com/ml/287?s=82&v=4" width="30" alt="Renovate logo"> | [Renovate](https://www.mend.io/renovate/) | An automated dependency update tool that creates and maintains pull requests for your dependencies. |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/authentik.png" width="30" alt="Authentik logo"> | [Authentik](https://goauthentik.io/) | An open-source identity and access management platform providing authentication, authorization, and single sign-on (SSO) capabilities. |
 
-```
-homelab/
-├── docker/                             
-│   ├── actual-budget/                  # Personal finance & budgeting
-│   ├── adguard-home/                   # Network-wide DNS & ad-blocking
-│   ├── american-truck-simulator/       # Game server
-│   ├── arr-stack/                      # Media automation
-│   ├── authentik/                      # Identity & SSO provider
-│   ├── beszel/                         # Lightweight resource monitoring
-│   ├── bytestash/                      # Code snippet manager
-│   ├── dns-visualizer/                 # Real-time DNS traffic mapping
-│   ├── gitea/                          # Self-hosted Git service
-│   ├── homepage/                       # Central service dashboard
-│   ├── immich/                         # AI-powered photo gallery
-│   ├── it-tools/                       # Swiss-army-knife for developers
-│   ├── jellyfin/                       # Media streaming server
-│   ├── kaneo/                          # Project management
-│   ├── karakeep/                       # AI bookmarking tool
-│   ├── komodo/                         # GitOps for Docker
-│   ├── linkwarden/                     # Self-hosted collaborative bookmarking
-│   ├── lubelogger/                     # Vehicle maintenance tracker
-│   ├── metube/                         # YouTube downloader (GUI)
-│   ├── minecraft/                      # Game server
-│   ├── navidrome/                      # Music streaming server
-│   ├── open-webui/                     # LLM interface (Ollama/OpenAI)
-│   ├── paperless-ngx/                  # Document management system
-│   ├── portainer/                      # Container management GUI
-│   ├── random-video-game/              # Custom Discord bot
-│   ├── syncthing/                      # P2P file synchronization
-│   ├── termix/                         # Web-based terminal/SSH
-│   └── traefik/                        # reverse proxy
-├── kubernetes/
-│   ├── infrastructure/                 # Cluster Controllers & Routing
-│   │   ├── cert-manager/               # contains base/ and overlays/
-│   │   └── traefik/                    # Consolidated IngressRoutes (adguard, gitea, etc.)
-│   ├── services/                       # Helm Charts & Kustomizations
-│   │   ├── actualbudget/               # HelmRelease + values
-│   │   ├── adguard/                    # Manifests (deployment, svc, ingress)
-│   │   ├── authentik/                  # templates/ + helmrelease
-│   │   ├── bytestash/                  # full helm chart structure
-│   │   ├── drawio/                     # my-drawio/ subfolder + helmrelease
-│   │   ├── homepage/                   # standard manifests
-│   │   ├── immich/                     # templates/ + helmrelease
-│   │   ├── it-tools/                   # my-it-tools/ + helmrelease
-│   │   ├── kaneo/                      # API/Web/Postgres manifests
-│   │   ├── kube-prometheus-stack/      # values.yaml
-│   │   ├── metube/                     # full helm chart structure
-│   │   ├── nginx/                      # simple manifests
-│   │   └── termix-ssh/                 # my-termix-ssh/ + helmrelease
-│   └── clusters/                       # Flux Environments
-│       ├── dev/
-│       ├── staging/
-│       └── prod/                       
-│           ├── flux-system/            
-│           └── releases/               
-├── scripts/                            
-│   └── docker-install.sh
-├── .gitignore
-├── renovate.json
-├── config.js                           
-├── cert-manager-repository.yaml        
-├── k3s.yaml
-└── README.md
-```
+#### Productivity & Knowledge Management
+| Icon | Name | Description |
+|------|------|-------------|
+| <img src="https://avatars.githubusercontent.com/u/122929872?s=48&v=4" width="30" alt="Homepage logo"> | [Homepage](https://gethomepage.dev/) | A self-hosted dashboard that allows you to organize your web services and bookmarks in a clean, customizable interface. |
+
+#### Media & Content
+| Icon | Name | Description |
+|------|------|-------------|
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/immich.png" width="30" alt="Immich logo"> | [Immich](https://immich.app/) | A high-performance self-hosted photo and video backup solution with features like automatic backup, timeline view, and ML-powered search. |
+
+
+#### Lifestyle or Personal
+| Icon | Name | Description |
+|------|------|-------------|
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/minecraft.png" width="30" alt="Minecraft logo"> | Minecraft | A Minecraft server for building and exploring with friends. |
