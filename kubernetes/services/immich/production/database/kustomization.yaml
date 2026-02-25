@@ -1,0 +1,4 @@
+resources:
+  - immich-postgres-deployment.yaml
+  - immich-postgres-pvc.yaml
+  - immich-postgres-svc.yaml
