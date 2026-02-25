@@ -8,9 +8,7 @@ spec:
   targetNamespace: default
   chart:
     spec:
-      chart: ./kubernetes/services/it-tools/my-it-tools
-      valuesFiles:
-        - ./kubernetes/services/it-tools/my-it-tools/prod-values.yaml
+      chart: ./kubernetes/services/it-tools/charts/it-tools
       sourceRef:
         kind: GitRepository
         name: flux-system
