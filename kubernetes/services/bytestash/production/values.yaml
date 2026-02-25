@@ -1,0 +1,23 @@
+image:
+  tag: "1.5.11@sha256:0b18d858623855e34cf14354c360e155cb742c46c17e843a85b978ce8af83396"
+
+ingress:
+  enabled: true
+  hosts:
+    - host: bytestash.mistyfumes.dev
+      paths:
+        - path: /
+          pathType: ImplementationSpecific
+  tls:
+    - secretName: prod-mistyfumes-tls
+      hosts:
+        - bytestash.mistyfumes.dev
+
+volumes:
+  - name: bytestash-data
+    persistentVolumeClaim:
+      claimName: bytestash-nfs-pvc
+
+volumeMounts:
+  - name: bytestash-data
+    mountPath: "/data/snippets"

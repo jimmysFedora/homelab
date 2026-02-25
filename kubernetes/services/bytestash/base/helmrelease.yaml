@@ -8,7 +8,7 @@ spec:
   timeout: 5m
   chart:
     spec:
-      chart: ./kubernetes/services/bytestash
+      chart: ./kubernetes/services/bytestash/charts/bytestash
       sourceRef:
         kind: GitRepository
         name: flux-system
