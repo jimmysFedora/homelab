@@ -8,13 +8,15 @@ spec:
   targetNamespace: default
   chart:
     spec:
-      chart: ./kubernetes/services/termix-ssh/my-termix-ssh
-      valuesFiles:
-        - ./kubernetes/services/termix-ssh/my-termix-ssh/prod-values.yaml
+      chart: ./kubernetes/services/termix-ssh/charts/termix-ssh
       sourceRef:
         kind: GitRepository
         name: flux-system
         namespace: flux-system
+  valuesFrom:
+    - kind: ConfigMap
+      name: termix-ssh-values
+      valuesKey: values.yaml
   install:
       remediation:
         retries: 5
