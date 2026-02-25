@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "my-termix-ssh.name" -}}
+{{- define "termix-ssh.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "my-termix-ssh.fullname" -}}
+{{- define "termix-ssh.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "my-termix-ssh.chart" -}}
+{{- define "termix-ssh.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "my-termix-ssh.labels" -}}
-helm.sh/chart: {{ include "my-termix-ssh.chart" . }}
-{{ include "my-termix-ssh.selectorLabels" . }}
+{{- define "termix-ssh.labels" -}}
+helm.sh/chart: {{ include "termix-ssh.chart" . }}
+{{ include "termix-ssh.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,17 +45,17 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "my-termix-ssh.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "my-termix-ssh.name" . }}
+{{- define "termix-ssh.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "termix-ssh.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
 
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "my-termix-ssh.serviceAccountName" -}}
+{{- define "termix-ssh.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "my-termix-ssh.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "termix-ssh.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}

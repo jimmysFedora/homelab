@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "my-termix-ssh.fullname" . }}
+  name: {{ include "termix-ssh.fullname" . }}
   labels:
-    {{- include "my-termix-ssh.labels" . | nindent 4 }}
+    {{- include "termix-ssh.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "my-termix-ssh.fullname" . }}
+    name: {{ include "termix-ssh.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:

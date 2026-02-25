@@ -8,6 +8,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./kubernetes/services/termix-ssh
+  path: ./kubernetes/services/termix-ssh/production
   prune: true
   targetNamespace: default

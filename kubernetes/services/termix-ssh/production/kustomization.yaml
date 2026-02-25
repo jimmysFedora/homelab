@@ -1,0 +1,10 @@
+resources:
+  - termix-ssh-pvc.yaml
+  - ../base
+configMapGenerator:
+  - name: termix-ssh-values
+    namespace: default
+    files:
+      - values.yaml
+    options:
+      disableNameSuffixHash: true
