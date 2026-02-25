@@ -8,6 +8,6 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./kubernetes/services/drawio
+  path: ./kubernetes/services/drawio/production
   prune: true
   targetNamespace: default

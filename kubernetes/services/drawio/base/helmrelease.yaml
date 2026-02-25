@@ -8,10 +8,12 @@ spec:
   targetNamespace: default
   chart:
     spec:
-      chart: ./kubernetes/services/drawio/my-drawio
-      valuesFiles:
-        - ./kubernetes/services/drawio/my-drawio/prod-values.yaml
+      chart: ./kubernetes/services/drawio/charts/drawio
       sourceRef:
         kind: GitRepository
         name: flux-system
         namespace: flux-system
+  valuesFrom:
+    - kind: ConfigMap
+      name: drawio-values
+      valuesKey: values.yaml
