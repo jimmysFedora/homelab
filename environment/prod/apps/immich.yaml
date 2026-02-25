@@ -8,5 +8,5 @@ spec:
   sourceRef:
     kind: GitRepository
     name: flux-system
-  path: ./kubernetes/services/immich
+  path: ./kubernetes/services/immich/production
   prune: true
