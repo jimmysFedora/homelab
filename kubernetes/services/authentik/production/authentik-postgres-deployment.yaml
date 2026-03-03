@@ -1,9 +1,10 @@
 apiVersion: apps/v1
-kind: Deployment
+kind: StatefulSet
 metadata:
   name: authentik-postgresql
   namespace: default
 spec:
+  serviceName: authentik-postgresql
   replicas: 1
   selector:
     matchLabels:
@@ -15,6 +16,8 @@ spec:
     spec:
       securityContext:
         fsGroup: 999
+      nodeSelector:
+        kubernetes.io/hostname: debian-kg4
       containers:
         - name: postgres
           image: docker.io/library/postgres:16-alpine
@@ -29,13 +32,13 @@ spec:
                   name: "authentik-secrets"
                   key: "DB_PASS"
             - name: PGDATA
-              value: /var/lib/postgresql/data/pgdata
+              value: "/var/lib/postgresql/data/pgdata"
           ports:
             - containerPort: 5432
           volumeMounts:
             - name: data
-              mountPath: /var/lib/postgresql/data
+              mountPath: "/var/lib/postgresql/data"
       volumes:
         - name: data
           persistentVolumeClaim:
-            claimName: "authentik-db-nfs-pvc"
+            claimName: "authentik-db-local-pvc"
