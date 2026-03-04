@@ -10,3 +10,14 @@ configMapGenerator:
       - values.yaml=dev-values.yaml
     options:
       disableNameSuffixHash: true
+patches:
+  - patch: |-
+      - op: add
+        path: /spec/valuesFrom
+        value:
+          - kind: ConfigMap
+            name: dev-actual-budget-values
+            valuesKey: values.yaml
+    target:
+      kind: HelmRelease
+      name: actual-budget
