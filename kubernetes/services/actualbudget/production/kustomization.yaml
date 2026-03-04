@@ -13,9 +13,12 @@ configMapGenerator:
       disableNameSuffixHash: true
 patches:
   - patch: |-
-      - op: replace
-        path: /spec/valuesFrom/0/name
-        value: prod-actual-budget-values
+      - op: add
+        path: /spec/valuesFrom
+        value:
+          - kind: ConfigMap
+            name: prod-actual-budget-values
+            valuesKey: values.yaml
     target:
       kind: HelmRelease
       name: actual-budget
