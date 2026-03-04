@@ -3,7 +3,7 @@ kind: Kustomization
 namePrefix: prod-
 namespace: default
 resources:
-  - ../../base
+  - ../../base/actualbudget
   - pvc.yaml
 configMapGenerator:
   - name: actual-budget-values
