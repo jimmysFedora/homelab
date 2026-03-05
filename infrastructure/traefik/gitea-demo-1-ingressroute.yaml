@@ -57,11 +57,3 @@ spec:
     services:
     - name: gitea-demo-1
       port: 2222
----
-apiVersion: traefik.io/v1alpha1
-kind: ServersTransport
-metadata:
-  name: insecure-transport
-  namespace: default
-spec:
-  insecureSkipVerify: true

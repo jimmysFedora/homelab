@@ -37,11 +37,3 @@ spec:
       serversTransport: wazuh-transport
   tls:
     secretName: prod-mistyfumes-tls
----
-apiVersion: traefik.io/v1alpha1
-kind: ServersTransport
-metadata:
-  name: wazuh-transport
-  namespace: default
-spec:
-  insecureSkipVerify: true
