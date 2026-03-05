@@ -3,7 +3,6 @@ kind: Kustomization
 resources:
   - authentik.yaml
   - bytestash.yaml
-  - cert-manager.yaml
   - drawio.yaml
   - homepage.yaml
   - immich.yaml
