@@ -5,7 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1h
-  path: ./kubernetes/infrastructure/sources # Flux will now find your repo here
+  path: ./infrastructure/sources
   sourceRef:
     kind: GitRepository
     name: flux-system
