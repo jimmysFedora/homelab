@@ -3,7 +3,7 @@ kind: Kustomization
 resources:
   - serverstransport.yaml
   - adguard-prod-ingressroute.yaml
-  - gitea-demo-1-ingressroute.yaml
+  # - gitea-demo-1-ingressroute.yaml apply manually
   # - immich-ingressroute.yaml
   - jellyfin-ingressroute.yaml
   - jellyseerr-ingressroute.yaml
