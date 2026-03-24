@@ -9,4 +9,4 @@ resources:
   - it-tools.yaml
   - kaneo.yaml
   - metube.yaml
-  - termix-ssh.yaml
+  # - termix-ssh.yaml
