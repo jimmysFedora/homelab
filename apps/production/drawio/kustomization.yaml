@@ -16,7 +16,7 @@ patches:
         path: /spec/valuesFrom
         value:
           - kind: ConfigMap
-            name: prod-drawio-values
+            name: drawio-values
             valuesKey: values.yaml
     target:
       kind: HelmRelease
