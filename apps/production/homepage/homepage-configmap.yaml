@@ -443,7 +443,7 @@ data:
 
         - paperlessNGX:
             icon: paperless
-            href: https://paperlessngx.mistyfumes.dev
+            href: https://paperless-ngx.mistyfumes.dev
             description: Document Management
             siteMonitor: http://192.168.1.213:8000
             statusStyle: 'dot'
