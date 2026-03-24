@@ -2,7 +2,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: drawio
-  namespace: flux-system
+  namespace: default
 spec:
   interval: 15m
   targetNamespace: default
@@ -13,7 +13,4 @@ spec:
         kind: GitRepository
         name: flux-system
         namespace: flux-system
-  valuesFrom:
-    - kind: ConfigMap
-      name: drawio-values
-      valuesKey: values.yaml
+  valuesFrom: []
