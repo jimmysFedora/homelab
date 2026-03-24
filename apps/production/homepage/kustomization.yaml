@@ -1,0 +1,7 @@
+resources:
+  - homepage-configmap.yaml
+  - homepage-deployment.yaml
+  - homepage-ingress.yaml
+  - homepage-pvc.yaml
+  - homepage-sealed-secret.yaml
+  - homepage-svc.yaml
