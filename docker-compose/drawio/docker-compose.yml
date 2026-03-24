@@ -1,7 +1,7 @@
 services:
   drawio:
     container_name: drawio
-    image: jgraph/drawio:29.3.6@sha256:c7c7f7912c2eb5e747978ad4d62a7f21c129df457d2e9711d0abc235993fdfa2
+    image: jgraph/drawio:29.6.5@sha256:80cd09f2ae4bf92579e1512de7c382ee1ba26cd529a666f5e940fb17d01becd3
     # ports:
     #   - 8080:8080
     restart: unless-stopped
