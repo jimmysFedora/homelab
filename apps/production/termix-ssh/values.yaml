@@ -52,7 +52,7 @@ resources:
 volumes:
   - name: termix-ssh-data
     persistentVolumeClaim:
-      claimName: termix-ssh-nfs-pvc
+      claimName: prod-termix-ssh-nfs-pvc
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
