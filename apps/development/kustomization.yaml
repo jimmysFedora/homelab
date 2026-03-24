@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - actualbudget
   - kube-prometheus-stack
+  - drawio
