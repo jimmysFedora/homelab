@@ -1,6 +1,6 @@
 services:
   gluetun:
-    image: qmcgaw/gluetun:3.41.1
+    image: qmcgaw/gluetun:v3.41.1
     container_name: gluetun
     # line above must be uncommented to allow external containers to connect.
     # See https://github.com/qdm12/gluetun-wiki/blob/main/setup/connect-a-container-to-gluetun.md#external-container-to-gluetun
@@ -94,10 +94,10 @@ services:
       - 8989:8989
     restart: unless-stopped
 
-  jellyseerr:
-    image: ghcr.io/fallenbagel/jellyseerr:2.7.3
+  seerr:
+    image: ghcr.io/seerr-team/seerr:v3.1.0@sha256:b35ba0461c4a1033d117ac1e5968fd4cbe777899e4cbfbdeaf3d10a42a0eb7e9
     init: true
-    container_name: jellyseerr
+    container_name: seerr
     environment:
       - LOG_LEVEL=debug
       - TZ=America/Denver
@@ -105,7 +105,7 @@ services:
     ports:
       - 5055:5055
     volumes:
-      - /mnt/docker-nfs/volumes/arr-stack-data/jellyseerr-config:/app/config
+      - /mnt/docker-nfs/volumes/arr-stack-data/seerr-config:/app/config
     healthcheck:
       test: wget --no-verbose --tries=1 --spider http://localhost:5055/api/v1/status || exit 1
       start_period: 20s
@@ -116,7 +116,7 @@ services:
 
   wizarr:
     container_name: wizarr
-    image: ghcr.io/wizarrrr/wizarr:2025.12.0
+    image: ghcr.io/wizarrrr/wizarr:v2026.2.1
     ports:
       - 5690:5690
     volumes:
