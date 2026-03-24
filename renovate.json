@@ -15,23 +15,71 @@
   "prHourlyLimit": 0,
   "packageRules": [
     {
-      "matchManagers": ["kubernetes"],
-      "matchFileNames": ["**/development/**"],
-      "groupName": "kubernetes-development-{{packageName}}"
-    },
-    {
-      "matchManagers": ["kubernetes"],
-      "matchFileNames": ["**/staging/**"],
-      "groupName": "kubernetes-staging-{{packageName}}"
-    },
-    {
-      "matchManagers": ["kubernetes"],
-      "matchFileNames": ["**/production/**"],
-      "groupName": "kubernetes-production-{{packageName}}"
-    },
-    {
       "matchManagers": ["docker-compose"],
-      "groupName": "docker-compose-{{packageName}}"
+      "groupName": "docker-compose-{{packageName}}",
+      "addLabels": ["docker-compose"],
+      "commitMessagePrefix": "chore(docker-compose):"
+    },
+    {
+      "matchManagers": ["kubernetes"],
+      "matchFileNames": ["kubernetes/**/development/**"],
+      "groupName": "kubernetes-development-{{packageName}}",
+      "addLabels": ["kubernetes", "development"],
+      "commitMessagePrefix": "chore(kubernetes/development):"
+    },
+    {
+      "matchManagers": ["kubernetes"],
+      "matchFileNames": ["kubernetes/**/staging/**"],
+      "groupName": "kubernetes-staging-{{packageName}}",
+      "addLabels": ["kubernetes", "staging"],
+      "commitMessagePrefix": "chore(kubernetes/staging):"
+    },
+    {
+      "matchManagers": ["kubernetes"],
+      "matchFileNames": ["kubernetes/**/production/**"],
+      "groupName": "kubernetes-production-{{packageName}}",
+      "addLabels": ["kubernetes", "production"],
+      "commitMessagePrefix": "chore(kubernetes/production):"
+    },
+    {
+      "matchManagers": ["flux"],
+      "matchFileNames": ["apps/**"],
+      "groupName": "flux-apps-{{packageName}}",
+      "addLabels": ["flux", "apps"],
+      "commitMessagePrefix": "chore(flux/apps):"
+    },
+    {
+      "matchManagers": ["flux"],
+      "matchFileNames": ["infrastructure/**"],
+      "groupName": "flux-infrastructure-{{packageName}}",
+      "addLabels": ["flux", "infrastructure"],
+      "commitMessagePrefix": "chore(flux/infrastructure):"
+    },
+    {
+      "matchManagers": ["flux"],
+      "matchFileNames": ["environment/**"],
+      "groupName": "flux-environment-{{packageName}}",
+      "addLabels": ["flux", "environment"],
+      "commitMessagePrefix": "chore(flux/environment):"
+    },
+    {
+      "groupName": "cert-manager",
+      "groupSlug": "cert-manager",
+      "addLabels": ["cert-manager"],
+      "commitMessagePrefix": "chore(cert-manager):",
+      "matchPackageNames": [
+        "quay.io/jetstack/cert-manager-{/,}**",
+        "cert-manager"
+      ]
+    },
+    {
+      "matchPackageNames": [
+        "getmeili/meilisearch",
+        "postgres",
+        "ghcr.io/immich-app/postgres",
+        "docker.io/library/postgres"
+      ],
+      "enabled": false
     }
   ],
   "docker-compose": {
@@ -39,39 +87,6 @@
       {
         "matchHost": "docker.io",
         "concurrentRequestLimit": 2
-      }
-    ],
-    "packageRules": [
-      {
-        "matchPackageNames": [
-          "getmeili/meilisearch"
-        ],
-        "enabled": false
-      },
-      {
-        "matchPackageNames": [
-          "postgres"
-        ],
-        "enabled": false
-      },
-      {
-        "matchPackageNames": [
-          "ghcr.io/immich-app/postgres"
-        ],
-        "enabled": false
-      },
-      {
-        "groupName": "cert-manager",
-        "groupSlug": "cert-manager",
-        "matchPackageNames": [
-          "quay.io/jetstack/cert-manager-{/,}**"
-        ]
-      },
-      {
-        "matchPackageNames": [
-          "docker.io/library/postgres"
-        ],
-        "enabled": false
       }
     ]
   },
