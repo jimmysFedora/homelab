@@ -13,6 +13,16 @@
   ],
   "configMigration": true,
   "prHourlyLimit": 0,
+  "packageRules": [
+    {
+      "matchManagers": ["kubernetes"],
+      "groupName": "kubernetes-{{packageName}}"
+    },
+    {
+      "matchManagers": ["docker-compose"],
+      "groupName": "docker-compose-{{packageName}}"
+    }
+  ],
   "docker-compose": {
     "hostRules": [
       {
