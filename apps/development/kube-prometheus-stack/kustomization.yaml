@@ -16,7 +16,7 @@ patches:
         path: /spec/valuesFrom
         value:
           - kind: ConfigMap
-            name: kube-prometheus-stack-values
+            name: dev-kube-prometheus-stack-values
             valuesKey: values.yaml
     target:
       kind: HelmRelease
