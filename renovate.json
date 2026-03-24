@@ -16,7 +16,18 @@
   "packageRules": [
     {
       "matchManagers": ["kubernetes"],
-      "groupName": "kubernetes-{{packageName}}"
+      "matchFileNames": ["**/development/**"],
+      "groupName": "kubernetes-development-{{packageName}}"
+    },
+    {
+      "matchManagers": ["kubernetes"],
+      "matchFileNames": ["**/staging/**"],
+      "groupName": "kubernetes-staging-{{packageName}}"
+    },
+    {
+      "matchManagers": ["kubernetes"],
+      "matchFileNames": ["**/production/**"],
+      "groupName": "kubernetes-production-{{packageName}}"
     },
     {
       "matchManagers": ["docker-compose"],
