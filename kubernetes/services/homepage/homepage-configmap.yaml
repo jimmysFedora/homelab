@@ -20,6 +20,11 @@ data:
               href: https://reddit.com/
               icon: reddit
 
+        - Steam Game Server Manager: 
+            - abbr: ST
+              href: https://steamcommunity.com/dev/managegameservers
+              icon: steam
+
         - Student Hub:
             - abbr: MSU
               href: https://www.msudenver.edu/studenthub/
@@ -234,14 +239,14 @@ data:
             #     url: https://traefik.mistyfumes.dev/dashboard/
 
     - Media:
-        - Jellyseerr:
-            icon: jellyseerr
+        - Seerr:
+            icon: seerr
             href: http://jellyseerr.mistyfumes.dev
-            description: jellyserr-demo-1
+            description: seerr-demo-1
             siteMonitor: http://192.168.1.213:5055
             statusStyle: 'dot'
             # widget:
-            #     type: jellyseerr
+            #     type: seerr
             #     url: http://192.168.1.213:5055
             #     key: {{HOMEPAGE_VAR_JELLYSEERR_KEY}}
         
@@ -384,13 +389,6 @@ data:
             siteMonitor: https://bytestash.mistyfumes.dev
             statusStyle: 'dot'
 
-        - DNS Visualizer:
-            icon: adguard-home
-            href: https://dns-visualizer.mistyfumes.dev
-            description: DNS Visualization
-            siteMonitor: https://dns-visualizer.mistyfumes.dev
-            statusStyle: 'dot'
-        
         - Draw.io:
             icon: draw-io
             href: https://drawio.mistyfumes.dev
@@ -466,11 +464,8 @@ data:
 
   settings.yaml: >
     headerStyle: boxed
-
     theme: dark
-
     hideErrors: false
-
 
     background: 
       image: /images/IMG_5650.jpg
