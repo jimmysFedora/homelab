@@ -462,7 +462,7 @@ data:
             siteMonitor: https://termix.mistyfumes.dev
             statusStyle: 'dot'
 
-  settings.yaml: >
+  settings.yaml: |
     headerStyle: boxed
     theme: dark
     hideErrors: false
