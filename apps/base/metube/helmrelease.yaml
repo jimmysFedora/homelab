@@ -7,15 +7,12 @@ spec:
   interval: 15m
   chart:
     spec:
-      chart: ./kubernetes/services/metube/charts/metube
+      chart: ./infrastructure/charts/metube
       sourceRef:
         kind: GitRepository
         name: flux-system
         namespace: flux-system
-  valuesFrom:
-    - kind: ConfigMap
-      name: metube-values
-      valuesKey: values.yaml
+  valuesFrom: []
   install:
       remediation:
         retries: 5

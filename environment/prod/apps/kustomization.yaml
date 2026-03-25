@@ -8,5 +8,5 @@ resources:
   - immich.yaml
   - it-tools.yaml
   - kaneo.yaml
-  - metube.yaml
+  # - metube.yaml
   # - termix-ssh.yaml
