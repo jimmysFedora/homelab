@@ -3,3 +3,4 @@ kind: Kustomization
 resources:
   - cert-manager
   - nfs-subdir-external-provisioner
+  - sealed-secrets
