@@ -37,7 +37,7 @@ patches:
         value: authentik-secrets
     target:
       kind: SealedSecret
-      name: authentik-secrets
+      name: prod-authentik-secrets
   - patch: |-
       - op: add
         path: /spec/valuesFrom
