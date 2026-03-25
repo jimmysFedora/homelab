@@ -1,0 +1,15 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: default
+resources:
+  - kaneo-api-deployment.yaml
+  - kaneo-api-ingress.yaml
+  - kaneo-api-svc.yaml
+  - kaneo-configmap.yaml
+  - kaneo-postgres-deployment.yaml
+  - kaneo-postgres-pvc.yaml
+  - kaneo-postgres-svc.yaml
+  - kaneo-sealed-secret.yaml
+  - kaneo-web-deployment.yaml
+  - kaneo-web-ingress.yaml
+  - kaneo-web-svc.yaml
