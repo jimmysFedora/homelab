@@ -5,7 +5,7 @@ Proxmox VE is used as a T1 Hypervisor for some of my compute nodes to make bette
 | Lenovo M720Q Tiny | Proxmox VE + OPNsense Firewall | Intel i5-9400T | 16GB DDR4 | Intel HD 630 | - | 256GB NVMe
 | Lenovo M720Q Tiny | Proxmox VE + K3s Worker | Intel i5-8500T | 64GB DDR4 | Intel HD 630 | - | 960GB PM863a SSD
 | Lenovo M720Q Tiny | K3s Control Plane & Worker | Intel i5-8500T | 64GB DDR4 | Intel HD 630 | - | 1TB NVMe
-| Lenovo M720Q Tiny | To Be Determined | Intel i5-8400T | 32GB DDR4 | Intel HD 630 | - | 500GB SSD
+<!-- | Lenovo M720Q Tiny | To Be Determined | Intel i5-8400T | 32GB DDR4 | Intel HD 630 | - | 500GB SSD -->
 | Aoostar WTR Pro | TrueNAS | Intel N150 | 32GB DDR4 | Intel Graphics | 1TB SSD | 2x 1TB NVMe & 3x 8TB HDD
 | Custom Server | Proxmox VE + AI Workloads & Hyper-V | AMD Ryzen 7 3700X | 64GB DDR4 |  RTX 2060 Super | - |960GB SM863a SSD
 
