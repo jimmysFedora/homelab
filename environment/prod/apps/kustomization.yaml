@@ -6,7 +6,7 @@ resources:
   # - drawio.yaml
   # - homepage.yaml
   - immich.yaml
-  - it-tools.yaml
+  # - it-tools.yaml
   # - kaneo.yaml
   # - metube.yaml
   # - termix-ssh.yaml
