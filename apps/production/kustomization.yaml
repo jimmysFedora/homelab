@@ -4,6 +4,7 @@ resources:
   - actualbudget
   - drawio
   - homepage
+  - it-tools
   - kaneo
   - metube
   - termix-ssh

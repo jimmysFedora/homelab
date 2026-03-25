@@ -4,3 +4,4 @@ resources:
   - actualbudget
   - kube-prometheus-stack
   - drawio
+  - it-tools
