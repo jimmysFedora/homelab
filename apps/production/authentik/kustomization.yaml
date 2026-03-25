@@ -32,6 +32,13 @@ configMapGenerator:
       disableNameSuffixHash: true
 patches:
   - patch: |-
+      - op: replace
+        path: /metadata/name
+        value: authentik-secrets
+    target:
+      kind: SealedSecret
+      name: authentik-secrets
+  - patch: |-
       - op: add
         path: /spec/valuesFrom
         value:
