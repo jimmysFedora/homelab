@@ -5,7 +5,7 @@ resources:
   # - bytestash.yaml
   # - drawio.yaml
   # - homepage.yaml
-  - immich.yaml
+  # - immich.yaml
   # - it-tools.yaml
   # - kaneo.yaml
   # - metube.yaml
