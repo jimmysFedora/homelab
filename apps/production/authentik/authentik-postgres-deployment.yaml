@@ -29,7 +29,7 @@ spec:
             - name: POSTGRES_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: "prod-authentik-secrets"
+                  name: "authentik-secrets"
                   key: "DB_PASS"
             - name: PGDATA
               value: "/var/lib/postgresql/data/pgdata"
