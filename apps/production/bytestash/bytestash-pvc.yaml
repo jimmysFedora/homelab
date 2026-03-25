@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: PersistentVolume
 metadata:
-  name: bytestash-nfs-pv
+  name: prod-bytestash-nfs-pv
 spec:
   capacity:
     storage: 10Gi
@@ -18,7 +18,7 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: bytestash-nfs-pvc
+  name: prod-bytestash-nfs-pvc
   namespace: default
 spec:
   storageClassName: ""

@@ -16,7 +16,7 @@ ingress:
 volumes:
   - name: bytestash-data
     persistentVolumeClaim:
-      claimName: bytestash-nfs-pvc
+      claimName: prod-bytestash-nfs-pvc
 
 volumeMounts:
   - name: bytestash-data
