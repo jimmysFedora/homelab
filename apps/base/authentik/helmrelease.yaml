@@ -13,10 +13,7 @@ spec:
         kind: HelmRepository
         name: authentik
         namespace: flux-system
-  valuesFrom:
-    - kind: ConfigMap
-      name: authentik-values
-      valuesKey: values.yaml
+  valuesFrom: []
   releaseName: authentik
   install:
     remediation:
