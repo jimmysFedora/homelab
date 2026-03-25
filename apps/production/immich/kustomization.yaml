@@ -13,3 +13,14 @@ configMapGenerator:
       - values.yaml
     options:
       disableNameSuffixHash: true
+patches:
+  - patch: |-
+      - op: add
+        path: /spec/valuesFrom
+        value:
+          - kind: ConfigMap
+            name: immich-values
+            valuesKey: values.yaml
+    target:
+      kind: HelmRelease
+      name: immich
