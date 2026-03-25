@@ -4,6 +4,7 @@ resources:
   - actualbudget
   - authentik
   - authentik/secrets
+  - bytestash
   - drawio
   - homepage
   - it-tools

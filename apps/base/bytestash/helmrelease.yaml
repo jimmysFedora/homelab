@@ -8,16 +8,13 @@ spec:
   timeout: 5m
   chart:
     spec:
-      chart: ./kubernetes/services/bytestash/charts/bytestash
+      chart: ./infrastructure/charts/bytestash
       sourceRef:
         kind: GitRepository
         name: flux-system
         namespace: flux-system
       interval: 5m
-  valuesFrom:
-    - kind: ConfigMap
-      name: bytestash-values
-      valuesKey: values.yaml
+  valuesFrom: []
   install:
     remediation:
       retries: 3
