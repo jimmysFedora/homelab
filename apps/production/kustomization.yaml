@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - actualbudget
   - authentik
+  - authentik/secrets
   - drawio
   - homepage
   - it-tools
