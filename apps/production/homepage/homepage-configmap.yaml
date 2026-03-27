@@ -229,6 +229,16 @@ data:
                 deviceid: {{HOMEPAGE_VAR_TAILSCALE_DEVICE_ID}}
                 key: {{HOMEPAGE_VAR_TAILSCALE_KEY}}
 
+        - Technitium:
+            icon: technitium
+            href: https://technitium.mistyfumes.dev
+            description: DNS Resolver
+            widget:
+            type: technitium
+            url: https://technitium.mistyfumes.dev
+            key: ${HOMEPAGE_VAR_TECHNITIUM_API_KEY}
+            range: LastDay # optional, defaults to LastHour
+
         - Traefik:
             icon: traefik
             href: https://traefik.mistyfumes.dev/dashboard/
