@@ -235,7 +235,7 @@ data:
             description: DNS Resolver
             widget:
                 type: technitium
-                url: https://technitium.mistyfumes.dev
+                url: https://technitium.mistyfumes.dev/
                 key: {{HOMEPAGE_VAR_TECHNITIUM_API_KEY}}
                 range: LastDay # optional, defaults to LastHour
 
