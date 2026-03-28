@@ -48,8 +48,8 @@ This is a dump from my self hosted instance of my Git repository meant for emplo
 ## Apps
 | Icon | Name | Description |
 |------|------|-------------|
-| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/adguard-home.png" width="30" alt="AdGuard Home logo"> | [AdGuard Home](https://adguard.com/adguard-home.html) | A network-wide software for blocking ads & tracking and taking control over your entire network. |
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/syncthing-dark.png" width="30" alt="Syncthing logo"> | [Syncthing](https://syncthing.net/) | A continuous file synchronization program that synchronizes files between two or more computers. |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/technitium.png" width="30" alt="Technitium logo"> | [Technitium](https://technitium.com/dns/) | An open source authoritative as well as recursive DNS server that can be used for self hosting a DNS server for privacy & security. |
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/termix.png" width="30" alt="Termix logo"> | [Termix](https://github.com/Termix-SSH/Termix) | A web-based server management platform with SSH terminal, tunneling, and file editing capabilities. |
 
 #### Docker
