@@ -1,0 +1,9 @@
+services:
+  discord-gamebot:
+    image: ghcr.io/jimmysfedora/random-game-discord-bot:latest@sha256:33349915e6e10a76583d8e9e9107ed14e469ca486ae9a002201d9ca7e8ecf06f
+    container_name: discord-gamebot
+    restart: unless-stopped
+    env_file:
+      - .env
+    volumes:
+      - /mnt/docker-nfs/volumes/gamebot-data/games.csv:/app/games.csv
