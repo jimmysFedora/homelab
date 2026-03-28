@@ -10,6 +10,10 @@ data:
             - href: https://claude.ai
               icon: https://www.google.com/s2/favicons?domain=claude.ai&sz=128
 
+        - Cloudflare:
+            - href: https://cloudflare.ConfigMap
+              icon: cloudflare
+
         - Github:
             - abbr: GH
               href: https://github.com/
@@ -48,7 +52,7 @@ data:
     - Infrastructure:
         - prx-nv-1: 
             icon: proxmox
-            href: https://prx-nv-1.mistyfumes.dev
+            href: https://prx-prod-1.mistyfumes.dev
             description: on proxmox-nv-1
             siteMonitor: https://192.168.1.30:8006
             widget:
@@ -177,17 +181,6 @@ data:
             #     showStacks: true
 
     - Gateways:
-        - AdGuard Home:
-            icon: adguard-home
-            href: https://adguard.mistyfumes.dev
-            description: adguard-prod-1
-            siteMonitor: http://192.168.1.218:80
-            widget:
-              type: adguard
-              url: http://192.168.1.218:80
-              username: {{HOMEPAGE_VAR_ADGUARD_USERNAME}}
-              password: {{HOMEPAGE_VAR_ADGUARD_PASSWORD}}
-
         - Authentik:
             icon: authentik
             href: https://authentik.mistyfumes.dev
