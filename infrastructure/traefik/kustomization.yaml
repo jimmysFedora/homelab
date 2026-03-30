@@ -11,7 +11,7 @@ resources:
   - prowlarr-ingressroute.yaml
   - prx-backup-1-ingressroute.yaml
   - prx-demo-1-ingressroute.yaml
-  - prx-prod-1-ingressroute.yaml
+  - prx-nv-1-ingressroute.yaml
   - prx-router-1-ingressroute.yaml
   - qbittorrent-ingressroute.yaml
   - radarr-ingressroute.yaml
@@ -19,5 +19,4 @@ resources:
   - syncthing-ingressroute.yaml
   - traefik-dashboard-ingress.yaml
   - truenas-ingressroute.yaml
-  - wazuh-ingressroute.yaml
   - wizarr-ingressroute.yaml
