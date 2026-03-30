@@ -3,15 +3,12 @@ kind: Kustomization
 resources:
   - serverstransport.yaml
   - adguard-prod-ingressroute.yaml
-  # - gitea-demo-1-ingressroute.yaml apply manually
-  # - immich-ingressroute.yaml
   - jellyfin-ingressroute.yaml
   - jellyseerr-ingressroute.yaml
   - komodo-ingressroute.yaml
   - mealie-ingressroute.yaml
   - open-webui-ingressroute.yaml
   - opnsense-prod-1-ingressroute.yaml
-  - paperless-ingressroute.yaml
   - prowlarr-ingressroute.yaml
   - prx-backup-1-ingressroute.yaml
   - prx-demo-1-ingressroute.yaml
