@@ -52,7 +52,7 @@ data:
     - Infrastructure:
         - prx-nv-1: 
             icon: proxmox
-            href: https://prx-prod-1.mistyfumes.dev
+            href: https://prx-nv-1.mistyfumes.dev
             description: on proxmox-nv-1
             siteMonitor: https://192.168.1.30:8006
             widget:

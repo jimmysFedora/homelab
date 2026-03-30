@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: prx-prod-1
+  name: prx-nv-1
   namespace: default
 spec:
   ports:
@@ -11,7 +11,7 @@ spec:
 apiVersion: v1
 kind: Endpoints
 metadata:
-  name: prx-prod-1
+  name: prx-nv-1
   namespace: default
 subsets:
 - addresses:
@@ -22,16 +22,16 @@ subsets:
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
 metadata:
-  name: prx-prod-1-ingressroute
+  name: prx-nv-1-ingressroute
   namespace: default
 spec:
   entryPoints:
     - websecure
   routes:
-  - match: Host(`prx-prod-1.mistyfumes.dev`)
+  - match: Host(`prx-nv-1.mistyfumes.dev`)
     kind: Rule
     services:
-    - name: prx-prod-1
+    - name: prx-nv-1
       port: 8006
       scheme: https
       serversTransport: insecure-transport
