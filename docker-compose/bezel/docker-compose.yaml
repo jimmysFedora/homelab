@@ -8,8 +8,8 @@ services:
     environment:
       APP_URL: https://beszel.mistyfumes.dev
     volumes:
-      - /mnt/docker-nfs/volumes/bezel-data/beszel_data:/beszel_data
-      - /mnt/docker-nfs/volumes/bezel-data/beszel_socket:/beszel_socket
+      - /mnt/docker-nfs/volumes/beszel-data/beszel_data:/beszel_data
+      - /mnt/docker-nfs/volumes/beszel-data/beszel_socket:/beszel_socket
     labels:
       - traefik.enable=true
       - traefik.http.routers.beszel-insecure.rule=Host(`beszel.mistyfumes.dev`)
@@ -29,8 +29,8 @@ services:
     restart: unless-stopped
     network_mode: host
     volumes:
-      - /mnt/docker-nfs/volumes/bezel-data/beszel_agent_data:/var/lib/beszel-agent
-      - /mnt/docker-nfs/volumes/bezel-data/beszel_socket:/beszel_socket
+      - /mnt/docker-nfs/volumes/beszel-data/beszel_agent_data:/var/lib/beszel-agent
+      - /mnt/docker-nfs/volumes/beszel-data/beszel_socket:/beszel_socket
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
       LISTEN: /beszel_socket/beszel.sock
