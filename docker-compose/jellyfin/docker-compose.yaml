@@ -33,7 +33,21 @@ services:
       - "traefik.http.services.jellyfin.loadbalancer.server.port=8096"
     networks:
       - frontend
+      - newt-jellyfin
+
+  newt:
+    image: ghcr.io/fosrl/newt:1.10.4@sha256:ccd2b0e9a0492d7492c00dff1295d0c487a2f71f9f8fc80b1c61e597f5181aed
+    container_name: newt-jellyfin
+    restart: unless-stopped
+    environment:
+      - PANGOLIN_ENDPOINT=${PANGOLIN_ENDPOINT}
+      - NEWT_ID=${NEWT_ID}
+      - NEWT_SECRET=${NEWT_SECRET}
+    networks:
+      - newt-jellyfin
 
 networks:
   frontend:
     external: true
+  newt-jellyfin:
+      driver: bridge
