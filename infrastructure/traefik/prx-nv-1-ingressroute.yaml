@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: prx-nv-1
+  namespace: default
+spec:
+  ports:
+  - port: 8006
+    protocol: TCP
+---
+apiVersion: v1
+kind: Endpoints
+metadata:
+  name: prx-nv-1
+  namespace: default
+subsets:
+- addresses:
+  - ip: 192.168.1.30
+  ports:
+  - port: 8006
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: prx-nv-1-ingressroute
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+  - match: Host(`prx-nv-1.mistyfumes.dev`)
+    kind: Rule
+    services:
+    - name: prx-nv-1
+      port: 8006
+      scheme: https
+      serversTransport: insecure-transport
+  tls:
+    secretName: prod-mistyfumes-tls
