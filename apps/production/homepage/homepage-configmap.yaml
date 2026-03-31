@@ -10,6 +10,10 @@ data:
             - href: https://claude.ai
               icon: https://www.google.com/s2/favicons?domain=claude.ai&sz=128
 
+        - Cloudflare:
+            - href: https://cloudflare.ConfigMap
+              icon: cloudflare
+
         - Github:
             - abbr: GH
               href: https://github.com/
@@ -56,7 +60,7 @@ data:
                 url: https://192.168.1.30:8006
                 username: {{HOMEPAGE_VAR_PROXMOX_USERNAME}}
                 password: {{HOMEPAGE_VAR_PROXMOX_PASSWORD}}
-                node: nas
+                node: prx-nv-1
 
         - prx-demo-1: 
             icon: proxmox
@@ -102,6 +106,7 @@ data:
                 type: truenas
                 url: https://192.168.1.130
                 key: {{HOMEPAGE_VAR_TRUENAS_API_KEY}}
+
     - Monitoring:
         - Bezel:
             icon: beszel
@@ -140,28 +145,22 @@ data:
             #   env: {{HOMEPAGE_VAR_PORTAINER_ENV}}
             #   key: {{HOMEPAGE_VAR_PORTAINER_API_KEY}}
 
-        # - Wazuh:
-        #     icon: wazuh
-        #     href: https://wazuh-prod-1.mistyfumes.dev
-        #     description: Security Platform
-        #     siteMonitor: https://192.168.1.225:443
-
     - GitOps:
+        - Forgejo:
+            icon: forgejo
+            href: http://forgejo.mistyfumes.dev
+            description: forgejo-demo-1
+            siteMonitor: http://forgejo.mistyfumes.dev
+
         - Gitea:
             icon: gitea 
-            href: http://gitea-demo-1.mistyfumes.dev
+            href: https://gitea-demo-1.mistyfumes.dev
             description: gitea-demo-1
-            siteMonitor: http://192.168.1.213:3000
+            siteMonitor: https://gitea-demo-1.mistyfumes.dev
             widget:
                 type: gitea
-                url: http://192.168.1.213:3000
+                url: https://gitea-demo-1.mistyfumes.dev
                 key: {{HOMEPAGE_VAR_GITEA_KEY}}
-        
-        # - Gitlab:
-        #     icon: gitlab
-        #     href: http://gitea-demo-1.mistyfumes.dev
-        #     description: gitlab-demo-1
-        #     siteMonitor:
 
         - Komodo:
             icon: komodo
@@ -177,17 +176,6 @@ data:
             #     showStacks: true
 
     - Gateways:
-        - AdGuard Home:
-            icon: adguard-home
-            href: https://adguard.mistyfumes.dev
-            description: adguard-prod-1
-            siteMonitor: http://192.168.1.218:80
-            widget:
-              type: adguard
-              url: http://192.168.1.218:80
-              username: {{HOMEPAGE_VAR_ADGUARD_USERNAME}}
-              password: {{HOMEPAGE_VAR_ADGUARD_PASSWORD}}
-
         - Authentik:
             icon: authentik
             href: https://authentik.mistyfumes.dev
@@ -228,6 +216,16 @@ data:
                 type: tailscale
                 deviceid: {{HOMEPAGE_VAR_TAILSCALE_DEVICE_ID}}
                 key: {{HOMEPAGE_VAR_TAILSCALE_KEY}}
+
+        - Technitium:
+            icon: technitium
+            href: https://technitium.mistyfumes.dev
+            description: DNS Resolver
+            widget:
+                type: technitium
+                url: http://192.168.1.213:5380
+                key: {{HOMEPAGE_VAR_TECHNITIUM_API_KEY}}
+                range: LastDay # optional, defaults to LastHour
 
         - Traefik:
             icon: traefik
@@ -288,11 +286,11 @@ data:
             icon: wizarr
             href: https://wizarr.mistyfumes.dev
             description: Invite Manager
-            siteMonitor: http://192.168.1.213:5690
+            siteMonitor: https://wizarr.mistyfumes.dev/
             statusStyle: dot
             # widget:
             #     type: customapi
-            #     url: http://192.168.1.213:5690/api/status
+            #     url: https://wizarr.mistyfumes.dev/api/status
             #     refreshInterval: 20000 # update every 20s
             #     headers:
             #         X-API-Key: {{HOMEPAGE_VAR_WIZARR_API_KEY}}
@@ -433,13 +431,13 @@ data:
         
         - Minecraft Server:
             icon: minecraft
-            href: mc.mistyfumes.dev
+            href: minecraft.mistyfumes.dev
             description: mc-prod-1
-            siteMonitor: udp://mc.mistyfumes.dev:25565
+            siteMonitor: udp://minecraft.mistyfumes.dev:25565
             statusStyle: 'dot'
-            # widget:
-            #   type: minecraft
-            #   url: udp://mc.mistyfumes.dev:25565
+            widget:
+              type: minecraft
+              url: udp://minecraft.mistyfumes.dev:25565
 
         - paperlessNGX:
             icon: paperless

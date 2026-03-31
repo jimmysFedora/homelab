@@ -34,14 +34,14 @@ services:
       - CONFIG_FILE=/config.yaml
       - GITEA_INSTANCE_URL=http://192.168.1.213:3000
       - GITEA_RUNNER_REGISTRATION_TOKEN=${GITEA_RUNNER_TOKEN}
-      - GITEA_RUNNER_NAME=homelab-cicd
+      - GITEA_RUNNER_NAME=homelab-renovate
 
   db:
     image: docker.io/library/postgres:14
     restart: always
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
-      - POSTGRES_PASSWORD=${POSTGRE_PASSWORD}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DB}
     volumes:
       - /mnt/docker-nfs/volumes/gitea-data/postgres:/var/lib/postgresql/data
