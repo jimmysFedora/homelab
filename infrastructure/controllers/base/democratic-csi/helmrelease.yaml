@@ -1,0 +1,24 @@
+apiVersion: helm.toolkit.storagecd.io/v2
+kind: HelmRelease
+metadata:
+  name: csi-driver-iscsi
+  namespace: storage
+spec:
+  interval: 10m
+  chart:
+    spec:
+      chart: democratic-csi
+      version: "0.15.1"
+      sourceRef:
+        kind: HelmRepository
+        name: democratic-csi
+        namespace: storage
+  install:
+    createNamespace: true
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  valuesFrom: []
