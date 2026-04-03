@@ -7,9 +7,6 @@ resources:
   - kaneo-api-svc.yaml
   - kaneo-configmap.yaml
   - kaneo-postgres-cluster.yaml
-  # - kaneo-postgres-deployment.yaml
-  # - kaneo-postgres-pvc.yaml
-  # - kaneo-postgres-svc.yaml
   - kaneo-sealed-secret.yaml
   - kaneo-web-deployment.yaml
   - kaneo-web-ingress.yaml
