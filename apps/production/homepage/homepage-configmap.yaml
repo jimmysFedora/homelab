@@ -164,16 +164,16 @@ data:
 
         - Komodo:
             icon: komodo
-            href: http://komodo.mistyfumes.dev
+            href: https://komodo.mistyfumes.dev
             description: komodo-demo-1
-            siteMonitor: http://komodo.mistyfumes.dev
-            # widget:
-            #     type: komodo
-            #     url: http://192.168.1.213:9120
-            #     key: {{HOMEPAGE_VAR_KOMODO_KEY}}
-            #     secret: {{HOMEPAGE_VAR_KOMODO_SECRET}}
-            #     showSummary: true
-            #     showStacks: true
+            siteMonitor: https://komodo.mistyfumes.dev
+            widget:
+                type: komodo
+                url: https://komodo.mistyfumes.dev
+                key: {{HOMEPAGE_VAR_KOMODO_KEY}}
+                secret: {{HOMEPAGE_VAR_KOMODO_SECRET}}
+                showSummary: true
+                showStacks: true
 
     - Gateways:
         - Authentik:
