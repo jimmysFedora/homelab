@@ -1,6 +1,6 @@
 services:
   homepage:
-    image: ghcr.io/gethomepage/homepage:v1.11.0@sha256:a59cc1f3368f4485805951ea91e74f2f3cae75fadc8147259aec7e4dd4912dc4
+    image: ghcr.io/gethomepage/homepage:v1.12.3@sha256:b650754d464cc72393e0ac411fcb1147b7748c34427ac606bff9f85fb6521a72
     container_name: homepage
     # ports:
     #   - 3000:3000
