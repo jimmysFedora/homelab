@@ -4,5 +4,5 @@ resources:
   - cert-manager
   - cloudnative-pg
   # - democratic-csi
-  - nfs-subdir-external-provisioner
+  # - nfs-subdir-external-provisioner
   - sealed-secrets
