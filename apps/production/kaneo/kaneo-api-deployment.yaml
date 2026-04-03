@@ -34,3 +34,8 @@ spec:
                 secretKeyRef:
                   name: kaneo-secrets
                   key: DATABASE_URL
+            - name: BETTER_AUTH_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: kaneo-secrets
+                  key: AUTH_SECRET
