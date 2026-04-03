@@ -20,6 +20,37 @@
         "ghcr.io/usekaneo/web",
         "ghcr.io/usekaneo/api"
       ]
+    },
+    {
+      "matchPackageNames": [
+        "ghcr.io/immich-app/postgres"
+      ],
+      "enabled": false
+    },
+    {
+      "groupName": "cert-manager",
+      "groupSlug": "cert-manager",
+      "matchPackageNames": [
+        "quay.io/jetstack/cert-manager-{/,}**"
+      ]
+    },
+    {
+      "matchPackageNames": [
+        "docker.io/library/postgres"
+      ],
+      "enabled": false
+    },
+    {
+      "matchPackageNames": [
+        "getmeili/meilisearch"
+      ],
+      "enabled": false
+    },
+    {
+      "matchPackageNames": [
+        "postgres"
+      ],
+      "enabled": false
     }
   ],
   "docker-compose": {
@@ -27,39 +58,6 @@
       {
         "matchHost": "docker.io",
         "concurrentRequestLimit": 2
-      }
-    ],
-    "packageRules": [
-      {
-        "matchPackageNames": [
-          "getmeili/meilisearch"
-        ],
-        "enabled": false
-      },
-      {
-        "matchPackageNames": [
-          "postgres"
-        ],
-        "enabled": false
-      },
-      {
-        "matchPackageNames": [
-          "ghcr.io/immich-app/postgres"
-        ],
-        "enabled": false
-      },
-      {
-        "groupName": "cert-manager",
-        "groupSlug": "cert-manager",
-        "matchPackageNames": [
-          "quay.io/jetstack/cert-manager-{/,}**"
-        ]
-      },
-      {
-        "matchPackageNames": [
-          "docker.io/library/postgres"
-        ],
-        "enabled": false
       }
     ]
   },
