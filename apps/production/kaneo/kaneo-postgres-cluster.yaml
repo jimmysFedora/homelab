@@ -1,0 +1,17 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: kaneo-postgres
+  namespace: default
+spec:
+  imageName: ghcr.io/cloudnative-pg/postgresql:18.3
+  instances: 2
+  storage:
+    size: 5Gi
+    storageClass: truenas-iscsi
+  bootstrap:
+    initdb:
+      database: kaneo
+      owner: kaneo
+      secret:
+        name: kaneo-secrets
