@@ -6,7 +6,7 @@
 
 Here you will find all the documentation of my homelab.
 
-This repository is where I do all my testing, tinkering, and all-in-all a space for me to play, and work! It does have a serious note as well, since I will be working with my own personal data and require me to think about the whole process of deployment and maintenence!
+This repository is where I do all my testing, tinkering, and all-in-all a space for me to play, and work! It does have a serious note as well, since I will be working with my own personal data and require me to think about the whole process of deployment and maintenance!
 
 ## 🖥️ Hardware
 Proxmox VE is used as a T1 Hypervisor for some of my compute nodes to make better use of resources and provides a testing ground for experimenting with new software/configurations.
