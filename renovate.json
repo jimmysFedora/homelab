@@ -61,7 +61,8 @@
   },
   "kubernetes": {
     "managerFilePatterns": [
-      "/kubernetes/.+\\.yaml$/"
+      "/apps/.+\\.yaml$/",
+      "/infrastructure/.+\\.yaml$/"
     ]
   }
 }
