@@ -22,6 +22,14 @@
       ]
     },
     {
+      "groupName": "authentik",
+      "matchManagers": ["kubernetes", "helm-releases", "helm-values", "flux"],
+      "matchPackageNames": [
+        "ghcr.io/goauthentik/server",
+        "authentik"
+      ]
+    },
+    {
       "matchPackageNames": [
         "ghcr.io/immich-app/postgres"
       ],
