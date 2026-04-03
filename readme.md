@@ -44,6 +44,8 @@ This is a dump from my self hosted instance of my Git repository meant for emplo
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/gitea.png" width="30" alt="Gitea logo"> | [Gitea](https://gitea.io/) | A painless self-hosted Git service that is fast and easy to use. |
 | <img src="https://avatars.githubusercontent.com/ml/287?s=82&v=4" width="30" alt="Renovate logo"> | [Renovate](https://www.mend.io/renovate/) | An automated dependency update tool that creates and maintains pull requests for your dependencies. |
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/authentik.png" width="30" alt="Authentik logo"> | [Authentik](https://goauthentik.io/) | An open-source identity and access management platform providing authentication, authorization, and single sign-on (SSO) capabilities. |
+| <img src="https://avatars.githubusercontent.com/u/100373852?s=200&v=4" width="30" alt="CloudnativePG logo"> | [CloudnativePG](https://cloudnative-pg.io/) | A Kubernetes operator for deploying and managing PostgreSQL clusters. |
+
 
 ## Apps
 | Icon | Name | Description |
@@ -78,10 +80,6 @@ This is a dump from my self hosted instance of my Git repository meant for emplo
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/jellyfin.png" width="30" alt="Jellyfin logo"> | [Jellyfin](https://jellyfin.org/) | The Free Software Media System that puts you in control of managing and streaming your media. |
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/metube.png" width="30" alt="MeTube logo"> | [MeTube](https://github.com/alexta69/metube) | A web GUI for youtube-dl / yt-dlp, allowing you to easily download videos from various platforms. |
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/navidrome.png" width="30" alt="Navidrome logo"> | [Navidrome](https://www.navidrome.org/) | A modern self-hosted music server and streamer that gives you freedom to listen to your music collection anywhere. |
-| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/prowlarr.png" width="30" alt="Prowlarr logo"> | [Prowlarr](https://prowlarr.com/) | An indexer manager/proxy built on the popular Arr .net/react stack. |
-| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/radarr.png" width="30" alt="Radarr logo"> | [Radarr](https://radarr.video/) | A movie collection manager for Usenet and BitTorrent users. |
-| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/sonarr.png" width="30" alt="Sonarr logo"> | [Sonarr](https://sonarr.tv/) | A TV series management tool which will watch RSS feeds for new episodes of your favorite shows. |
-| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/qbittorrent.png" width="30" alt="qBittorrent logo"> | [qBittorrent](https://www.qbittorrent.org/) | An open-source software alternative to µTorrent for downloading files via BitTorrent. |
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/wizarr.png" width="30" alt="Wizarr logo"> | [Wizarr](https://wizarr.dev/) | An automatic user invitation system for Jellyfin and Plex. |
 
 #### Lifestyle or Personal
