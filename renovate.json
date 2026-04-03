@@ -13,6 +13,15 @@
   ],
   "configMigration": true,
   "prHourlyLimit": 0,
+  "packageRules": [
+    {
+      "groupName": "kaneo",
+      "matchPackageNames": [
+        "ghcr.io/usekaneo/web",
+        "ghcr.io/usekaneo/api"
+      ]
+    }
+  ],
   "docker-compose": {
     "hostRules": [
       {
