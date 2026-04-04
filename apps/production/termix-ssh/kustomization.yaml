@@ -1,16 +1,3 @@
-# resources:
-#   - termix-ssh-pvc.yaml
-#   - ../../base/termix-ssh
-# configMapGenerator:
-#   - name: termix-ssh-values
-#     namespace: default
-#     files:
-#       - values.yaml
-#     options:
-#       disableNameSuffixHash: true
-
-
-# ---
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 namePrefix: prod-

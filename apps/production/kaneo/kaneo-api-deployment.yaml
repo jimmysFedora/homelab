@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: kaneo-api
-          image: ghcr.io/usekaneo/api:2.5.2@sha256:525733a0edf941a95875df292e41d2ced5b9ea08813e75b7f3ef78277823def7
+          image: ghcr.io/usekaneo/api:2.5.3@sha256:65180c62a5d9fde5288968ab241ee547b48d8a5766bc5187a26d9040d756aa84
           ports:
             - containerPort: 1337
           env:
