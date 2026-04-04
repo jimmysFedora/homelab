@@ -17,7 +17,7 @@ services:
       - default
 
   api:
-    image: ghcr.io/usekaneo/api:2.5.2@sha256:525733a0edf941a95875df292e41d2ced5b9ea08813e75b7f3ef78277823def7
+    image: ghcr.io/usekaneo/api:2.5.3@sha256:65180c62a5d9fde5288968ab241ee547b48d8a5766bc5187a26d9040d756aa84
     ports:
       - 1337:1337
     env_file:
@@ -30,7 +30,7 @@ services:
       - default
 
   web:
-    image: ghcr.io/usekaneo/web:2.5.2@sha256:e454c7fcdff839bc5477d45d533418bddb282b3c179674b35bd3d6bb0099285e
+    image: ghcr.io/usekaneo/web:2.5.3@sha256:ba70a288dd6c7f96865b748bf37724261b32f3d97aec597ac8a7553871a19195
     ports:
       - 5173:5173
     env_file:
