@@ -35,7 +35,7 @@ services:
     restart: unless-stopped 
 
   qbittorrent:
-    image: linuxserver/qbittorrent:5.1.4-r1-ls437@sha256:f430d70c70d1547fded30fbc3181c4750cef354212a5138ab754eba9ba8bd9e1
+    image: linuxserver/qbittorrent:5.1.4@sha256:474ef1f1c63fc060236e85cd6ec4a3232aea5a0d7a033c6bab9911039933f147
     container_name: qbittorrent
     network_mode: "service:gluetun"
     environment:
@@ -51,7 +51,7 @@ services:
     restart: unless-stopped
 
   prowlarr:
-    image: ghcr.io/linuxserver/prowlarr:2.3.0.5236-ls135@sha256:d3e9307b320b6772749a2cf8fc2712e9e824c4930b034680ad4d08a9e2f25884
+    image: ghcr.io/linuxserver/prowlarr:2.3.0@sha256:e50f3b188a7d1771b61f395c4203e35476bd3047683508740305e830e15bacf7
     container_name: prowlarr
     environment:
       - PUID=1000
@@ -64,7 +64,7 @@ services:
     restart: unless-stopped
 
   radarr:
-    image: ghcr.io/linuxserver/radarr:6.0.4.10291-ls290@sha256:270f25698624b57b86ca119cc95399d7ff15be8297095b4e1223fd5b549b732c
+    image: ghcr.io/linuxserver/radarr:6.1.1@sha256:581f159c2b67436863cb4da30e158ef6f6b8878472abbba79ee5d5f7e6b7d28d
     container_name: radarr
     environment:
       - PUID=1000
@@ -80,7 +80,7 @@ services:
     restart: unless-stopped
 
   sonarr:
-    image: ghcr.io/linuxserver/sonarr:4.0.16.2944-ls301@sha256:02b4d538d351d6e35882a021c08e8600fe95d28860fb1dd724b597166e7221ca
+    image: ghcr.io/linuxserver/sonarr:4.0.17@sha256:b5670a3adb0f8a8b0f277feeaa69a5fbe3869ba4bb9fa7c0f0764c3b3f0e698f
     container_name: sonarr
     environment:
       - PUID=1000
@@ -147,6 +147,4 @@ services:
 
 networks:
   newt-seerr:
-    driver: bridge
-  newt-wizarr:
     driver: bridge
