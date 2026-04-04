@@ -29,6 +29,14 @@
       ]
     },
     {
+      "groupName": "pangolin",
+      "matchPackageNames": [
+        "ghcr.io/fosrl/pangolin",
+        "ghcr.io/fosrl/gerbil",
+        "ghcr.io/fosrl/newt"
+      ]
+    },
+    {
       "groupName": "authentik",
       "matchManagers": ["kubernetes", "helm-releases", "helm-values", "flux"],
       "matchPackageNames": [
