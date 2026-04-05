@@ -1,4 +1,2 @@
 resources:
   - immich-uploads-pvc.yaml
-  - octapool-images-pvc.yaml
-  - octapool-photography-pvc.yaml
