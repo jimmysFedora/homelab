@@ -2,12 +2,13 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
   - serverstransport.yaml
+  - gitea-ingressroute.yaml
   - jellyfin-ingressroute.yaml
   - jellyseerr-ingressroute.yaml
   - komodo-ingressroute.yaml
   - mealie-ingressroute.yaml
   - open-webui-ingressroute.yaml
-  - opnsense-prod-1-ingressroute.yaml
+  - opnsense-ingressroute.yaml
   - prowlarr-ingressroute.yaml
   - prx-backup-1-ingressroute.yaml
   - prx-demo-1-ingressroute.yaml
@@ -17,6 +18,6 @@ resources:
   - radarr-ingressroute.yaml
   - sonarr-ingressroute.yaml
   - syncthing-ingressroute.yaml
-  - traefik-dashboard-ingress.yaml
+  - traefik-dashboard-ingressroute.yaml
   - truenas-ingressroute.yaml
   - wizarr-ingressroute.yaml
