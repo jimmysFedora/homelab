@@ -145,7 +145,7 @@ autoscaling:
 volumes:
   - name: metube-downloads
     persistentVolumeClaim:
-      claimName: metube-prod-nfs-pvc
+      claimName: metube-nfs-pvc
 
 # Additional volumeMounts on the output Deployment definition.
 volumeMounts:
