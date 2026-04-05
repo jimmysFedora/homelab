@@ -6,7 +6,7 @@ global:
 
   env:
     - name: AUTHENTIK_POSTGRESQL__HOST
-      value: "prod-authentik-postgresql"
+      value: "authentik-postgresql"
     - name: AUTHENTIK_POSTGRESQL__USER
       value: "authentik"
     - name: AUTHENTIK_POSTGRESQL__NAME
