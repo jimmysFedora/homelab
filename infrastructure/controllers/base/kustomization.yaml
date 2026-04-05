@@ -3,5 +3,6 @@ kind: Kustomization
 resources:
   - cert-manager
   - cloudnative-pg
+  - intel-device-plugins-operator
   # - democratic-csi
   - sealed-secrets
