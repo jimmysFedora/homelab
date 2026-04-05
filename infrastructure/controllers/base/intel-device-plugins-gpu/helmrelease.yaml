@@ -23,3 +23,5 @@ spec:
       retries: 3
   values:
     nodeFeatureRule: false
+    nodeSelector:
+      kubernetes.io/hostname: debian-kg4
