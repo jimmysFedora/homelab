@@ -2,13 +2,12 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: termix-ssh
-  namespace: default
+  namespace: flux-system
 spec:
   interval: 15m
-  targetNamespace: default
   chart:
     spec:
-      chart: ./infrastructure/charts/termix-ssh
+      chart: infrastructure/charts/termix-ssh
       sourceRef:
         kind: GitRepository
         name: flux-system
