@@ -24,4 +24,5 @@ spec:
   values:
     nodeFeatureRule: false
     nodeSelector:
+      intel.feature.node.kubernetes.io/gpu: null
       kubernetes.io/hostname: debian-kg4
