@@ -3,3 +3,6 @@ kind: Kustomization
 resources:
   - octapool-images-pvc.yaml
   - octapool-photography-pvc.yaml
+  - octapool-video-bluray-pv.yaml
+  - octapool-video-dvds-pv.yaml
+  - octapool-video-tv-pv.yaml
