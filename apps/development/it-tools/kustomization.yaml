@@ -1,7 +1,6 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-namePrefix: dev-
-namespace: default
+namespace: development
 resources:
   - ../../base/it-tools
 configMapGenerator:
@@ -16,7 +15,7 @@ patches:
         path: /spec/valuesFrom
         value:
           - kind: ConfigMap
-            name: dev-it-tools-values
+            name: it-tools-values
             valuesKey: values.yaml
     target:
       kind: HelmRelease
