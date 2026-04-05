@@ -35,7 +35,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-  - match: Host(`gitea.mistyfumes.dev`)
+  - match: Host(`gitea-demo-1.mistyfumes.dev`)
     kind: Rule
     services:
     - name: gitea
