@@ -25,12 +25,15 @@ Proxmox VE is used as a T1 Hypervisor for some of my compute nodes to make bette
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/flux-cd.png" width="30" alt="FluxCD logo"> | [FluxCD](https://fluxcd.io/) | A GitOps tool for automating Kubernetes deployments from Git repositories. |
 | <img src="https://avatars.githubusercontent.com/u/34656521?s=48&v=4" width="30" alt="Sealed Secrets logo"> | [Sealed Secrets](https://github.com/bitnami-labs/sealed-secrets) | A Kubernetes controller and tool for "one-way" encrypted Secrets that can be safely stored in Git. |
 | <img src="https://avatars.githubusercontent.com/u/73407405?s=48&v=4" width="30" alt="democratic-csi logo"> | [democratic-csi](https://github.com/democratic-csi/democratic-csi) | A CSI driver for Kubernetes that provides dynamic provisioning of persistent volumes backed by TrueNAS via iSCSI and NFS. |
+| <img src="https://avatars.githubusercontent.com/u/17888862?s=48&v=4$0" width="30" alt="Intel Device Plugins logo"> | [Intel Device Plug-ins](https://github.com/intel/intel-device-plugins-for-kubernetes) | A framework for enabling Intel hardware resources (like QuickSync GPUs) within Kubernetes clusters for transcoding and AI. |
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/grafana.png" width="30" alt="Grafana logo"> | [Grafana](https://grafana.com/) | A multi-platform analytics and visualization web application for monitoring data. |
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/prometheus.png" width="30" alt="Prometheus logo"> | [Prometheus](https://prometheus.io/) | An open-source monitoring and alerting toolkit for containers and microservices. |
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/traefik.png" width="30" alt="Traefik logo"> | [Traefik](https://traefik.io/) | An open-source Edge Router that makes publishing your services a fun and easy experience. |
 | <img src="https://avatars.githubusercontent.com/ml/287?s=82&v=4" width="30" alt="Renovate logo"> | [Renovate](https://www.mend.io/renovate/) | An automated dependency update tool that creates and maintains pull requests for your dependencies. |
 | <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/authentik.png" width="30" alt="Authentik logo"> | [Authentik](https://goauthentik.io/) | An open-source identity and access management platform providing authentication, authorization, and single sign-on (SSO) capabilities. |
 | <img src="https://avatars.githubusercontent.com/u/100373852?s=200&v=4" width="30" alt="CloudNativePG logo"> | [CloudNativePG](https://cloudnative-pg.io/) | A Kubernetes operator for deploying and managing PostgreSQL clusters. |
+| <img src="https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/png/cert-manager.png" width="30" alt="cert-manager logo"> | [cert-manager](https://cert-manager.io/) | A Kubernetes-native certificate controller that automates the management and issuance of TLS certificates from various issuing sources. |
+
 
 ### Platform & Networking
 | Icon | Name | Description |
