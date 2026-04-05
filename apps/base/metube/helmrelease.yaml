@@ -2,12 +2,12 @@ apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: metube
-  namespace: default
+  namespace: flux-system
 spec:
   interval: 15m
   chart:
     spec:
-      chart: ./infrastructure/charts/metube
+      chart: infrastructure/charts/metube
       sourceRef:
         kind: GitRepository
         name: flux-system
