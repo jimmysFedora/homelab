@@ -14,13 +14,11 @@ services:
     # ports:
     #   - 8096:8096
     restart: unless-stopped
-    # deploy:
-    #   resources:
-    #     reservations:
-    #       devices:
-    #         - driver: nvidia
-    #           count: all
-    #           capabilities: [all]
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - /dev/dri/renderD128:/dev/dri/renderD128
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.jellyfin-insecure.rule=Host(`jellyfin.mistyfumes.dev`)"
