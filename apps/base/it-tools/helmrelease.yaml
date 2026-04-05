@@ -5,10 +5,9 @@ metadata:
   namespace: flux-system
 spec:
   interval: 15m
-  targetNamespace: default
   chart:
     spec:
-      chart: ./infrastructure/charts/it-tools
+      chart: infrastructure/charts/it-tools
       sourceRef:
         kind: GitRepository
         name: flux-system
