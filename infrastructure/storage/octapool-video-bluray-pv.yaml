@@ -19,7 +19,7 @@ apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: octapool-video-bluray-pvc
-  namespace: default
+  namespace: development
 spec:
   accessModes:
     - ReadOnlyMany

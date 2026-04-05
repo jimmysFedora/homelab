@@ -13,13 +13,13 @@ spec:
     - addr=192.168.1.130
   nfs:
     server: 192.168.1.130
-    path: /mnt/octaPool/images/photography
+    path: /mnt/octaPool/video/tv
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
   name: octapool-video-tv-pvc
-  namespace: default
+  namespace: development
 spec:
   accessModes:
     - ReadOnlyMany
