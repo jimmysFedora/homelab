@@ -1,0 +1,21 @@
+services:
+  foldergram:
+    image: ghcr.io/foldergram/foldergram:1.1.0
+    ports:
+      - "4141:4141"
+    environment:
+      IMAGE_DETAIL_SOURCE: preview
+      DERIVATIVE_MODE: eager
+      NODE_ENV: production
+      # Optional: skip specific source folders by name or by exact relative path.
+      # GALLERY_EXCLUDED_FOLDERS: "@eaDir,thumbnails,Archive/cache"
+      # Optional: enable read-only public demo behavior.
+      PUBLIC_DEMO_MODE: "1"
+      # Optional when the browser-visible origin differs from the upstream Node host.
+      CSRF_TRUSTED_ORIGINS: https://foldergram.mistyfumes.dev
+    volumes:
+      - /mnt/octapool-nfs/portfolio:/app/data/gallery
+      - /mnt/docker-nfs/volumes/foldergram-data/db:/app/data/db
+      - /mnt/docker-nfs/volumes/foldergram-data/thumbnails:/app/data/thumbnails
+      - /mnt/docker-nfs/volumes/foldergram-data/previews:/app/data/previews
+    restart: unless-stopped
