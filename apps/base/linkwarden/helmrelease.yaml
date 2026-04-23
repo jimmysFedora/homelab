@@ -1,0 +1,23 @@
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: linkwarden
+  namespace: flux-system
+spec:
+  interval: 15m
+  timeout: 5m
+  chart:
+    spec:
+      chart: infrastructure/charts/linkwarden
+      sourceRef:
+        kind: GitRepository
+        name: flux-system
+        namespace: flux-system
+      interval: 5m
+  valuesFrom: []
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3

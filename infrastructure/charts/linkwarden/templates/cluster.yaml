@@ -1,0 +1,21 @@
+{{- if index .Values "db-cluster" "enabled" -}}
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: {{ include "linkwarden.fullname" . }}-postgres
+  namespace: {{ .Release.Namespace }}
+  annotations:
+    helm.sh/resource-policy: {{ index .Values "db-cluster" "keepData" }}
+spec:
+  imageName: {{ index .Values "db-cluster" "spec" "imageName" }}
+  instances: 1
+  storage:
+    size: {{ index .Values "db-cluster" "spec" "storage" "size" }}
+    storageClass: {{ index .Values "db-cluster" "spec" "storage" "storageClass" }}
+  bootstrap:
+    initdb:
+      database: {{ include "linkwarden.fullname" . }}
+      owner: linkwarden
+      secret:
+        name: {{ include "linkwarden.fullname" . }}-secrets
+{{- end }}

@@ -9,5 +9,6 @@ resources:
   - immich
   - it-tools
   - kaneo
+  - linkwarden
   - metube
   - termix-ssh
