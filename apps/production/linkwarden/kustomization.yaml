@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: default
 resources:
   - ../../base/linkwarden
+  - linkwarden-sealed-secret.yaml
 configMapGenerator:
   - name: linkwarden-values
     files:
