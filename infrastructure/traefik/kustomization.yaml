@@ -4,7 +4,7 @@ resources:
   - serverstransport.yaml
   - foldergram-ingressroute.yaml
   - gitea-ingressroute.yaml
-  - jellyfin-ingressroute.yaml
+  # - jellyfin-ingressroute.yaml
   - jellyseerr-ingressroute.yaml
   - komodo-ingressroute.yaml
   - mealie-ingressroute.yaml

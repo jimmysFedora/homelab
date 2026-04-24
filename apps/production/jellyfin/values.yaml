@@ -1,0 +1,63 @@
+replicaCount: 1
+
+deploymentStrategy:
+  type: Recreate
+
+image:
+  pullPolicy: IfNotPresent
+
+persistence:
+  config:
+    enabled: true
+    size: 5Gi
+    storageClass: 'truenas-iscsi'
+    annotations:
+      "helm.sh/resource-policy": keep
+  media:
+    enabled: false
+    size: 100Gi
+    storageClass: ''
+
+ingress:
+  enabled: true
+  className: 'traefik'
+  hosts:
+    - host: jellyfin.mistyfumes.dev
+      paths:
+        - path: /
+          pathType: Prefix
+
+resources:
+  limits:
+    cpu: 2000m
+    memory: 4Gi
+    gpu.intel.com/i915: "1"
+  requests:
+    cpu: 500m
+    memory: 1Gi
+
+nodeSelector: {}
+tolerations: []
+affinity: {}
+
+volumes:
+  - name: bluray
+    persistentVolumeClaim:
+      claimName: octapool-video-bluray-pvc
+  - name: dvds
+    persistentVolumeClaim:
+      claimName: octapool-video-dvds-pvc
+  - name: tv
+    persistentVolumeClaim:
+      claimName: octapool-video-tv-pvc
+
+volumeMounts:
+  - name: bluray
+    mountPath: /mnt/bluray
+    readOnly: true
+  - name: dvds
+    mountPath: /mnt/dvds
+    readOnly: true
+  - name: tv
+    mountPath: /mnt/tv
+    readOnly: true
