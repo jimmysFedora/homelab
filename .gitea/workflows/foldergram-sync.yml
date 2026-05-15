@@ -1,0 +1,69 @@
+name: Immich Favorite Sync
+
+on:
+  workflow_dispatch:      # Allows you to run it manually from the UI
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq curl
+
+      - name: Setup SSH Key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.REPOSITORY }}" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh-keyscan -H 192.168.1.213 >> ~/.ssh/known_hosts
+
+      - name: Run Sync Script
+        env:
+          IMMICH_API_KEY: ${{ secrets.IMMICH_API_KEY }}
+        run: |
+          set -e  # Exit on error
+          
+          IMMICH_URL="https://immich.mistyfumes.dev"
+          API_KEY="${IMMICH_API_KEY}"
+          DEST_HOST="docker@192.168.1.213"
+          DEST_PATH="/mnt/octapool-nfs/portfolio/foldergram"
+
+          echo "--- Starting Immich Favorite Sync ---"
+
+          # 1. Fetch Favorites via Search API
+          RAW_RESPONSE=$(curl -s -L -X POST "$IMMICH_URL/api/search/metadata?apiKey=$API_KEY" \
+              -H "Content-Type: application/json" \
+              -d '{ "isFavorite": true }')
+
+          # 2. Extract and Process Assets
+          # We use a process substitution to keep the loop in the main shell
+          while read -r asset; do
+              
+              ASSET_ID=$(echo "$asset" | jq -r '.id')
+              FILE_NAME=$(echo "$asset" | jq -r '.originalFileName')
+
+              echo "------------------------------------------"
+              echo "Processing: $FILE_NAME ($ASSET_ID)"
+
+              # 3. Download the Original File
+              curl -s -L -X GET "$IMMICH_URL/api/assets/$ASSET_ID/original?apiKey=$API_KEY" \
+                  --output "./$FILE_NAME"
+
+              # 4. Transfer
+              if [ -f "./$FILE_NAME" ]; then
+                  # Added BatchMode to prevent hanging on auth failure
+                  scp -o BatchMode=yes "./$FILE_NAME" "$DEST_HOST:$DEST_PATH" 
+                  echo "SUCCESS: $FILE_NAME synced to destination."
+                  # rm "./$FILE_NAME"  # Good practice to clean up the runner's workspace
+              else
+                  echo "ERROR: Failed to download $FILE_NAME"
+                  exit 1
+              fi
+          done < <(echo "$RAW_RESPONSE" | jq -c '.assets.items[]')
+
+          echo "--- Sync Complete ---"
