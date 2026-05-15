@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: kaneo-web
-          image: ghcr.io/usekaneo/web:2.5.3@sha256:ba70a288dd6c7f96865b748bf37724261b32f3d97aec597ac8a7553871a19195
+          image: ghcr.io/usekaneo/web:2.7.2@sha256:7d0114a46a2e32bf1e0ccff2b5de6b2f8f413d02adbed09b043893284b38b2f5
           ports:
             - containerPort: 5173
           env:
