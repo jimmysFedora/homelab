@@ -1,0 +1,16 @@
+{{- range $name, $params := .Values.persistence }}
+{{- if and $params.enabled (not $params.existingClaim) }}
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: {{ include "foldergram.fullname" $ }}-{{ $name }}
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: {{ $params.size }}
+  storageClassName: {{ $params.storageClass }}
+---
+{{- end }}
+{{- end }}

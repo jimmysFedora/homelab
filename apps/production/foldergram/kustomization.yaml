@@ -1,0 +1,22 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: default
+resources:
+  - ../../base/foldergram
+configMapGenerator:
+  - name: foldergram-values
+    files:
+      - values.yaml
+    options:
+      disableNameSuffixHash: true
+patches:
+  - patch: |-
+      - op: add
+        path: /spec/valuesFrom
+        value:
+          - kind: ConfigMap
+            name: foldergram-values
+            valuesKey: values.yaml
+    target:
+      kind: HelmRelease
+      name: foldergram
