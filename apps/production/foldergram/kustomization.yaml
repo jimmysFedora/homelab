@@ -3,6 +3,7 @@ kind: Kustomization
 namespace: default
 resources:
   - ../../base/foldergram
+  - octapool-portfolio-pvc.yaml
 configMapGenerator:
   - name: foldergram-values
     files:
