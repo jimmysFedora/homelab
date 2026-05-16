@@ -64,14 +64,14 @@ ingress:
     # kubernetes.io/ingress.class: nginx
     # kubernetes.io/tls-acme: "true"
   hosts:
-    - host: foldergram.dev.mistyfumes.dev
+    - host: foldergram.mistyfumes.dev
       paths:
         - path: /
           pathType: ImplementationSpecific
   tls:
-    - secretName: dev-mistyfumes-tls
+    - secretName: prod-mistyfumes-tls
       hosts:
-        - foldergram.dev.mistyfumes.dev
+        - foldergram.mistyfumes.dev
 
 # -- Expose the service via gateway-api HTTPRoute
 # Requires Gateway API resources and suitable controller installed within the cluster
@@ -193,4 +193,4 @@ env:
   DERIVATIVE_MODE: "eager"
   NODE_ENV: "production"
   PUBLIC_DEMO_MODE: "0"
-  CSRF_TRUSTED_ORIGINS: "https://foldergram.dev.mistyfumes.dev"
+  CSRF_TRUSTED_ORIGINS: "https://foldergram.mistyfumes.dev"
