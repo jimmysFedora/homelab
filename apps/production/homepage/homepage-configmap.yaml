@@ -134,24 +134,7 @@ data:
             #     username: {{HOMEPAGE_VAR_GRAFANA_USERNAME}}
             #     password: {{HOMEPAGE_VAR_GRAFANA_PASSWORD}}
 
-        - Portainer:
-            icon: portainer
-            href: https://portainer.mistyfumes.dev
-            description: portainer-prod-1
-            siteMonitor: https://portainer.mistyfumes.dev
-            # widget:
-            #   type: portainer
-            #   url: https://portainer.mistyfumes.dev
-            #   env: {{HOMEPAGE_VAR_PORTAINER_ENV}}
-            #   key: {{HOMEPAGE_VAR_PORTAINER_API_KEY}}
-
     - GitOps:
-        - Forgejo:
-            icon: forgejo
-            href: http://forgejo.mistyfumes.dev
-            description: forgejo-demo-1
-            siteMonitor: http://forgejo.mistyfumes.dev
-
         - Gitea:
             icon: gitea 
             href: https://gitea-demo-1.mistyfumes.dev
