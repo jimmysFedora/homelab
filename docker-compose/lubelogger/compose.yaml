@@ -1,6 +1,6 @@
 services:
   app:
-    image: ghcr.io/hargata/lubelogger:v1.6.3@sha256:c7b705c4a26957028be67b2946cae6c6e39a941548fa1efc1a3178952ea81d27
+    image: ghcr.io/hargata/lubelogger:v1.6.6@sha256:0655ce5a807dd8bb52544411e985b89f6e7568b8da1e9be8caca8b0d1c3525fa
     restart: unless-stopped
     volumes:
       - /mnt/docker-nfs/volumes/lubelogger-data:/App/data
