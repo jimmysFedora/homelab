@@ -1,6 +1,6 @@
 services:
   web:
-    image: ghcr.io/karakeep-app/karakeep:0.31.0@sha256:efd9682b69401288c6caa26d76b1c723e4252fe7a962bb78eb00a6cd5227aaca
+    image: ghcr.io/karakeep-app/karakeep:0.32.0@sha256:f351c5c37cf7bebfe5a32ad99bbd071f8df773f2c55093b30b57771ac83a8667
     restart: unless-stopped
     volumes:
       - /mnt/docker-nfs/volumes/karakeep-data:/data
