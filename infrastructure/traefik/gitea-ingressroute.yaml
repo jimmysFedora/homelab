@@ -35,14 +35,14 @@ spec:
   entryPoints:
     - websecure
   routes:
-  - match: Host(`gitea-demo-1.mistyfumes.dev`)
+  - match: Host(`code.mistyfumes.dev`)
     kind: Rule
     services:
     - name: gitea
       port: 3000
       serversTransport: insecure-transport
   tls:
-    secretName: dev-mistyfumes-tls
+    secretName: prod-mistyfumes-tls
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRouteTCP
