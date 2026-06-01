@@ -137,12 +137,12 @@ data:
     - GitOps:
         - Gitea:
             icon: gitea 
-            href: https://gitea-demo-1.mistyfumes.dev
-            description: gitea-demo-1
-            siteMonitor: https://gitea-demo-1.mistyfumes.dev
+            href: https://code.mistyfumes.dev
+            # description: 
+            siteMonitor: https://code.mistyfumes.dev
             widget:
                 type: gitea
-                url: https://gitea-demo-1.mistyfumes.dev
+                url: https://code.mistyfumes.dev
                 key: {{HOMEPAGE_VAR_GITEA_KEY}}
 
         - Komodo:
