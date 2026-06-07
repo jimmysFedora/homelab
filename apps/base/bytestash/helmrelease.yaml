@@ -4,6 +4,7 @@ metadata:
   name: bytestash
   namespace: flux-system
 spec:
+  targetNamespace: default
   interval: 15m
   timeout: 5m
   chart:
