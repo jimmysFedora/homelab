@@ -18,6 +18,10 @@ patches:
           - kind: ConfigMap
             name: linkwarden-values
             valuesKey: values.yaml
+      # ADD THIS BLOCK TO FORCE THE NAMESPACE
+      - op: add
+        path: /spec/targetNamespace
+        value: default
     target:
       kind: HelmRelease
       name: linkwarden
