@@ -36,6 +36,23 @@ server:
       - secretName: prod-mistyfumes-tls
         hosts:
           - authentik.mistyfumes.dev
+  resources:
+    limits:
+      cpu: 500m      # Prevents the server from hogging the CPU
+      memory: 512Mi  # Prevents OOM kills
+    requests:
+      cpu: 100m
+      memory: 256Mi
+
+worker:
+  resources:
+    limits:
+      cpu: 500m      # Crucial: This limits the "heavy lifting" tasks
+      memory: 768Mi
+    requests:
+      cpu: 200m
+      memory: 384Mi
+
 
 postgresql:
   enabled: false
