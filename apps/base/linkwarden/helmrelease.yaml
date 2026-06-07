@@ -4,6 +4,8 @@ metadata:
   name: linkwarden
   namespace: flux-system
 spec:
+  releaseName: linkwarden  # add this
+  targetNamespace: default
   interval: 15m
   timeout: 5m
   chart:
