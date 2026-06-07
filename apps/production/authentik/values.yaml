@@ -39,7 +39,7 @@ server:
   resources:
     limits:
       cpu: 500m      # Prevents the server from hogging the CPU
-      memory: 512Mi  # Prevents OOM kills
+      memory: 1Gi  # Prevents OOM kills
     requests:
       cpu: 100m
       memory: 256Mi
