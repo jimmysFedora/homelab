@@ -1,0 +1,40 @@
+controllers:
+  main:
+    containers:
+      main:
+        env:
+          DATA_FOLDER: config
+        image:
+          repository: deluan/navidrome
+          tag: {{.Chart.AppVersion}}
+    strategy: Recreate
+
+ingress:
+  main:
+    className: traefik
+    hosts:
+    - host: navidrome.dev.mistyfumes.dev
+      paths:
+      - path: /
+        pathType: Prefix
+        service:
+          identifier: main
+          port: http
+    tls:
+    - hosts:
+      - navidrome.dev.mistyfumes.dev
+      secretName: dev-mistyfumes-tls
+
+persistence:
+  config:
+    accessMode: ReadWriteOnce
+    globalMounts:
+    - path: /config
+    size: 1Gi
+    type: persistentVolumeClaim
+service:
+  main:
+    controller: main
+    ports:
+      http:
+        port: 4533

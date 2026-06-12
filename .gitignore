@@ -46,3 +46,19 @@ terraform.rc
 # Optional: ignore plan files saved before destroying Terraform configuration
 # Uncomment the line below if you want to ignore planout files.
 # planout
+
+# Helm dependency folders
+charts/
+
+# Helm build artifacts
+*.tgz
+
+# Local Kubernetes/Helm cache
+.helm/
+tmp/
+*.lock
+
+# IDE/System specific
+.DS_Store
+.vscode/
+.idea/
