@@ -1,0 +1,19 @@
+apiVersion: postgresql.cnpg.io/v1
+kind: Cluster
+metadata:
+  name: linkwarden-postgres
+  namespace: default
+  annotations:
+    helm.sh/resource-policy: keep
+spec:
+  imageName: ghcr.io/cloudnative-pg/postgresql:18.3
+  instances: 1
+  storage:
+    size: 5Gi
+    storageClass: truenas-iscsi
+  # bootstrap:
+  #   initdb:
+  #     database: linkwarden
+  #     owner: linkwarden
+  #     secret:
+  #       name: linkwarden-secrets

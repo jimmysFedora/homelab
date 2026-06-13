@@ -4,6 +4,7 @@ namespace: default
 resources:
   - ../../base/linkwarden
   - linkwarden-sealed-secret.yaml
+  - cluster.yaml
 configMapGenerator:
   - name: linkwarden-values
     files:
