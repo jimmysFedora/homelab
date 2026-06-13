@@ -1,26 +1,24 @@
+controllers:
+  main:
+    strategy: Recreate
 
-app-template:
-  controllers:
-    main:
-      strategy: Recreate
+    containers:
+      main:
+        image:
+          repository: ghcr.io/jimmysfedora/random-game-discord-bot
+          tag: "latest"
+        env:
+          DATA_FOLDER: "app"
+        envFrom:
+          - secretRef: 
+              name: gamebot-secrets
 
-      containers:
-        main:
-          image:
-            repository: ghcr.io/jimmysfedora/random-game-discord-bot
-            tag: "latest"
-          env:
-            DATA_FOLDER: "app"
-          envFrom:
-            - secretRef: 
-                name: gamebot-secrets
-
-  persistence:
-    data:
-      enabled: true
-      type: persistentVolumeClaim
-      accessMode: ReadWriteOnce
-      size: 1Gi
-      globalMounts:
-        - path: /app/data
-      # existingClaim: ""
+persistence:
+  data:
+    enabled: true
+    type: persistentVolumeClaim
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    globalMounts:
+      - path: /app/data
+    # existingClaim: ""
