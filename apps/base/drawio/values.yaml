@@ -3,10 +3,8 @@ app-template:
     main:
       containers:
         main:
-          env:
-            DATA_FOLDER: config
           image:
-            repository: deluan/navidrome
+            repository: jgraph/drawio
             tag: "{{.Chart.AppVersion}}"
       strategy: Recreate
 
@@ -14,7 +12,7 @@ app-template:
     main:
       className: traefik
       hosts:
-      - host: navidrome.dev.mistyfumes.dev
+      - host: drawio.dev.mistyfumes.dev
         paths:
         - path: /
           pathType: Prefix
@@ -23,19 +21,12 @@ app-template:
             port: http
       tls:
       - hosts:
-        - navidrome.dev.mistyfumes.dev
+        - drawio.dev.mistyfumes.dev
         secretName: dev-mistyfumes-tls
 
-  persistence:
-    config:
-      accessMode: ReadWriteOnce
-      globalMounts:
-      - path: /config
-      size: 1Gi
-      type: persistentVolumeClaim
   service:
     main:
       controller: main
       ports:
         http:
-          port: 4533
+          port: 8080

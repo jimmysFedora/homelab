@@ -6,6 +6,6 @@ version: 0.1.0
 appVersion: "latest"
 
 dependencies:
-  - name: common
-    repository: http://bjw-s-labs.github.io/helm-charts/
-    version: 5.0.0
+  - name: app-template
+    repository: https://bjw-s-labs.github.io/helm-charts
+    version: 5.0.1
