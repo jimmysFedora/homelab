@@ -1,71 +1,70 @@
-app-template:
-  controllers:
-    main:
-      containers:
-        main:
-          tty: true
-          image:
-            repository: lshallo/ats-convoy-server
-            tag: "v0.4.0"
-          env:
-            ETS_SERVER_UPDATE_ON_START: "true"
-            ETS_SERVER_NAME: "sixseventrucking"
-            ETS_SERVER_DESCRIPTION: "Powered by K8s"
-            ETS_SERVER_WELCOME_MESSAGE: "Welcome to winter hell! Powered by K8s"
-            ETS_SERVER_MAX_PLAYERS: "4"
-            ETS_SERVER_PORT: "27015"
-            ETS_SERVER_QUERY_PORT: "27016"
-            ETS_SERVER_MODS_OPTIONING: "true"
-            ETS_SERVER_PLAYER_DAMAGE: "true"
-            ETS_SERVER_TRAFFIC: "true"
-            ETS_SERVER_SERVICE_NO_COLLISION: "false"
-            ETS_SERVER_HIDE_COLLIDING: "false"
-            ETS_SERVER_WRITE_CONFIG: "true"
-          envFrom:
-            - secretRef:
-                name: ats-secrets
-          ports:
-            - name: game-udp
-              containerPort: 27015
-              protocol: UDP
-            - name: game-tcp
-              containerPort: 27015
-              protocol: TCP
-            - name: query
-              containerPort: 27016
-              protocol: UDP
+controllers:
+  main:
+    containers:
+      main:
+        tty: true
+        image:
+          repository: lshallo/ats-convoy-server
+          tag: "v0.4.0"
+        env:
+          ETS_SERVER_UPDATE_ON_START: "true"
+          ETS_SERVER_NAME: "sixseventrucking"
+          ETS_SERVER_DESCRIPTION: "Powered by K8s"
+          ETS_SERVER_WELCOME_MESSAGE: "Welcome to winter hell! Powered by K8s"
+          ETS_SERVER_MAX_PLAYERS: "4"
+          ETS_SERVER_PORT: "27015"
+          ETS_SERVER_QUERY_PORT: "27016"
+          ETS_SERVER_MODS_OPTIONING: "true"
+          ETS_SERVER_PLAYER_DAMAGE: "true"
+          ETS_SERVER_TRAFFIC: "true"
+          ETS_SERVER_SERVICE_NO_COLLISION: "false"
+          ETS_SERVER_HIDE_COLLIDING: "false"
+          ETS_SERVER_WRITE_CONFIG: "true"
+        envFrom:
+          - secretRef:
+              name: ats-secrets
+        ports:
+          - name: game-udp
+            containerPort: 27015
+            protocol: UDP
+          - name: game-tcp
+            containerPort: 27015
+            protocol: TCP
+          - name: query
+            containerPort: 27016
+            protocol: UDP
 
-  service:
-    game:
-      controller: main
-      type: LoadBalancer
-      ports:
-        game-udp:
-          port: 27015
-          protocol: UDP
-        query:
-          port: 27016
-          protocol: UDP
-    game-tcp:
-      controller: main
-      type: LoadBalancer
-      ports:
-        game-tcp:
-          port: 27015
-          protocol: TCP
+service:
+  game:
+    controller: main
+    type: LoadBalancer
+    ports:
+      game-udp:
+        port: 27015
+        protocol: UDP
+      query:
+        port: 27016
+        protocol: UDP
+  game-tcp:
+    controller: main
+    type: LoadBalancer
+    ports:
+      game-tcp:
+        port: 27015
+        protocol: TCP
 
-  persistence:
-    game-data:
-      enabled: true
-      type: persistentVolumeClaim
-      accessMode: ReadWriteOnce
-      size: 1Gi
-      globalMounts:
-        - path: /app
-    save-data:
-      enabled: true
-      type: persistentVolumeClaim
-      accessMode: ReadWriteOnce
-      size: 3Gi
-      globalMounts:
-        - path: "/home/steam/.local/share/American Truck Simulator"
+persistence:
+  game-data:
+    enabled: true
+    type: persistentVolumeClaim
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    globalMounts:
+      - path: /app
+  save-data:
+    enabled: true
+    type: persistentVolumeClaim
+    accessMode: ReadWriteOnce
+    size: 3Gi
+    globalMounts:
+      - path: "/home/steam/.local/share/American Truck Simulator"
