@@ -1,11 +1,11 @@
-name: Immich Favorite Sync
+name: foldergram-immich-sync
 
 on:
-  workflow_dispatch:      # Allows you to run it manually from the UI
+  workflow_dispatch:
 
 jobs:
   sync:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
