@@ -20,7 +20,7 @@ services:
       - db
 
   runner:
-    image: gitea/act_runner:latest
+    image: gitea/runner:1.0.6
     container_name: gitea_runner
     restart: always
     depends_on:
@@ -32,9 +32,9 @@ services:
     environment:
       - TZ=America/Denver
       - CONFIG_FILE=/config.yaml
-      - GITEA_INSTANCE_URL=http://192.168.1.213:3000
+      - GITEA_INSTANCE_URL=http://server:3000
       - GITEA_RUNNER_REGISTRATION_TOKEN=${GITEA_RUNNER_TOKEN}
-      - GITEA_RUNNER_NAME=homelab-renovate
+      - GITEA_RUNNER_NAME=docker-runner
 
   db:
     image: docker.io/library/postgres:14
