@@ -7,15 +7,9 @@ spec:
   interval: 15m
   chart:
     spec:
-      chart: infrastructure/charts/metube
+      chart: app-template
+      version: 5.0.1
       sourceRef:
-        kind: GitRepository
-        name: flux-system
+        kind: HelmRepository
+        name: bjw-s
         namespace: flux-system
-  valuesFrom: []
-  install:
-      remediation:
-        retries: 5
-  upgrade:
-    remediation:
-      retries: 5
