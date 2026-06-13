@@ -1,20 +1,38 @@
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          repository: ghcr.io/jordan-dalby/bytestash
+          tag: "1.5.11@sha256:0b18d858623855e34cf14354c360e155cb742c46c17e843a85b978ce8af83396"
+    strategy: Recreate
+
 ingress:
-  enabled: true
-  hosts:
+  main:
+    className: traefik
+    hosts:
     - host: bytestash.mistyfumes.dev
       paths:
-        - path: /
-          pathType: ImplementationSpecific
-  tls:
-    - secretName: prod-mistyfumes-tls
-      hosts:
-        - bytestash.mistyfumes.dev
+      - path: /
+        pathType: Prefix
+        service:
+          identifier: main
+          port: http
+    tls:
+    - hosts:
+      - bytestash.mistyfumes.dev
+      secretName: prod-mistyfumes-tls
 
-volumes:
-  - name: bytestash-data
-    persistentVolumeClaim:
-      claimName: bytestash-nfs-pvc
+service:
+  main:
+    controller: main
+    ports:
+      http:
+        port: 5000
 
-volumeMounts:
-  - name: bytestash-data
-    mountPath: "/data/snippets"
+persistence:
+  data:
+    type: persistentVolumeClaim
+    existingClaim: bytestash-nfs-pvc
+    globalMounts:
+      - path: /data/snippets
