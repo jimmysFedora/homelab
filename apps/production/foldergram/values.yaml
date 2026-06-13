@@ -30,19 +30,13 @@ service:
       http:
         port: 4141
 
-configMaps:
-  app-config:
-    data:
-      IMAGE_DETAIL_SOURCE: "preview"
-      DERIVATIVE_MODE: "eager"
-      NODE_ENV: "production"
-      PUBLIC_DEMO_MODE: "0"
-      CSRF_TRUSTED_ORIGINS: "https://foldergram.dev.mistyfumes.dev"
-
 persistence:
   db:
+    enabled: true
     type: persistentVolumeClaim
-    existingClaim: foldergram-db
+    storageClass: truenas-iscsi
+    accessMode: ReadWriteOnce
+    size: 1Gi
     globalMounts:
       - path: /app/data/db
   
@@ -53,13 +47,19 @@ persistence:
       - path: /app/data/gallery
 
   thumbnails:
+    enabled: true
     type: persistentVolumeClaim
-    existingClaim: foldergram-gallery
+    storageClass: truenas-iscsi
+    accessMode: ReadWriteOnce
+    size: 10Gi
     globalMounts:
       - path: /app/data/thumbnails
 
   previews:
+    enabled: true
     type: persistentVolumeClaim
-    existingClaim: foldergram-gallery
+    storageClass: truenas-iscsi
+    accessMode: ReadWriteOnce
+    size: 10Gi
     globalMounts:
       - path: /app/data/previews
