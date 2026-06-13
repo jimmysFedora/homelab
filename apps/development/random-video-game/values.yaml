@@ -8,7 +8,7 @@ app-template:
         main:
           image:
             repository: ghcr.io/jimmysfedora/random-game-discord-bot
-            tag: "{{ .Chart.AppVersion }}"
+            tag: "latest"
           env:
             DATA_FOLDER: "app"
           envFrom:

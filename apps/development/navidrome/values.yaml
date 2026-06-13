@@ -7,7 +7,7 @@ app-template:
             DATA_FOLDER: config
           image:
             repository: deluan/navidrome
-            tag: "{{.Chart.AppVersion}}"
+            tag: "0.61.2"
       strategy: Recreate
 
   ingress:
