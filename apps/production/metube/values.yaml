@@ -37,6 +37,8 @@ configMaps:
 
 persistence:
   downloads:
-    existingClaim: metube-nfs-pvc
+    type: persistentVolumeClaim
+    accessMode: ReadWriteOnce
+    storageClass: truenas-iscsi
     globalMounts:
       - path: /downloads
