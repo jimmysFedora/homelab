@@ -1,42 +1,38 @@
-# Default values for my-termix-ssh.
-# This is a YAML-formatted file.
-# Declare variables to be passed into your templates.
+controllers:
+  main:
+    containers:
+      main:
+        image:
+          repository: ghcr.io/lukegus/termix
+          tag: "release-2.3.2"
+    strategy: Recreate
 
-# This will set the replicaset count more information can be found here: https://kubernetes.io/docs/concepts/workloads/controllers/replicaset/
-replicaCount: 1
-
-# This block is for setting up the ingress for more information can be found here: https://kubernetes.io/docs/concepts/services-networking/ingress/
 ingress:
-  enabled: true
-  className: traefik
-  annotations: {}
-    # kubernetes.io/ingress.class: nginx
-    # kubernetes.io/tls-acme: "true"
-  hosts:
+  main:
+    className: traefik
+    hosts:
     - host: termix.mistyfumes.dev
       paths:
-        - path: /
-          pathType: ImplementationSpecific
-  tls:
-    - secretName: prod-mistyfumes-tls
-      hosts:
-        - termix.mistyfumes.dev
+      - path: /
+        pathType: Prefix
+        service:
+          identifier: main
+          port: http
+    tls:
+    - hosts:
+      - termix.mistyfumes.dev
+      secretName: prod-mistyfumes-tls
 
-resources:
-  limits:
-    cpu: 100m
-    memory: 128Mi
-  requests:
-    cpu: 100m
-    memory: 128Mi
+service:
+  main:
+    controller: main
+    ports:
+      http:
+        port: 8080
 
-# Additional volumes on the output Deployment definition.
-volumes:
-  - name: termix-ssh-data
-    persistentVolumeClaim:
-      claimName: termix-ssh-nfs-pvc
-
-# Additional volumeMounts on the output Deployment definition.
-volumeMounts:
-  - name: termix-ssh-data
-    mountPath: /app/data
+persistence:
+  data:
+    type: persistentVolumeClaim
+    existingClaim: termix-ssh-nfs-pvc
+    globalMounts:
+      - path: /app/data
