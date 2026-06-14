@@ -3,7 +3,7 @@ controllers:
     containers:
       main:
         env:
-          DATA_FOLDER: config
+          DATA_FOLDER: /data
         image:
           repository: deluan/navidrome
           tag: "0.61.2"
@@ -26,12 +26,13 @@ ingress:
       secretName: dev-mistyfumes-tls
 
 persistence:
-  config:
+  data:
     accessMode: ReadWriteOnce
     globalMounts:
-    - path: /config
+    - path: /data
     size: 1Gi
     type: persistentVolumeClaim
+
 service:
   main:
     controller: main
