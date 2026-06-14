@@ -3,19 +3,13 @@ kind: Kustomization
 resources:
   - serverstransport.yaml
   - gitea-ingressroute.yaml
-  - jellyseerr-ingressroute.yaml
   - komodo-ingressroute.yaml
   - open-webui-ingressroute.yaml
   - opnsense-ingressroute.yaml
-  - prowlarr-ingressroute.yaml
   - prx-backup-1-ingressroute.yaml
   - prx-demo-1-ingressroute.yaml
   - prx-nv-1-ingressroute.yaml
   - prx-router-1-ingressroute.yaml
-  - qbittorrent-ingressroute.yaml
-  - radarr-ingressroute.yaml
-  - sonarr-ingressroute.yaml
   - syncthing-ingressroute.yaml
   - traefik-dashboard-ingressroute.yaml
   - truenas-ingressroute.yaml
-  - wizarr-ingressroute.yaml
