@@ -223,3 +223,30 @@ persistence:
       radarr:
         main:
           - path: /downloads
+
+  octapool-tv:
+    enabled: true
+    type: persistentVolumeClaim
+    existingClaim: octapool-video-tv-pvc
+    advancedMounts:
+      sonarr:
+        main:
+          - path: /data/tv
+
+  octapool-bluray:
+    enabled: true
+    type: persistentVolumeClaim
+    existingClaim: octapool-video-bluray-pvc
+    advancedMounts:
+      radarr:
+        main:
+          - path: /data/blu-ray
+
+  octapool-dvds:
+    enabled: true
+    type: persistentVolumeClaim
+    existingClaim: octapool-video-dvds-pvc
+    advancedMounts:
+      radarr:
+        main:
+          - path: /data/dvds
