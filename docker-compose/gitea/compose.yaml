@@ -20,7 +20,7 @@ services:
       - db
 
   runner:
-    image: gitea/runner:1.0.6
+    image: gitea/runner:1.0.8
     container_name: gitea_runner
     restart: always
     depends_on:
