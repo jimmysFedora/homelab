@@ -54,10 +54,10 @@ data:
             icon: proxmox
             href: https://prx-nv-1.mistyfumes.dev
             description: on proxmox-nv-1
-            siteMonitor: https://192.168.1.30:8006
+            siteMonitor: https://prx-nv-1.mistyfumes.dev
             widget:
                 type: proxmox
-                url: https://192.168.1.30:8006
+                url: https://prx-nv-1.mistyfumes.dev
                 username: {{HOMEPAGE_VAR_PROXMOX_USERNAME}}
                 password: {{HOMEPAGE_VAR_PROXMOX_PASSWORD}}
                 node: prx-nv-1
@@ -66,10 +66,10 @@ data:
             icon: proxmox
             href: https://prx-demo-1.mistyfumes.dev
             description: on prx-demo-1
-            siteMonitor: https://192.168.1.128:8006
+            siteMonitor: https://prx-demo-1.mistyfumes.dev
             widget:
                 type: proxmox
-                url: https://192.168.1.128:8006
+                url: https://prx-demo-1.mistyfumes.dev
                 username: {{HOMEPAGE_VAR_PROXMOX_DEMO_USERNAME}}
                 password: {{HOMEPAGE_VAR_PROXMOX_DEMO_PASSWORD}}
                 node: demo
@@ -78,10 +78,10 @@ data:
             icon: proxmox
             href: https://prx-router-1.mistyfumes.dev
             description: on prx-router-1
-            siteMonitor: https://192.168.1.53:8006
+            siteMonitor: https://prx-router-1.mistyfumes.dev
             widget:
                 type: proxmox
-                url: https://192.168.1.53:8006
+                url: https://prx-router-1.mistyfumes.dev
                 username: {{HOMEPAGE_VAR_PROXMOX_ROUTER_USERNAME}}
                 password: {{HOMEPAGE_VAR_PROXMOX_ROUTER_PASSWORD}}
                 node: mistyfff
@@ -90,10 +90,10 @@ data:
             icon: proxmox
             href: https://prx-backup-1.mistyfumes.dev
             description: on prx-prod-1
-            siteMonitor: https://192.168.1.150:8007
+            siteMonitor: https://prx-backup-1.mistyfumes.dev
             widget:
                 type: proxmoxbackupserver
-                url: https://192.168.1.150:8007
+                url: https://prx-backup-1.mistyfumes.dev
                 username: {{HOMEPAGE_VAR_PBS_USERNAME}}
                 password: {{HOMEPAGE_VAR_PBS_PASSWORD}}
 
@@ -101,10 +101,10 @@ data:
             icon: truenas
             href: https://truenas.mistyfumes.dev
             description: on prx-prod-1
-            siteMonitor: https://192.168.1.130
+            siteMonitor: https://truenas.mistyfumes.dev
             widget:
                 type: truenas
-                url: https://192.168.1.130
+                url: https://truenas.mistyfumes.dev
                 key: {{HOMEPAGE_VAR_TRUENAS_API_KEY}}
 
     - Monitoring:
@@ -173,10 +173,10 @@ data:
             icon: opnsense
             href: https://opnsense.mistyfumes.dev
             description: opnsense-prod-1
-            siteMonitor: https://192.168.1.1
+            siteMonitor: https://opnsense.mistyfumes.dev
             widget:
                 type: opnsense
-                url: https://192.168.1.1
+                url: https://opnsense.mistyfumes.dev
                 username: {{HOMEPAGE_VAR_OPNSENSE_USERNAME}}
                 password: {{HOMEPAGE_VAR_OPNSENSE_PASSWORD}}
 
@@ -206,7 +206,7 @@ data:
             description: DNS Resolver
             widget:
                 type: technitium
-                url: http://192.168.1.213:5380
+                url: https://technitium.mistyfumes.dev
                 key: {{HOMEPAGE_VAR_TECHNITIUM_API_KEY}}
                 range: LastDay # optional, defaults to LastHour
 
@@ -222,46 +222,46 @@ data:
     - Media:
         - Seerr:
             icon: seerr
-            href: http://jellyseerr.mistyfumes.dev
+            href: https://seerr.mistyfumes.dev
             description: seerr-demo-1
-            siteMonitor: http://192.168.1.213:5055
+            siteMonitor: https://seerr.mistyfumes.dev
             statusStyle: 'dot'
             # widget:
             #     type: seerr
-            #     url: http://192.168.1.213:5055
+            #     url: https://seerr.mistyfumes.dev
             #     key: {{HOMEPAGE_VAR_JELLYSEERR_KEY}}
         
         - Prowlarr:
             icon: prowlarr
-            href: http://prowlarr.mistyfumes.dev        
+            href: https://prowlarr.mistyfumes.dev
             description: prowlarr-demo-1
-            siteMonitor: http://192.168.1.213:9696
+            siteMonitor: https://prowlarr.mistyfumes.dev
             statusStyle: 'dot'
             # widget:
             #     type: prowlarr
-            #     url: http://192.168.1.213:9696
+            #     url: https://prowlarr.mistyfumes.dev
             #     key: {{HOMEPAGE_VAR_PROWLARR_KEY}}
 
         - Sonarr:
             icon: sonarr
-            href: http://sonarr.mistyfumes.dev
+            href: https://sonarr.mistyfumes.dev
             description: sonarr-demo-1
-            siteMonitor: http://192.168.1.213:8989
+            siteMonitor: https://sonarr.mistyfumes.dev
             statusStyle: 'dot'   
             # widget:
             #     type: sonarr
-            #     url: http://192.168.1.213:8989
+            #     url: https://sonarr.mistyfumes.dev
             #     key: {{HOMEPAGE_VAR_SONARR_KEY}}
 
         - Radarr:
             icon: radarr
-            href: http://radarr.mistyfumes.dev
+            href: https://radarr.mistyfumes.dev
             description: radarr-demo-1
-            siteMonitor: http://192.168.1.213:7878
+            siteMonitor: https://radarr.mistyfumes.dev
             statusStyle: 'dot'        
             # widget:
             #     type: radarr
-            #     url: http://192.168.1.213:7878
+            #     url: https://radarr.mistyfumes.dev
             #     key: {{HOMEPAGE_VAR_RADARR_KEY}}
             #     enableQueue: true
 
@@ -269,7 +269,7 @@ data:
             icon: wizarr
             href: https://wizarr.mistyfumes.dev
             description: Invite Manager
-            siteMonitor: https://wizarr.mistyfumes.dev/
+            siteMonitor: https://wizarr.mistyfumes.dev
             statusStyle: dot
             # widget:
             #     type: customapi
@@ -294,13 +294,13 @@ data:
 
         - qBittorrent:
             icon: qbittorrent
-            href: http://qbittorrent.mistyfumes.dev
+            href: https://qbittorrent.mistyfumes.dev
             description: qbittorrent-demo-1
-            siteMonitor: http://192.168.1.213:8080
+            siteMonitor: https://qbittorrent.mistyfumes.dev
             statusStyle: 'dot'
             # widget:
             #     type: qbittorrent
-            #     url: http://192.168.1.213:8080
+            #     url: https://qbittorrent.mistyfumes.dev
             #     username: {{HOMEPAGE_VAR_QBITTORRENT_USERNAME}}
             #     password: {{HOMEPAGE_VAR_QBITTORRENT_PASSWORD}}
             #     enableLeechProgress: true
@@ -433,7 +433,7 @@ data:
             icon: syncthing
             href: https://syncthing.mistyfumes.dev
             description: File Syncing
-            siteMonitor: http://192.168.1.213:8384
+            siteMonitor: https://syncthing.mistyfumes.dev
             statusStyle: 'dot'
         
         - Termix:
@@ -463,14 +463,14 @@ data:
       GitOps:
         tab: Infrastructure
         style: row
-        columns: 3
+        columns: 2
         useEqualHeights: false
         icon: mdi-shield-lock-#FFFFFF
       
       Monitoring:
         tab: Infrastructure
         style: row
-        columns: 3
+        columns: 2
         useEqualHeights: false
         icon: mdi-shield-lock-#FFFFFF    
       
