@@ -1,225 +1,225 @@
-app-template:
-  controllers:
-    wizarr:
-      strategy: Recreate
-      containers:
+# app-template:
+controllers:
+  wizarr:
+    strategy: Recreate
+    containers:
+      main:
+        image:
+          repository: ghcr.io/wizarrrr/wizarr
+          tag: "v2026.4.0"
+        ports:
+          - name: http
+            containerPort: 5690
+  seerr:
+    strategy: Recreate
+    containers:
+      main:
+        image:
+          repository: ghcr.io/seerr-team/seerr
+          tag: "v3.2.0"
+        ports:
+          - name: http
+            containerPort: 5055
+  sonarr:
+    strategy: Recreate
+    containers:
+      main:
+        image:
+          repository: ghcr.io/linuxserver/sonarr
+          tag: "4.0.17@sha256:b5670a3adb0f8a8b0f277feeaa69a5fbe3869ba4bb9fa7c0f0764c3b3f0e698f"
+        ports:
+          - name: http
+            containerPort: 8989
+  radarr:
+    strategy: Recreate
+    containers:
+      main:
+        image:
+          repository: ghcr.io/linuxserver/radarr
+          tag: "6.1.1@sha256:581f159c2b67436863cb4da30e158ef6f6b8878472abbba79ee5d5f7e6b7d28d"
+        ports:
+          - name: http
+            containerPort: 7878
+  prowlarr:
+    strategy: Recreate
+    containers:
+      main:
+        image:
+          repository: ghcr.io/linuxserver/prowlarr
+          tag: "2.3.0@sha256:e50f3b188a7d1771b61f395c4203e35476bd3047683508740305e830e15bacf7"
+        ports:
+          - name: http
+            containerPort: 9696
+
+service:
+  wizarr:
+    controller: wizarr
+    ports:
+      http:
+        port: 5690
+        targetPort: http
+  seerr:
+    controller: seerr
+    ports:
+      http:
+        port: 5055
+        targetPort: http
+  sonarr:
+    controller: sonarr
+    ports:
+      http:
+        port: 8989
+        targetPort: http
+  radarr:
+    controller: radarr
+    ports:
+      http:
+        port: 7878
+        targetPort: http
+  prowlarr:
+    controller: prowlarr
+    ports:
+      http:
+        port: 9696
+        targetPort: http
+
+ingress:
+  wizarr:
+    className: traefik
+    hosts:
+    - host: wizarr.mistyfumes.dev
+      paths:
+      - path: /
+        pathType: Prefix
+        service:
+          identifier: wizarr
+          port: http
+    tls:
+    - hosts:
+      - wizarr.mistyfumes.dev
+      secretName: prod-mistyfumes-tls
+  seerr:
+    className: traefik
+    hosts:
+    - host: seerr.mistyfumes.dev
+      paths:
+      - path: /
+        pathType: Prefix
+        service:
+          identifier: seerr
+          port: http
+    tls:
+    - hosts:
+      - seerr.mistyfumes.dev
+      secretName: prod-mistyfumes-tls
+  sonarr:
+    className: traefik
+    hosts:
+    - host: sonarr.mistyfumes.dev
+      paths:
+      - path: /
+        pathType: Prefix
+        service:
+          identifier: sonarr
+          port: http
+    tls:
+    - hosts:
+      - sonarr.mistyfumes.dev
+      secretName: prod-mistyfumes-tls
+  radarr:
+    className: traefik
+    hosts:
+    - host: radarr.mistyfumes.dev
+      paths:
+      - path: /
+        pathType: Prefix
+        service:
+          identifier: radarr
+          port: http
+    tls:
+    - hosts:
+      - radarr.mistyfumes.dev
+      secretName: prod-mistyfumes-tls
+  prowlarr:
+    className: traefik
+    hosts:
+    - host: prowlarr.mistyfumes.dev
+      paths:
+      - path: /
+        pathType: Prefix
+        service:
+          identifier: prowlarr
+          port: http
+    tls:
+    - hosts:
+      - prowlarr.mistyfumes.dev
+      secretName: prod-mistyfumes-tls
+
+persistence:
+  # Separated via advancedMounts so they don't step on each other's toes
+  wizarr-data:
+    enabled: true
+    type: persistentVolumeClaim
+    accessMode: ReadWriteOnce
+    retain: true
+    size: 1Gi
+    advancedMounts:
+      wizarr:         # <-- Controller Name
+        main:      # <-- Container Name
+          - path: /data
+
+  seerr-config:
+    enabled: true
+    type: persistentVolumeClaim
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    retain: true
+    advancedMounts:
+      seerr:         # <-- Controller Name
+        main:      # <-- Container Name
+          - path: /app/config
+
+  sonarr-config:
+    enabled: true
+    type: persistentVolumeClaim
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    retain: true
+    advancedMounts:
+      sonarr:         # <-- Controller Name
+        main:      # <-- Container Name
+          - path: /config
+
+  radarr-config:
+    enabled: true
+    type: persistentVolumeClaim
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    retain: true
+    advancedMounts:
+      radarr:         # <-- Controller Name
+        main:      # <-- Container Name
+          - path: /config
+
+  prowlarr-config:
+    enabled: true
+    type: persistentVolumeClaim
+    accessMode: ReadWriteOnce
+    size: 1Gi
+    retain: true
+    advancedMounts:
+      prowlarr:         # <-- Controller Name
+        main:      # <-- Container Name
+          - path: /config
+
+  octapool-downloads:
+    enabled: true
+    type: persistentVolumeClaim
+    existingClaim: octapool-downloads-pvc
+    advancedMounts:
+      sonarr:
         main:
-          image:
-            repository: ghcr.io/wizarrrr/wizarr
-            tag: "v2026.4.0"
-          ports:
-            - name: http
-              containerPort: 5690
-    seerr:
-      strategy: Recreate
-      containers:
+          - path: /downloads
+      radarr:
         main:
-          image:
-            repository: ghcr.io/seerr-team/seerr
-            tag: "v3.2.0"
-          ports:
-            - name: http
-              containerPort: 5055
-    sonarr:
-      strategy: Recreate
-      containers:
-        main:
-          image:
-            repository: ghcr.io/linuxserver/sonarr
-            tag: "4.0.17@sha256:b5670a3adb0f8a8b0f277feeaa69a5fbe3869ba4bb9fa7c0f0764c3b3f0e698f"
-          ports:
-            - name: http
-              containerPort: 8989
-    radarr:
-      strategy: Recreate
-      containers:
-        main:
-          image:
-            repository: ghcr.io/linuxserver/radarr
-            tag: "6.1.1@sha256:581f159c2b67436863cb4da30e158ef6f6b8878472abbba79ee5d5f7e6b7d28d"
-          ports:
-            - name: http
-              containerPort: 7878
-    prowlarr:
-      strategy: Recreate
-      containers:
-        main:
-          image:
-            repository: ghcr.io/linuxserver/prowlarr
-            tag: "2.3.0@sha256:e50f3b188a7d1771b61f395c4203e35476bd3047683508740305e830e15bacf7"
-          ports:
-            - name: http
-              containerPort: 9696
-
-  service:
-    wizarr:
-      controller: wizarr
-      ports:
-        http:
-          port: 5690
-          targetPort: http
-    seerr:
-      controller: seerr
-      ports:
-        http:
-          port: 5055
-          targetPort: http
-    sonarr:
-      controller: sonarr
-      ports:
-        http:
-          port: 8989
-          targetPort: http
-    radarr:
-      controller: radarr
-      ports:
-        http:
-          port: 7878
-          targetPort: http
-    prowlarr:
-      controller: prowlarr
-      ports:
-        http:
-          port: 9696
-          targetPort: http
-
-  ingress:
-    wizarr:
-      className: traefik
-      hosts:
-      - host: wizarr.dev.mistyfumes.dev
-        paths:
-        - path: /
-          pathType: Prefix
-          service:
-            identifier: wizarr
-            port: http
-      tls:
-      - hosts:
-        - wizarr.dev.mistyfumes.dev
-        secretName: dev-mistyfumes-tls
-    seerr:
-      className: traefik
-      hosts:
-      - host: seerr.dev.mistyfumes.dev
-        paths:
-        - path: /
-          pathType: Prefix
-          service:
-            identifier: seerr
-            port: http
-      tls:
-      - hosts:
-        - seerr.dev.mistyfumes.dev
-        secretName: dev-mistyfumes-tls
-    sonarr:
-      className: traefik
-      hosts:
-      - host: sonarr.dev.mistyfumes.dev
-        paths:
-        - path: /
-          pathType: Prefix
-          service:
-            identifier: sonarr
-            port: http
-      tls:
-      - hosts:
-        - sonarr.dev.mistyfumes.dev
-        secretName: dev-mistyfumes-tls
-    radarr:
-      className: traefik
-      hosts:
-      - host: radarr.dev.mistyfumes.dev
-        paths:
-        - path: /
-          pathType: Prefix
-          service:
-            identifier: radarr
-            port: http
-      tls:
-      - hosts:
-        - radarr.dev.mistyfumes.dev
-        secretName: dev-mistyfumes-tls
-    prowlarr:
-      className: traefik
-      hosts:
-      - host: prowlarr.dev.mistyfumes.dev
-        paths:
-        - path: /
-          pathType: Prefix
-          service:
-            identifier: prowlarr
-            port: http
-      tls:
-      - hosts:
-        - prowlarr.dev.mistyfumes.dev
-        secretName: dev-mistyfumes-tls
-
-  persistence:
-    # Separated via advancedMounts so they don't step on each other's toes
-    wizarr-data:
-      enabled: true
-      type: persistentVolumeClaim
-      accessMode: ReadWriteOnce
-      retain: true
-      size: 1Gi
-      advancedMounts:
-        wizarr:         # <-- Controller Name
-          main:      # <-- Container Name
-            - path: /data
-
-    seerr-config:
-      enabled: true
-      type: persistentVolumeClaim
-      accessMode: ReadWriteOnce
-      size: 1Gi
-      retain: true
-      advancedMounts:
-        seerr:         # <-- Controller Name
-          main:      # <-- Container Name
-            - path: /app/config
-
-    sonarr-config:
-      enabled: true
-      type: persistentVolumeClaim
-      accessMode: ReadWriteOnce
-      size: 1Gi
-      retain: true
-      advancedMounts:
-        sonarr:         # <-- Controller Name
-          main:      # <-- Container Name
-            - path: /config
-
-    radarr-config:
-      enabled: true
-      type: persistentVolumeClaim
-      accessMode: ReadWriteOnce
-      size: 1Gi
-      retain: true
-      advancedMounts:
-        radarr:         # <-- Controller Name
-          main:      # <-- Container Name
-            - path: /config
-
-    prowlarr-config:
-      enabled: true
-      type: persistentVolumeClaim
-      accessMode: ReadWriteOnce
-      size: 1Gi
-      retain: true
-      advancedMounts:
-        prowlarr:         # <-- Controller Name
-          main:      # <-- Container Name
-            - path: /config
-
-    octapool-downloads:
-      enabled: true
-      type: persistentVolumeClaim
-      existingClaim: octapool-downloads-pvc
-      advancedMounts:
-        sonarr:
-          main:
-            - path: /downloads
-        radarr:
-          main:
-            - path: /downloads
+          - path: /downloads
