@@ -4,7 +4,7 @@ controllers:
       main:
         image:
           repository: ghcr.io/foldergram/foldergram
-          tag: "1.1.0"
+          tag: "1.2.2"
     strategy: Recreate
 
 ingress:
