@@ -1,0 +1,23 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: default
+resources:
+  - ../../base/karakeep
+  - karakeep-sealed-secret.yaml
+configMapGenerator:
+  - name: karakeep-values
+    files:
+      - values.yaml
+    options:
+      disableNameSuffixHash: true
+patches:
+  - patch: |-
+      - op: add
+        path: /spec/valuesFrom
+        value:
+          - kind: ConfigMap
+            name: karakeep-values
+            valuesKey: values.yaml
+    target:
+      kind: HelmRelease
+      name: karakeep
