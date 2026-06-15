@@ -3,6 +3,5 @@ kind: Kustomization
 resources:
   - actualbudget
   - ats-server
-  - navidrome
   - random-video-game
   - kube-prometheus-stack

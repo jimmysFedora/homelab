@@ -6,3 +6,4 @@ resources:
   - octapool-video-bluray-pv.yaml
   - octapool-video-dvds-pv.yaml
   - octapool-video-tv-pv.yaml
+  - octapool-music-pvc.yaml

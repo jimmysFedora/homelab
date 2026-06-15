@@ -13,7 +13,7 @@ ingress:
   main:
     className: traefik
     hosts:
-    - host: navidrome.dev.mistyfumes.dev
+    - host: navidrome.mistyfumes.dev
       paths:
       - path: /
         pathType: Prefix
@@ -22,8 +22,8 @@ ingress:
           port: http
     tls:
     - hosts:
-      - navidrome.dev.mistyfumes.dev
-      secretName: dev-mistyfumes-tls
+      - navidrome.mistyfumes.dev
+      secretName: prod-mistyfumes-tls
 
 persistence:
   data:
@@ -32,6 +32,15 @@ persistence:
     - path: /data
     size: 1Gi
     type: persistentVolumeClaim
+
+  octapool-music:
+    enabled: true
+    type: persistentVolumeClaim
+    existingClaim: octapool-music-library-pvc
+    advancedMounts:
+      radarr:
+        main:
+          - path: /music
 
 service:
   main:
