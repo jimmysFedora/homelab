@@ -36,7 +36,7 @@ services:
       - 25565:25565 # minecraft
 
   traefik:
-    image: docker.io/traefik:v3.6
+    image: docker.io/traefik:v3.7
     container_name: traefik
     restart: unless-stopped
 
