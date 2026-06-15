@@ -223,7 +223,7 @@ data:
         - Seerr:
             icon: seerr
             href: https://seerr.mistyfumes.dev
-            description: seerr-demo-1
+            description: Media Discovery
             siteMonitor: https://seerr.mistyfumes.dev
             statusStyle: 'dot'
             # widget:
@@ -234,7 +234,7 @@ data:
         - Prowlarr:
             icon: prowlarr
             href: https://prowlarr.mistyfumes.dev
-            description: prowlarr-demo-1
+            description: Index Manager
             siteMonitor: https://prowlarr.mistyfumes.dev
             statusStyle: 'dot'
             # widget:
@@ -245,7 +245,7 @@ data:
         - Sonarr:
             icon: sonarr
             href: https://sonarr.mistyfumes.dev
-            description: sonarr-demo-1
+            description: Internet PVR
             siteMonitor: https://sonarr.mistyfumes.dev
             statusStyle: 'dot'   
             # widget:
@@ -256,7 +256,7 @@ data:
         - Radarr:
             icon: radarr
             href: https://radarr.mistyfumes.dev
-            description: radarr-demo-1
+            description: Movie Collection Manager
             siteMonitor: https://radarr.mistyfumes.dev
             statusStyle: 'dot'        
             # widget:
@@ -295,7 +295,7 @@ data:
         - qBittorrent:
             icon: qbittorrent
             href: https://qbittorrent.mistyfumes.dev
-            description: qbittorrent-demo-1
+            description: Download Client
             siteMonitor: https://qbittorrent.mistyfumes.dev
             statusStyle: 'dot'
             # widget:
@@ -322,6 +322,13 @@ data:
             #     enableMediaControl: false
             #     showEpisodeNumber: true
             #     expandOneStreamToTwoRows: false
+
+        - Foldergram:
+            icon: foldergram
+            href: https://foldergram.mistyfumes.dev
+            description: Instagram Gallery
+            siteMonitor: https://foldergram.mistyfumes.dev
+            statusStyle: dot
 
         - Immich:
             icon: immich
