@@ -8,3 +8,4 @@ resources:
   - kubevirt
   # - democratic-csi
   - sealed-secrets
+  - external-secrets
