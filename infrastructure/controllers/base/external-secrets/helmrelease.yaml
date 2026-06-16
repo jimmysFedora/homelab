@@ -23,3 +23,8 @@ spec:
     remediation:
       retries: 3
   valuesFrom: []
+  values:
+    crds:
+      enabled: true
+    bitwarden-sdk-server:
+          enabled: true
