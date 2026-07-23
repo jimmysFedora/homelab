@@ -19,6 +19,10 @@ data:
               href: https://github.com/
               icon: github-light
 
+        - Gnoseed:
+            - abbr: GS
+              href: https://gnoseed.com/
+
         - Reddit:
             - abbr: RE
               href: https://reddit.com/
