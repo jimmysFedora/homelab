@@ -1,0 +1,23 @@
+name: kustomize-validate
+
+"on":
+  pull_request:
+
+jobs:
+  validate-manifests:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v6
+
+      - name: Install kustomize
+        run: |
+          curl -s "https://raw.githubusercontent.com/kubernetes-sigs/kustomize/master/hack/install_kustomize.sh" | bash
+          sudo mv kustomize /usr/local/bin/
+
+      - name: Validate Kustomizations
+        run: |
+          find . -name "kustomization.yaml" -exec dirname {} \; | while read dir; do
+            echo "Building $dir"
+            kustomize build "$dir" > /dev/null || exit 1
+          done
