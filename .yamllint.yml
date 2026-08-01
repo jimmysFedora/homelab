@@ -1,0 +1,12 @@
+---
+extends: default
+
+rules:
+  line-length:
+    max: 120
+    allow-non-breakable-words: true
+  indentation:
+    spaces: 2
+    indent-sequences: true
+  new-line-at-end-of-file: enable
+  document-start: disable
