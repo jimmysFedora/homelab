@@ -12,3 +12,5 @@ jobs:
 
       - name: Run yamllint
         uses: docker://pipelinecomponents/yamllint:latest
+        with:
+          args: yamllint .
