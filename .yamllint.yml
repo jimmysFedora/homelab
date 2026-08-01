@@ -1,6 +1,9 @@
 ---
 extends: default
 
+ignore: |
+  infrastructure/controllers/base/kubevirt/kubevirt-operator.yaml
+
 rules:
   new-line-at-end-of-file: enable
   document-start: disable
