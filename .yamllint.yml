@@ -10,3 +10,4 @@ rules:
     indent-sequences: true
   new-line-at-end-of-file: enable
   document-start: disable
+  line-length: disable
