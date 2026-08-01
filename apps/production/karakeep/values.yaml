@@ -24,9 +24,9 @@ ingress:
               identifier: karakeep
               port: http
     tls:
-    - hosts:
-        - karakeep.mistyfumes.dev
-      secretName: prod-mistyfumes-tls
+      - hosts:
+          - karakeep.mistyfumes.dev
+        secretName: prod-mistyfumes-tls
 
 persistence:
   data:

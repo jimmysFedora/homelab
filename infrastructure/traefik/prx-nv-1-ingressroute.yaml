@@ -26,7 +26,7 @@ metadata:
   namespace: default
 spec:
   entryPoints:
-    - websecure
+  - websecure
   routes:
   - match: Host(`prx-nv-1.mistyfumes.dev`)
     kind: Rule

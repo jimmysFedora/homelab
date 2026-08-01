@@ -152,7 +152,7 @@ ingress:
               port: http
     tls:
       - hosts:
-        - prowlarr.mistyfumes.dev
+          - prowlarr.mistyfumes.dev
         secretName: prod-mistyfumes-tls
 
 persistence:
