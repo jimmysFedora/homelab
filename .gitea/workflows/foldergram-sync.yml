@@ -27,7 +27,7 @@ jobs:
           IMMICH_API_KEY: ${{ secrets.IMMICH_API_KEY }}
         run: |
           set -e  # Exit on error
-          
+
           IMMICH_URL="https://immich.mistyfumes.dev"
           API_KEY="${IMMICH_API_KEY}"
           DEST_HOST="docker@192.168.1.213"
@@ -43,7 +43,7 @@ jobs:
           # 2. Extract and Process Assets
           # We use a process substitution to keep the loop in the main shell
           while read -r asset; do
-              
+
               ASSET_ID=$(echo "$asset" | jq -r '.id')
               FILE_NAME=$(echo "$asset" | jq -r '.originalFileName')
 
@@ -57,7 +57,7 @@ jobs:
               # 4. Transfer
               if [ -f "./$FILE_NAME" ]; then
                   # Added BatchMode to prevent hanging on auth failure
-                  scp -o BatchMode=yes "./$FILE_NAME" "$DEST_HOST:$DEST_PATH" 
+                  scp -o BatchMode=yes "./$FILE_NAME" "$DEST_HOST:$DEST_PATH"
                   echo "SUCCESS: $FILE_NAME synced to destination."
                   # rm "./$FILE_NAME"  # Good practice to clean up the runner's workspace
               else

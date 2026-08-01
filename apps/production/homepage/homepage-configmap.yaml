@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -5,7 +6,7 @@ metadata:
 data:
   HOMEPAGE_ALLOWED_HOSTS: homepage.mistyfumes.dev
   bookmarks.yaml: >
-    - Bookmarks:    
+    - Bookmarks:
         - Claude:
             - href: https://claude.ai/
               icon: https://www.google.com/s2/favicons?domain=claude.ai&sz=128
@@ -28,7 +29,7 @@ data:
               href: https://reddit.com/
               icon: reddit
 
-        - Steam Game Server Manager: 
+        - Steam Game Server Manager:
             - abbr: ST
               href: https://steamcommunity.com/dev/managegameservers
               icon: steam
@@ -505,14 +506,14 @@ data:
         columns: 6
         icon: mdi-network-#FFFFFF
 
-    # second tab    
+    # second tab
       Media:
         tab: Apps
         style: row
         columns: 5
         useEqualHeights: false
-        icon: mdi-shield-lock-#FFFFFF    
-      
+        icon: mdi-shield-lock-#FFFFFF   
+
       Tools:
         tab: Apps
         style: row

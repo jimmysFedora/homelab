@@ -1,3 +1,4 @@
+---
 grafana:
   ingress:
     enabled: true
