@@ -25,14 +25,14 @@ spec:
           ports:
             - containerPort: 3000
           env:
-          - name: HOMEPAGE_ALLOWED_HOSTS
-            valueFrom:
-              configMapKeyRef:
-                name: homepage
-                key: HOMEPAGE_ALLOWED_HOSTS
+            - name: HOMEPAGE_ALLOWED_HOSTS
+              valueFrom:
+                configMapKeyRef:
+                  name: homepage
+                  key: HOMEPAGE_ALLOWED_HOSTS
           envFrom:
-          - secretRef:
-              name: homepage-secrets
+            - secretRef:
+                name: homepage-secrets
           volumeMounts:
             - mountPath: /app/config/bookmarks.yaml
               name: homepage-config-volume

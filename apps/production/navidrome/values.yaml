@@ -41,7 +41,7 @@ persistence:
     advancedMounts:
       main:
         main:
-          - path: /music
+        - path: /music
 
 service:
   main:
