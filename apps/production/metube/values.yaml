@@ -11,17 +11,17 @@ ingress:
   main:
     className: traefik
     hosts:
-    - host: metube.mistyfumes.dev
-      paths:
-      - path: /
-        pathType: Prefix
-        service:
-          identifier: main
-          port: http
+      - host: metube.mistyfumes.dev
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              identifier: main
+              port: http
     tls:
-    - hosts:
-      - metube.mistyfumes.dev
-      secretName: prod-mistyfumes-tls
+      - hosts:
+          - metube.mistyfumes.dev
+        secretName: prod-mistyfumes-tls
 
 service:
   main:

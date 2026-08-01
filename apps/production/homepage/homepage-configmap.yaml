@@ -263,7 +263,7 @@ data:
             href: https://radarr.mistyfumes.dev
             description: Movie Collection Manager
             siteMonitor: https://radarr.mistyfumes.dev
-            statusStyle: 'dot'      
+            statusStyle: 'dot'
             # widget:
             #     type: radarr
             #     url: https://radarr.mistyfumes.dev
@@ -359,7 +359,7 @@ data:
             href: https://navidrome.mistyfumes.dev
             description: Music Server
             siteMonitor: https://navidrome.mistyfumes.dev
-            statusStyle: 'dot'       
+            statusStyle: 'dot'
             # widget:
             #     type: navidrome
             #     url: https://navidrome.mistyfumes.dev

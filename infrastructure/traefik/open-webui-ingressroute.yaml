@@ -5,8 +5,8 @@ metadata:
   namespace: default
 spec:
   ports:
-  - port: 3150
-    protocol: TCP
+    - port: 3150
+      protocol: TCP
 ---
 apiVersion: v1
 kind: Endpoints
@@ -14,10 +14,10 @@ metadata:
   name: open-webui-demo-1
   namespace: default
 subsets:
-- addresses:
-  - ip: 192.168.1.213
-  ports:
-  - port: 3150
+  - addresses:
+      - ip: 192.168.1.213
+    ports:
+      - port: 3150
 ---
 apiVersion: traefik.io/v1alpha1
 kind: IngressRoute
@@ -28,12 +28,12 @@ spec:
   entryPoints:
     - websecure
   routes:
-  - match: Host(`open-webui.dev.mistyfumes.dev`)
-    kind: Rule
-    services:
-    - name: open-webui-demo-1
-      port: 3150
-      scheme: https
-      serversTransport: insecure-transport
+    - match: Host(`open-webui.dev.mistyfumes.dev`)
+      kind: Rule
+      services:
+        - name: open-webui-demo-1
+          port: 3150
+          scheme: https
+          serversTransport: insecure-transport
   tls:
     secretName: prod-mistyfumes-tls

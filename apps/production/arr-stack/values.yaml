@@ -87,73 +87,73 @@ ingress:
   wizarr:
     className: traefik
     hosts:
-    - host: wizarr.mistyfumes.dev
-      paths:
-      - path: /
-        pathType: Prefix
-        service:
-          identifier: wizarr
-          port: http
+      - host: wizarr.mistyfumes.dev
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              identifier: wizarr
+              port: http
     tls:
-    - hosts:
-      - wizarr.mistyfumes.dev
-      secretName: prod-mistyfumes-tls
+      - hosts:
+          - wizarr.mistyfumes.dev
+        secretName: prod-mistyfumes-tls
   seerr:
     className: traefik
     hosts:
-    - host: seerr.mistyfumes.dev
-      paths:
-      - path: /
-        pathType: Prefix
-        service:
-          identifier: seerr
-          port: http
+      - host: seerr.mistyfumes.dev
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              identifier: seerr
+              port: http
     tls:
-    - hosts:
-      - seerr.mistyfumes.dev
-      secretName: prod-mistyfumes-tls
+      - hosts:
+          - seerr.mistyfumes.dev
+        secretName: prod-mistyfumes-tls
   sonarr:
     className: traefik
     hosts:
-    - host: sonarr.mistyfumes.dev
-      paths:
-      - path: /
-        pathType: Prefix
-        service:
-          identifier: sonarr
-          port: http
+      - host: sonarr.mistyfumes.dev
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              identifier: sonarr
+              port: http
     tls:
-    - hosts:
-      - sonarr.mistyfumes.dev
-      secretName: prod-mistyfumes-tls
+      - hosts:
+          - sonarr.mistyfumes.dev
+        secretName: prod-mistyfumes-tls
   radarr:
     className: traefik
     hosts:
-    - host: radarr.mistyfumes.dev
-      paths:
-      - path: /
-        pathType: Prefix
-        service:
-          identifier: radarr
-          port: http
+      - host: radarr.mistyfumes.dev
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              identifier: radarr
+              port: http
     tls:
-    - hosts:
-      - radarr.mistyfumes.dev
-      secretName: prod-mistyfumes-tls
+      - hosts:
+          - radarr.mistyfumes.dev
+        secretName: prod-mistyfumes-tls
   prowlarr:
     className: traefik
     hosts:
-    - host: prowlarr.mistyfumes.dev
-      paths:
-      - path: /
-        pathType: Prefix
-        service:
-          identifier: prowlarr
-          port: http
+      - host: prowlarr.mistyfumes.dev
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              identifier: prowlarr
+              port: http
     tls:
-    - hosts:
-      - prowlarr.mistyfumes.dev
-      secretName: prod-mistyfumes-tls
+      - hosts:
+        - prowlarr.mistyfumes.dev
+        secretName: prod-mistyfumes-tls
 
 persistence:
   # Separated via advancedMounts so they don't step on each other's toes

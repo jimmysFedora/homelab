@@ -10,7 +10,7 @@ controllers:
         env:
           DATA_FOLDER: "app"
         envFrom:
-          - secretRef: 
+          - secretRef:
               name: gamebot-secrets
 
 persistence:
