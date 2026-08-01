@@ -4,9 +4,11 @@ on:
   pull_request:
 
 jobs:
-  sync:
-    runs-on: pipelinecomponents/yamllint:edge
+  lint:
+    runs-on: ubuntu-22.04
     steps:
-      - name: Run yamllint
-        run: |
-          yamllint .
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: yamllint
+        uses: pipelinecomponents/yamllint@edge
