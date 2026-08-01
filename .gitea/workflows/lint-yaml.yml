@@ -10,5 +10,5 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
-      - name: yamllint
-        uses: pipelinecomponents/yamllint@edge
+      - name: Run yamllint
+        uses: docker://pipelinecomponents/yamllint:latest
