@@ -1,6 +1,9 @@
 name: foldergram-immich-sync
 
 on:
+  schedule:
+    # Run at 05:00 UTC every day
+    - cron: '0 5 * * *'
   workflow_dispatch:
 
 jobs:
