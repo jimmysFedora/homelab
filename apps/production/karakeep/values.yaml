@@ -8,25 +8,25 @@ controllers:
 #           OAUTH_PROVIDER_NAME: OIDC
 #           OAUTH_SCOPE: openid email profile
 #           OAUTH_WELLKNOWN_URL: https://auth.company/application/o/karakeep/.well-known/openid-configuration
-          envFrom:
-            - secretRef:
-                name: karakeep-secrets
+        envFrom:
+          - secretRef:
+              name: karakeep-secrets
 
 ingress:
   karakeep:
     className: traefik
     hosts:
-    - host: karakeep.mistyfumes.dev
-      paths:
-      - path: /
-        pathType: Prefix
-        service:
-          identifier: karakeep
-          port: http
+      - host: karakeep.mistyfumes.dev
+        paths:
+          - path: /
+            pathType: Prefix
+            service:
+              identifier: karakeep
+              port: http
     tls:
-    - hosts:
-      - karakeep.mistyfumes.dev
-      secretName: prod-mistyfumes-tls
+      - hosts:
+          - karakeep.mistyfumes.dev
+        secretName: prod-mistyfumes-tls
 
 persistence:
   data:

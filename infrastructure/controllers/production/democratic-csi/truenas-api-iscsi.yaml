@@ -23,7 +23,7 @@ driver:
       # apiKey is only available starting in TrueNAS-12
       apiKey: ${TRUENAS_API_KEY}
       username: root
-      password: 
+      password:
       allowInsecure: true
       # use apiVersion 2 for TrueNAS-12 and up (will work on 11.x in some scenarios as well)
       # leave unset for auto-detection
@@ -107,19 +107,19 @@ driver:
       extentAvailThreshold: 0
 
 storageClasses:
-      - name: truenas-iscsi
-        defaultClass: false
-        reclaimPolicy: Retain
-        volumeBindingMode: Immediate
-        allowVolumeExpansion: true
-        parameters:
-          fsType: ext4
+  - name: truenas-iscsi
+    defaultClass: false
+    reclaimPolicy: Retain
+    volumeBindingMode: Immediate
+    allowVolumeExpansion: true
+    parameters:
+      fsType: ext4
 
 node:
-      hostPID: true
-      driver:
-        extraEnv:
-          - name: ISCSIADM_HOST_STRATEGY
-            value: nsenter
-          - name: ISCSIADM_HOST_PATH
-            value: /usr/bin/iscsiadm
+  hostPID: true
+  driver:
+    extraEnv:
+      - name: ISCSIADM_HOST_STRATEGY
+        value: nsenter
+      - name: ISCSIADM_HOST_PATH
+        value: /usr/bin/iscsiadm

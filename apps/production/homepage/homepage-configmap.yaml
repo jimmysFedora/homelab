@@ -1,3 +1,4 @@
+---
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -5,7 +6,7 @@ metadata:
 data:
   HOMEPAGE_ALLOWED_HOSTS: homepage.mistyfumes.dev
   bookmarks.yaml: >
-    - Bookmarks:    
+    - Bookmarks:
         - Claude:
             - href: https://claude.ai/
               icon: https://www.google.com/s2/favicons?domain=claude.ai&sz=128
@@ -28,7 +29,7 @@ data:
               href: https://reddit.com/
               icon: reddit
 
-        - Steam Game Server Manager: 
+        - Steam Game Server Manager:
             - abbr: ST
               href: https://steamcommunity.com/dev/managegameservers
               icon: steam
@@ -54,7 +55,7 @@ data:
   proxmox.yaml: ""
   services.yaml: |
     - Infrastructure:
-        - prx-nv-1: 
+        - prx-nv-1:
             icon: proxmox
             href: https://prx-nv-1.mistyfumes.dev
             description: on proxmox-nv-1
@@ -66,7 +67,7 @@ data:
                 password: {{HOMEPAGE_VAR_PROXMOX_PASSWORD}}
                 node: prx-nv-1
 
-        - prx-demo-1: 
+        - prx-demo-1:
             icon: proxmox
             href: https://prx-demo-1.mistyfumes.dev
             description: on prx-demo-1
@@ -140,9 +141,9 @@ data:
 
     - GitOps:
         - Gitea:
-            icon: gitea 
+            icon: gitea
             href: https://code.mistyfumes.dev
-            # description: 
+            # description:
             siteMonitor: https://code.mistyfumes.dev
             widget:
                 type: gitea
@@ -194,7 +195,7 @@ data:
                 url: https://api.mistyfumes.dev/
                 key: {{HOMEPAGE_VAR_PANGOLIN_KEY}}
                 org: pangotut
-                    
+
         - Tailscale:
             icon: tailscale
             href: https://login.tailscale.com/admin
@@ -234,7 +235,7 @@ data:
             #     type: seerr
             #     url: https://seerr.mistyfumes.dev
             #     key: {{HOMEPAGE_VAR_JELLYSEERR_KEY}}
-        
+
         - Prowlarr:
             icon: prowlarr
             href: https://prowlarr.mistyfumes.dev
@@ -251,7 +252,7 @@ data:
             href: https://sonarr.mistyfumes.dev
             description: Internet PVR
             siteMonitor: https://sonarr.mistyfumes.dev
-            statusStyle: 'dot'   
+            statusStyle: 'dot'
             # widget:
             #     type: sonarr
             #     url: https://sonarr.mistyfumes.dev
@@ -262,7 +263,7 @@ data:
             href: https://radarr.mistyfumes.dev
             description: Movie Collection Manager
             siteMonitor: https://radarr.mistyfumes.dev
-            statusStyle: 'dot'        
+            statusStyle: 'dot'
             # widget:
             #     type: radarr
             #     url: https://radarr.mistyfumes.dev
@@ -358,7 +359,7 @@ data:
             href: https://navidrome.mistyfumes.dev
             description: Music Server
             siteMonitor: https://navidrome.mistyfumes.dev
-            statusStyle: 'dot'           
+            statusStyle: 'dot'
             # widget:
             #     type: navidrome
             #     url: https://navidrome.mistyfumes.dev
@@ -373,7 +374,7 @@ data:
             description: Finance and Budgeting
             siteMonitor: https://actualbudget.mistyfumes.dev
             statusStyle: 'dot'
-        
+
         - Bytestash:
             icon: bytestash
             href: https://bytestash.mistyfumes.dev
@@ -387,42 +388,42 @@ data:
             description: Diagram Software
             siteMonitor: https://drawio.mistyfumes.dev
             statusStyle: 'dot'
-        
+
         - IT-Tools:
             icon: it-tools
             href: https://it-tools.mistyfumes.dev
             description: IT Utilities
             siteMonitor: https://it-tools.mistyfumes.dev
             statusStyle: 'dot'
-        
+
         - Kaneo:
             icon: https://avatars.githubusercontent.com/u/192649426?s=200&v=4
             href: https://kaneo.mistyfumes.dev
             description: Project Management
             siteMonitor: https://kaneo.mistyfumes.dev
             statusStyle: 'dot'
-        
+
         - Karakeep:
             icon: karakeep
             href: https://karakeep.mistyfumes.dev
             description: Note Taking
             siteMonitor: https://karakeep.mistyfumes.dev
             statusStyle: 'dot'
-        
+
         - Linkwarden:
             icon: linkwarden
             href: https://linkwarden.mistyfumes.dev
             description: Bookmark Manager
             siteMonitor: https://linkwarden.mistyfumes.dev
             statusStyle: 'dot'
-        
+
         - Lubelogger:
             icon: lubelogger
             href: https://lubelogger.mistyfumes.dev
             description: Vehicle Maintenance Tracker
             siteMonitor: https://lubelogger.mistyfumes.dev
             statusStyle: 'dot'
-        
+
         - Minecraft Server:
             icon: minecraft
             href: minecraft.mistyfumes.dev
@@ -439,14 +440,14 @@ data:
             description: Document Management
             siteMonitor: https://paperless-ngx.mistyfumes.dev
             statusStyle: 'dot'
-        
+
         - Syncthing:
             icon: syncthing
             href: https://syncthing.mistyfumes.dev
             description: File Syncing
             siteMonitor: https://syncthing.mistyfumes.dev
             statusStyle: 'dot'
-        
+
         - Termix:
             icon: termix
             href: https://termix.mistyfumes.dev
@@ -459,7 +460,7 @@ data:
     theme: dark
     hideErrors: false
 
-    background: 
+    background:
       image: /images/IMG_5650.jpg
       blur: none
       saturate: 100 # 0, 50, 100... see https://tailwindcss.com/docs/backdrop-saturate
@@ -477,42 +478,42 @@ data:
         columns: 2
         useEqualHeights: false
         icon: mdi-shield-lock-#FFFFFF
-      
+
       Monitoring:
         tab: Infrastructure
         style: row
         columns: 2
         useEqualHeights: false
-        icon: mdi-shield-lock-#FFFFFF    
-      
+        icon: mdi-shield-lock-#FFFFFF
+
       Gateways:
         tab: Infrastructure
         style: row
         columns: 3
         useEqualHeights: false
-        icon: mdi-shield-lock-#FFFFFF    
-      
+        icon: mdi-shield-lock-#FFFFFF
+
       Infrastructure:
         tab: Infrastructure
         style: row
         columns: 5
         useEqualHeights: false
         icon: mdi-server-#FFFFFF
-      
+
       L2 Networking:
         tab: Infrastructure
         style: row
         columns: 6
         icon: mdi-network-#FFFFFF
 
-    # second tab    
+    # second tab
       Media:
         tab: Apps
         style: row
         columns: 5
         useEqualHeights: false
-        icon: mdi-shield-lock-#FFFFFF    
-      
+        icon: mdi-shield-lock-#FFFFFF
+
       Tools:
         tab: Apps
         style: row

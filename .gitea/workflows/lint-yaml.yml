@@ -1,0 +1,17 @@
+---
+name: yamllint
+
+"on":
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Run yamllint
+        uses: docker://pipelinecomponents/yamllint:latest
+        with:
+          args: yamllint .

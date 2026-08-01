@@ -27,4 +27,4 @@ spec:
     crds:
       enabled: true
     bitwarden-sdk-server:
-          enabled: true
+      enabled: true

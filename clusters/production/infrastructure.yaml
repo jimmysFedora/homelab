@@ -18,7 +18,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1h
-  path: ./infrastructure/traefik # ingress routes for non-kubernetes services
+  path: ./infrastructure/traefik  # ingress routes for non-kubernetes services
   sourceRef:
     kind: GitRepository
     name: flux-system
@@ -31,7 +31,7 @@ metadata:
   namespace: flux-system
 spec:
   interval: 1h
-  path: ./infrastructure/storage # premade global external shares/mounts i.e NFS
+  path: ./infrastructure/storage  # premade global external shares/mounts i.e NFS
   sourceRef:
     kind: GitRepository
     name: flux-system

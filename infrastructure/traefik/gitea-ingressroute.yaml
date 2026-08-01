@@ -33,7 +33,7 @@ metadata:
   namespace: default
 spec:
   entryPoints:
-    - websecure
+  - websecure
   routes:
   - match: Host(`code.mistyfumes.dev`)
     kind: Rule
@@ -51,7 +51,7 @@ metadata:
   namespace: default
 spec:
   entryPoints:
-    - ssh
+  - ssh
   routes:
   - match: HostSNI(`*`)
     services:
